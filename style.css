@@ -26,6 +26,91 @@ button,input,select,textarea {
 button,a {
     cursor:pointer
 }
+.notification-container {
+    position: relative;
+}
+
+.notification-btn {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #dce6f2;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #1874d2;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.notification-btn:hover {
+    background: #f0f6ff;
+}
+
+.notification-dot {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ef4444;
+}
+
+.notification-panel {
+    position: absolute;
+    top: 52px;
+    right: 0;
+    width: 320px;
+    max-width: calc(100vw - 32px);
+    background: #ffffff;
+    border: 1px solid #e0e8f2;
+    border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(20, 54, 91, 0.14);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.notification-panel[hidden] {
+    display: none;
+}
+
+.notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid #e8edf5;
+}
+
+.notification-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #14365b;
+}
+
+.notification-header button {
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.notification-item {
+    padding: 14px 16px;
+    border-bottom: 1px solid #edf1f7;
+}
+
+.notification-item strong {
+    font-size: 14px;
+    color: #14365b;
+}
+
+.notification-item p {
+    margin: 5px 0 0;
+    font-size: 13px;
+    color: #718096;
+    line-height: 1.5;
+}
 a {
     text-decoration:none;
     color:inherit
@@ -1051,6 +1136,17 @@ h3 {
         font-size:22px
     }
 }
+@media (max-width: 900px) {
+    .tiles {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .tiles {
+        grid-template-columns: 1fr;
+    }
+}
 @media(max-width:480px) {
     .grid,.grid.two,.grid.four,.tiles,.vids,.features {
         grid-template-columns:1fr
@@ -1101,6 +1197,30 @@ h3 {
         padding:14px
     }
 }
-.card title{
-    height: 30%;
+.tile {
+    min-height: 190px;
+    padding: 26px;
+    border-radius: 18px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.tile .fi {
+    width: 64px;
+    height: 64px;
+    font-size: 28px;
+}
+
+.tile h3 {
+    font-size: 19px;
+    margin-top: 16px;
+}
+
+.tile p {
+    font-size: 15px;
+}
+.tiles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
 }
