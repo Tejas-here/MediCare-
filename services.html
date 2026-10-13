@@ -1,247 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <title>
-   MediCare+ | Nearby Medical Services
-  </title>
-  <link href="style.css" rel="stylesheet"/>
- </head>
- <body data-page="services">
-  <div class="shell">
-   <aside class="side" id="side">
-    <a class="logo" href="index.html">
-     <span class="mark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>
+        MediCare+ | Nearby Medical Services
+    </title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body data-page="services">
+    <div class="shell">
+        <aside class="side" id="side">
+            <a class="logo" href="index.html">
+                <span class="mark">
       &hearts;
-     </span>
-     MediCare
-     <em>
+     </span> MediCare
+                <em>
       +
      </em>
-    </a>
-    <div class="side-label">
-     MAIN MENU
-    </div>
-    <nav>
-     <a class="" href="dashboard.html">
-      <span>
+            </a>
+            <div class="side-label">
+                MAIN MENU
+            </div>
+            <nav>
+                <a class="" href="dashboard.html">
+                    <span>
        ▦
-      </span>
-      Dashboard
-     </a>
-     <a class="" href="reports.html">
-      <span>
+      </span> Dashboard
+                </a>
+                <a class="" href="reports.html">
+                    <span>
        ▤
-      </span>
-      Reports
-     </a>
-     <a class="" href="medicine.html">
-      <span>
+      </span> Reports
+                </a>
+                <a class="" href="medicine.html">
+                    <span>
        ♧
-      </span>
-      Medicine
-     </a>
-     <a class="" href="videos.html">
-      <span>
+      </span> Medicine
+                </a>
+                <a class="" href="videos.html">
+                    <span>
        ▷
-      </span>
-      Instruction Videos
-     </a>
-     <a class="" href="doctor.html">
-      <span>
+      </span> Instruction Videos
+                </a>
+                <a class="" href="doctor.html">
+                    <span>
        ☏
-      </span>
-      Doctor Communication
-     </a>
-     <a class="on" href="services.html">
-      <span>
+      </span> Doctor Communication
+                </a>
+                <a class="on" href="services.html">
+                    <span>
        &target;
-      </span>
-      Nearby Medical Services
-     </a>
-     <a class="" href="progress.html">
-      <span>
+      </span> Nearby Medical Services
+                </a>
+                <a class="" href="progress.html">
+                    <span>
        &nearrow;
-      </span>
-      Improvement / Progress
-     </a>
-    </nav>
-    <div class="side-bottom">
-     <a class="out" href="login.html">
+      </span> Improvement / Progress
+                </a>
+            </nav>
+            <div class="side-bottom">
+                <a class="out" href="login.html">
       ♙ My Profile
      </a>
-     <button class="out" id="logout">
+                <button class="out" id="logout">
       &rarrb; Logout
      </button>
-     <div class="side-label">
-      &copy; 2026 MediCare+
-     </div>
-    </div>
-   </aside>
-   <main class="main">
-    <header class="bar">
-     <button class="hamb" id="hamb">
+                <div class="side-label">
+                    &copy; 2026 MediCare+
+                </div>
+            </div>
+        </aside>
+        <main class="main">
+            <header class="bar">
+                <button class="hamb" id="hamb">
       ☰
      </button>
-     <a class="logo" href="index.html">
-      <span class="mark">
+                <a class="logo" href="index.html">
+                    <span class="mark">
        &hearts;
-      </span>
-      MediCare
-      <em>
+      </span> MediCare
+                    <em>
        +
       </em>
-     </a>
-     <label class="search">
+                </a>
+                <label class="search">
       <input aria-label="Search" id="globalSearch" placeholder="&telrec;  Search anything..."/>
      </label>
-     <button class="mini" id="bell" title="Notifications">
+                <button class="mini" id="bell" title="Notifications">
       ♧
      </button>
-     <div class="user">
-      <span class="avatar">
+                <div class="user">
+                    <span class="avatar">
        A
       </span>
-      <span>
+                    <span>
        Avishkar ⌄
       </span>
-     </div>
-    </header>
-    <section class="content">
-     <div class="welcome">
-      <div>
-       <div class="crumb">
-        Home
-        <span>
+                </div>
+            </header>
+            <section class="content">
+                <div class="welcome">
+                    <div>
+                        <div class="crumb">
+                            Home
+                            <span>
          /
-        </span>
-        Nearby Hospitals, Medicals &amp; Labs
-       </div>
-       <h1>
-        Nearby Hospitals, Medicals &amp; Labs
-       </h1>
-       <p class="muted">
-        Find healthcare services and contact details in this demo.
-       </p>
-      </div>
-     </div>
-     <div class="filters" id="sf">
-      <button class="chip on" data-sf="All">
+        </span> Nearby Hospitals, Medicals &amp; Labs
+                        </div>
+                        <h1>
+                            Nearby Hospitals, Medicals &amp; Labs
+                        </h1>
+                        <p class="muted">
+                            Find healthcare services and contact details in this demo.
+                        </p>
+                    </div>
+                </div>
+                <div class="filters" id="sf">
+                    <button class="chip on" data-sf="All">
        All
       </button>
-      <button class="chip" data-sf="Hospitals">
+                    <button class="chip" data-sf="Hospitals">
        Hospitals
       </button>
-      <button class="chip" data-sf="Medical Stores">
+                    <button class="chip" data-sf="Medical Stores">
        Medical Stores
       </button>
-      <button class="chip" data-sf="Diagnostic Labs">
+                    <button class="chip" data-sf="Diagnostic Labs">
        Diagnostic Labs
       </button>
-     </div>
-     <section class="panel" id="sl">
-      <div class="service" data-st="Hospital">
-       <div class="service-img">
-        🏥
-       </div>
-       <div>
-        <h3>
-         City Care Hospital
-        </h3>
-        <p>
-         Multispecialty &middot; 2.1 km
-         <br/>
-         &phone; +91 20 5550 0100
-        </p>
-       </div>
-       <div class="service-actions">
-        <a class="btn soft" href="tel:+912055500100">
+                </div>
+                <section class="panel" id="sl">
+                    <div class="service" data-st="Hospital">
+                        <div class="service-img">
+                            🏥
+                        </div>
+                        <div>
+                            <h3>
+                                City Care Hospital
+                            </h3>
+                            <p>
+                                Multispecialty &middot; 2.1 km
+                                <br/> &phone; +91 20 5550 0100
+                            </p>
+                        </div>
+                        <div class="service-actions">
+                            <a class="btn soft" href="tel:+912055500100">
          Call
         </a>
-        <button class="btn alt" data-map="City Care Hospital">
+                            <button class="btn alt" data-map="City Care Hospital">
          View Map
         </button>
-       </div>
-      </div>
-      <div class="service" data-st="Medical Store">
-       <div class="service-img">
-        💊
-       </div>
-       <div>
-        <h3>
-         Shree Medical Store
-        </h3>
-        <p>
-         Near College Road &middot; 1.5 km
-         <br/>
-         &phone; +91 20 5550 0101
-        </p>
-       </div>
-       <div class="service-actions">
-        <a class="btn soft" href="tel:+912055500101">
+                        </div>
+                    </div>
+                    <div class="service" data-st="Medical Store">
+                        <div class="service-img">
+                            💊
+                        </div>
+                        <div>
+                            <h3>
+                                Shree Medical Store
+                            </h3>
+                            <p>
+                                Near College Road &middot; 1.5 km
+                                <br/> &phone; +91 20 5550 0101
+                            </p>
+                        </div>
+                        <div class="service-actions">
+                            <a class="btn soft" href="tel:+912055500101">
          Call
         </a>
-        <button class="btn alt" data-map="Shree Medical Store">
+                            <button class="btn alt" data-map="Shree Medical Store">
          View Map
         </button>
-       </div>
-      </div>
-      <div class="service" data-st="Diagnostic Lab">
-       <div class="service-img">
-        🧪
-       </div>
-       <div>
-        <h3>
-         ABC Diagnostic Lab
-        </h3>
-        <p>
-         Pathology &amp; Blood Tests &middot; 2.5 km
-         <br/>
-         &phone; +91 20 5550 0102
-        </p>
-       </div>
-       <div class="service-actions">
-        <a class="btn soft" href="tel:+912055500102">
+                        </div>
+                    </div>
+                    <div class="service" data-st="Diagnostic Lab">
+                        <div class="service-img">
+                            🧪
+                        </div>
+                        <div>
+                            <h3>
+                                ABC Diagnostic Lab
+                            </h3>
+                            <p>
+                                Pathology &amp; Blood Tests &middot; 2.5 km
+                                <br/> &phone; +91 20 5550 0102
+                            </p>
+                        </div>
+                        <div class="service-actions">
+                            <a class="btn soft" href="tel:+912055500102">
          Call
         </a>
-        <button class="btn alt" data-map="ABC Diagnostic Lab">
+                            <button class="btn alt" data-map="ABC Diagnostic Lab">
          View Map
         </button>
-       </div>
-      </div>
-      <div class="service" data-st="Hospital">
-       <div class="service-img">
-        🏥
-       </div>
-       <div>
-        <h3>
-         Life Care Hospital
-        </h3>
-        <p>
-         General &amp; Emergency &middot; 3.0 km
-         <br/>
-         &phone; +91 20 5550 0103
-        </p>
-       </div>
-       <div class="service-actions">
-        <a class="btn soft" href="tel:+912055500103">
+                        </div>
+                    </div>
+                    <div class="service" data-st="Hospital">
+                        <div class="service-img">
+                            🏥
+                        </div>
+                        <div>
+                            <h3>
+                                Life Care Hospital
+                            </h3>
+                            <p>
+                                General &amp; Emergency &middot; 3.0 km
+                                <br/> &phone; +91 20 5550 0103
+                            </p>
+                        </div>
+                        <div class="service-actions">
+                            <a class="btn soft" href="tel:+912055500103">
          Call
         </a>
-        <button class="btn alt" data-map="Life Care Hospital">
+                            <button class="btn alt" data-map="Life Care Hospital">
          View Map
         </button>
-       </div>
-      </div>
-     </section>
-     <p class="tip" style="margin-top:17px">
-      Location names and contact details are sample data for interface demonstration. Verify real locations, numbers and emergency availability before visiting.
-     </p>
-    </section>
-   </main>
-   <div class="toast" hidden="" id="toast">
-   </div>
-  </div>
-   <script src="app.js" defer></script>
- </body>
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+        </main>
+        <div class="toast" hidden="" id="toast">
+        </div>
+    </div>
+    <script src="app.js" defer></script>
+</body>
+
 </html>

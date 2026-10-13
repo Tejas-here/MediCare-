@@ -1,446 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <title>
-   MediCare+ | Reports
-  </title>
-  <link href="style.css" rel="stylesheet"/>
- </head>
- <body data-page="reports">
-  <div class="shell">
-   <aside class="side" id="side">
-    <a class="logo" href="index.html">
-     <span class="mark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>
+        MediCare+ | Reports
+    </title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body data-page="reports">
+    <div class="shell">
+        <aside class="side" id="side">
+            <a class="logo" href="index.html">
+                <span class="mark">
       &hearts;
-     </span>
-     MediCare
-     <em>
+     </span> MediCare
+                <em>
       +
      </em>
-    </a>
-    <div class="side-label">
-     MAIN MENU
-    </div>
-    <nav>
-     <a class="" href="dashboard.html">
-      <span>
+            </a>
+            <div class="side-label">
+                MAIN MENU
+            </div>
+            <nav>
+                <a class="" href="dashboard.html">
+                    <span>
        ▦
-      </span>
-      Dashboard
-     </a>
-     <a class="on" href="reports.html">
-      <span>
+      </span> Dashboard
+                </a>
+                <a class="on" href="reports.html">
+                    <span>
        ▤
-      </span>
-      Reports
-     </a>
-     <a class="" href="medicine.html">
-      <span>
+      </span> Reports
+                </a>
+                <a class="" href="medicine.html">
+                    <span>
        ♧
-      </span>
-      Medicine
-     </a>
-     <a class="" href="videos.html">
-      <span>
+      </span> Medicine
+                </a>
+                <a class="" href="videos.html">
+                    <span>
        ▷
-      </span>
-      Instruction Videos
-     </a>
-     <a class="" href="doctor.html">
-      <span>
+      </span> Instruction Videos
+                </a>
+                <a class="" href="doctor.html">
+                    <span>
        ☏
-      </span>
-      Doctor Communication
-     </a>
-     <a class="" href="services.html">
-      <span>
+      </span> Doctor Communication
+                </a>
+                <a class="" href="services.html">
+                    <span>
        &target;
-      </span>
-      Nearby Medical Services
-     </a>
-     <a class="" href="progress.html">
-      <span>
+      </span> Nearby Medical Services
+                </a>
+                <a class="" href="progress.html">
+                    <span>
        &nearrow;
-      </span>
-      Improvement / Progress
-     </a>
-    </nav>
-    <div class="side-bottom">
-     <a class="out" href="login.html">
+      </span> Improvement / Progress
+                </a>
+            </nav>
+            <div class="side-bottom">
+                <a class="out" href="login.html">
       ♙ My Profile
      </a>
-     <button class="out" id="logout">
+                <button class="out" id="logout">
       &rarrb; Logout
      </button>
-     <div class="side-label">
-      &copy; 2026 MediCare+
-     </div>
-    </div>
-   </aside>
-   <main class="main">
-    <header class="bar">
-     <button class="hamb" id="hamb">
+                <div class="side-label">
+                    &copy; 2026 MediCare+
+                </div>
+            </div>
+        </aside>
+        <main class="main">
+            <header class="bar">
+                <button class="hamb" id="hamb">
       ☰
      </button>
-     <a class="logo" href="index.html">
-      <span class="mark">
+                <a class="logo" href="index.html">
+                    <span class="mark">
        &hearts;
-      </span>
-      MediCare
-      <em>
+      </span> MediCare
+                    <em>
        +
       </em>
-     </a>
-     <label class="search">
+                </a>
+                <label class="search">
       <input aria-label="Search" id="globalSearch" placeholder="&telrec;  Search anything..."/>
      </label>
-     <button class="mini" id="bell" title="Notifications">
+                <button class="mini" id="bell" title="Notifications">
       ♧
      </button>
-     <div class="user">
-      <span class="avatar">
+                <div class="user">
+                    <span class="avatar">
        A
       </span>
-      <span>
+                    <span>
        Avishkar ⌄
       </span>
-     </div>
-    </header>
-    <section class="content">
-     <div class="welcome">
-      <div>
-       <div class="crumb">
-        Home
-        <span>
+                </div>
+            </header>
+            <section class="content">
+                <div class="welcome">
+                    <div>
+                        <div class="crumb">
+                            Home
+                            <span>
          /
-        </span>
-        My Reports
-       </div>
-       <h1>
-        My Reports
-       </h1>
-       <p class="muted">
-        View, download and manage your medical reports.
-       </p>
-      </div>
-      <button class="btn" id="addReport">
+        </span> My Reports
+                        </div>
+                        <h1>
+                            My Reports
+                        </h1>
+                        <p class="muted">
+                            View, download and manage your medical reports.
+                        </p>
+                    </div>
+                    <button class="btn" id="addReport">
        ＋ Upload Report
       </button>
-     </div>
-     <div class="grid" style="margin-bottom:20px">
-      <div class="card stat">
-       <div class="fi">
-        ▤
-       </div>
-       <div>
-        <small>
+                </div>
+                <div class="grid" style="margin-bottom:20px">
+                    <div class="card stat">
+                        <div class="fi">
+                            ▤
+                        </div>
+                        <div>
+                            <small>
          Total reports
         </small>
-        <strong id="rc">
+                            <strong id="rc">
          4
         </strong>
-       </div>
-      </div>
-      <div class="card stat">
-       <div class="fi">
-        &checkmark;
-       </div>
-       <div>
-        <small>
+                        </div>
+                    </div>
+                    <div class="card stat">
+                        <div class="fi">
+                            &checkmark;
+                        </div>
+                        <div>
+                            <small>
          Reviewed
         </small>
-        <strong>
+                            <strong>
          3
         </strong>
-       </div>
-      </div>
-      <div class="card stat">
-       <div class="fi">
-        ◷
-       </div>
-       <div>
-        <small>
+                        </div>
+                    </div>
+                    <div class="card stat">
+                        <div class="fi">
+                            ◷
+                        </div>
+                        <div>
+                            <small>
          Latest report
         </small>
-        <strong style="font-size:17px">
+                            <strong style="font-size:17px">
          12 Sept 2026
         </strong>
-       </div>
-      </div>
-     </div>
-     <section class="panel">
-      <div class="ph">
-       <div>
-        <h2>
-         All reports
-        </h2>
-        <p class="muted">
-         Search and filter your medical documents.
-        </p>
-       </div>
-       <label>
+                        </div>
+                    </div>
+                </div>
+                <section class="panel">
+                    <div class="ph">
+                        <div>
+                            <h2>
+                                All reports
+                            </h2>
+                            <p class="muted">
+                                Search and filter your medical documents.
+                            </p>
+                        </div>
+                        <label>
         <input id="rs" placeholder="&telrec; Search reports..." style="padding:10px;border:1px solid var(--ln);border-radius:7px;max-width:190px"/>
        </label>
-      </div>
-      <div class="filters" id="rf">
-       <button class="chip on" data-f="All">
+                    </div>
+                    <div class="filters" id="rf">
+                        <button class="chip on" data-f="All">
         All Reports
        </button>
-       <button class="chip" data-f="Blood Test">
+                        <button class="chip" data-f="Blood Test">
         Blood Test
        </button>
-       <button class="chip" data-f="X-Ray">
+                        <button class="chip" data-f="X-Ray">
         X-Ray
        </button>
-       <button class="chip" data-f="ECG">
+                        <button class="chip" data-f="ECG">
         ECG
        </button>
-       <button class="chip" data-f="Prescription">
+                        <button class="chip" data-f="Prescription">
         Prescription
        </button>
-       <button class="chip" data-f="Other">
+                        <button class="chip" data-f="Other">
         Other
        </button>
-      </div>
-      <div class="tablewrap">
-       <table class="tbl">
-        <thead>
-         <tr>
-          <th>
-           REPORT NAME
-          </th>
-          <th>
-           CATEGORY
-          </th>
-          <th>
-           DATE
-          </th>
-          <th>
-           DOCTOR / LAB
-          </th>
-          <th>
-           STATUS
-          </th>
-          <th>
-           ACTIONS
-          </th>
-         </tr>
-        </thead>
-        <tbody id="rb">
-         <tr>
-          <td>
-           <div class="row">
-            <div class="file pdf">
-             PDF
-            </div>
-            <div>
-             <strong>
+                    </div>
+                    <div class="tablewrap">
+                        <table class="tbl">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        REPORT NAME
+                                    </th>
+                                    <th>
+                                        CATEGORY
+                                    </th>
+                                    <th>
+                                        DATE
+                                    </th>
+                                    <th>
+                                        DOCTOR / LAB
+                                    </th>
+                                    <th>
+                                        STATUS
+                                    </th>
+                                    <th>
+                                        ACTIONS
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="rb">
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="file pdf">
+                                                PDF
+                                            </div>
+                                            <div>
+                                                <strong>
               Blood Test Report
              </strong>
-             <small>
+                                                <small>
               blood-test.pdf &middot; 1.2 MB
              </small>
-            </div>
-           </div>
-          </td>
-          <td>
-           <span class="pill">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="pill">
             Blood Test
            </span>
-          </td>
-          <td>
-           12 Sep 2026
-          </td>
-          <td>
-           City Diagnostic Lab
-          </td>
-          <td>
-           <span class="pill good">
+                                    </td>
+                                    <td>
+                                        12 Sep 2026
+                                    </td>
+                                    <td>
+                                        City Diagnostic Lab
+                                    </td>
+                                    <td>
+                                        <span class="pill good">
             Reviewed
            </span>
-          </td>
-          <td>
-           <div class="acts">
-            <span class="mini">
+                                    </td>
+                                    <td>
+                                        <div class="acts">
+                                            <span class="mini">
              View
             </span>
-            <span class="mini">
+                                            <span class="mini">
              &darr;
             </span>
-            <span class="mini">
+                                            <span class="mini">
              &times;
             </span>
-           </div>
-          </td>
-         </tr>
-         <tr>
-          <td>
-           <div class="row">
-            <div class="file img">
-             ▧
-            </div>
-            <div>
-             <strong>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="file img">
+                                                ▧
+                                            </div>
+                                            <div>
+                                                <strong>
               X-Ray (Chest)
              </strong>
-             <small>
+                                                <small>
               chest-xray.jpg &middot; 2.4 MB
              </small>
-            </div>
-           </div>
-          </td>
-          <td>
-           <span class="pill">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="pill">
             X-Ray
            </span>
-          </td>
-          <td>
-           01 Aug 2026
-          </td>
-          <td>
-           Metro Imaging Centre
-          </td>
-          <td>
-           <span class="pill good">
+                                    </td>
+                                    <td>
+                                        01 Aug 2026
+                                    </td>
+                                    <td>
+                                        Metro Imaging Centre
+                                    </td>
+                                    <td>
+                                        <span class="pill good">
             Reviewed
            </span>
-          </td>
-          <td>
-           <div class="acts">
-            <span class="mini">
+                                    </td>
+                                    <td>
+                                        <div class="acts">
+                                            <span class="mini">
              View
             </span>
-            <span class="mini">
+                                            <span class="mini">
              &darr;
             </span>
-            <span class="mini">
+                                            <span class="mini">
              &times;
             </span>
-           </div>
-          </td>
-         </tr>
-         <tr>
-          <td>
-           <div class="row">
-            <div class="file pdf">
-             PDF
-            </div>
-            <div>
-             <strong>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="file pdf">
+                                                PDF
+                                            </div>
+                                            <div>
+                                                <strong>
               ECG Report
              </strong>
-             <small>
+                                                <small>
               ecg-report.pdf &middot; 840 KB
              </small>
-            </div>
-           </div>
-          </td>
-          <td>
-           <span class="pill">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="pill">
             ECG
            </span>
-          </td>
-          <td>
-           15 Jul 2026
-          </td>
-          <td>
-           Dr. Mehta
-          </td>
-          <td>
-           <span class="pill good">
+                                    </td>
+                                    <td>
+                                        15 Jul 2026
+                                    </td>
+                                    <td>
+                                        Dr. Mehta
+                                    </td>
+                                    <td>
+                                        <span class="pill good">
             Reviewed
            </span>
-          </td>
-          <td>
-           <div class="acts">
-            <span class="mini">
+                                    </td>
+                                    <td>
+                                        <div class="acts">
+                                            <span class="mini">
              View
             </span>
-            <span class="mini">
+                                            <span class="mini">
              &darr;
             </span>
-            <span class="mini">
+                                            <span class="mini">
              &times;
             </span>
-           </div>
-          </td>
-         </tr>
-         <tr>
-          <td>
-           <div class="row">
-            <div class="file pdf">
-             PDF
-            </div>
-            <div>
-             <strong>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="file pdf">
+                                                PDF
+                                            </div>
+                                            <div>
+                                                <strong>
               Prescription
              </strong>
-             <small>
+                                                <small>
               prescription.pdf &middot; 540 KB
              </small>
-            </div>
-           </div>
-          </td>
-          <td>
-           <span class="pill">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="pill">
             Prescription
            </span>
-          </td>
-          <td>
-           10 Jul 2026
-          </td>
-          <td>
-           Dr. Mehta
-          </td>
-          <td>
-           <span class="pill wait">
+                                    </td>
+                                    <td>
+                                        10 Jul 2026
+                                    </td>
+                                    <td>
+                                        Dr. Mehta
+                                    </td>
+                                    <td>
+                                        <span class="pill wait">
             Pending
            </span>
-          </td>
-          <td>
-           <div class="acts">
-            <span class="mini">
+                                    </td>
+                                    <td>
+                                        <div class="acts">
+                                            <span class="mini">
              View
             </span>
-            <span class="mini">
+                                            <span class="mini">
              &darr;
             </span>
-            <span class="mini">
+                                            <span class="mini">
              &times;
             </span>
-           </div>
-          </td>
-         </tr>
-        </tbody>
-       </table>
-      </div>
-      <div class="ph">
-       <small class="muted" id="rct">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="ph">
+                        <small class="muted" id="rct">
         Showing 4 of 4 reports
        </small>
-       <button class="btn alt" id="export">
+                        <button class="btn alt" id="export">
         &darr; Export CSV
        </button>
-      </div>
-     </section>
-     <p class="tip" style="margin-top:16px">
-      🔒 Your health records are shown in this browser demo. Uploaded files are not sent to a server and are not permanently saved.
-     </p>
-     <div class="modalbg" hidden="" id="rmodal">
-      <form class="modal" id="rfm">
-       <h2>
-        Upload medical report
-       </h2>
-       <p class="muted">
-        Add report details and choose a file (max 10 MB).
-       </p>
-       <label class="field">
+                    </div>
+                </section>
+                <div class="modalbg" hidden="" id="rmodal">
+                    <form class="modal" id="rfm">
+                        <h2>
+                            Upload medical report
+                        </h2>
+                        <p class="muted">
+                            Add report details and choose a file (max 10 MB).
+                        </p>
+                        <label class="field">
         Report name
         <input maxlength="100" name="name" placeholder="e.g. Complete Blood Count" required=""/>
        </label>
-       <label class="field">
+                        <label class="field">
         Category
         <select name="cat" required="">
          <option value="">
@@ -463,39 +452,40 @@
          </option>
         </select>
        </label>
-       <label class="field">
+                        <label class="field">
         Report date
         <input name="date" required="" type="date"/>
        </label>
-       <label class="field">
+                        <label class="field">
         Doctor / Lab
         <input name="who" placeholder="Optional"/>
        </label>
-       <label class="field">
+                        <label class="field">
         Attach file
         <input accept=".pdf,.png,.jpg,.jpeg,.webp,.txt" name="file" required="" type="file"/>
        </label>
-       <label class="field">
+                        <label class="field">
         Notes
         <textarea name="notes" placeholder="Optional" rows="2"></textarea>
        </label>
-       <p class="muted" id="rerr">
-       </p>
-       <div class="modalfoot">
-        <button class="btn alt" id="rcancel" type="button">
+                        <p class="muted" id="rerr">
+                        </p>
+                        <div class="modalfoot">
+                            <button class="btn alt" id="rcancel" type="button">
          Cancel
         </button>
-        <button class="btn">
+                            <button class="btn">
          Save report
         </button>
-       </div>
-      </form>
-     </div>
-    </section>
-   </main>
-   <div class="toast" hidden="" id="toast">
-   </div>
-  </div>
-   <script src="app.js" defer></script>
- </body>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <div class="toast" hidden="" id="toast">
+        </div>
+    </div>
+    <script src="app.js" defer></script>
+</body>
+
 </html>
