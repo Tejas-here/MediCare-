@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   MediCare+ | Doctor Communication
+  </title>
+  <link href="style.css" rel="stylesheet"/>
+ </head>
+ <body data-page="doctor">
+  <div class="shell">
+   <aside class="side" id="side">
+    <a class="logo" href="index.html">
+     <span class="mark">
+      &hearts;
+     </span>
+     MediCare
+     <em>
+      +
+     </em>
+    </a>
+    <div class="side-label">
+     MAIN MENU
+    </div>
+    <nav>
+     <a class="" href="dashboard.html">
+      <span>
+       ▦
+      </span>
+      Dashboard
+     </a>
+     <a class="" href="reports.html">
+      <span>
+       ▤
+      </span>
+      Reports
+     </a>
+     <a class="" href="medicine.html">
+      <span>
+       ♧
+      </span>
+      Medicine
+     </a>
+     <a class="" href="videos.html">
+      <span>
+       ▷
+      </span>
+      Instruction Videos
+     </a>
+     <a class="on" href="doctor.html">
+      <span>
+       ☏
+      </span>
+      Doctor Communication
+     </a>
+     <a class="" href="services.html">
+      <span>
+       &target;
+      </span>
+      Nearby Medical Services
+     </a>
+     <a class="" href="progress.html">
+      <span>
+       &nearrow;
+      </span>
+      Improvement / Progress
+     </a>
+    </nav>
+    <div class="side-bottom">
+     <a class="out" href="login.html">
+      ♙ My Profile
+     </a>
+     <button class="out" id="logout">
+      &rarrb; Logout
+     </button>
+     <div class="side-label">
+      &copy; 2026 MediCare+
+     </div>
+    </div>
+   </aside>
+   <main class="main">
+    <header class="bar">
+     <button class="hamb" id="hamb">
+      ☰
+     </button>
+     <a class="logo" href="index.html">
+      <span class="mark">
+       &hearts;
+      </span>
+      MediCare
+      <em>
+       +
+      </em>
+     </a>
+     <label class="search">
+      <input aria-label="Search" id="globalSearch" placeholder="&telrec;  Search anything..."/>
+     </label>
+     <button class="mini" id="bell" title="Notifications">
+      ♧
+     </button>
+     <div class="user">
+      <span class="avatar">
+       A
+      </span>
+      <span>
+       Avishkar ⌄
+      </span>
+     </div>
+    </header>
+    <section class="content">
+     <div class="welcome">
+      <div>
+       <div class="crumb">
+        Home
+        <span>
+         /
+        </span>
+        Talk to Your Doctor
+       </div>
+       <h1>
+        Talk to Your Doctor
+       </h1>
+       <p class="muted">
+        Chat, ask questions and follow up on your health.
+       </p>
+      </div>
+      <button class="btn" id="book">
+       ＋ Book Appointment
+      </button>
+     </div>
+     <div class="grid two">
+      <section class="panel">
+       <div class="ph">
+        <div>
+         <h2>
+          Your Doctors
+         </h2>
+         <p class="muted">
+          Your care team
+         </p>
+        </div>
+       </div>
+       <div class="doctor-list" style="padding:0 14px 14px">
+        <div class="doc">
+         <div class="avatar">
+          PS
+         </div>
+         <div style="flex:1">
+          <strong>
+           Dr. Priya Sharma
+          </strong>
+          <small>
+           General Physician &middot;
+           <span class="dot">
+            Online
+           </span>
+          </small>
+         </div>
+         <button class="btn soft" data-chat="Dr. Priya Sharma">
+          Chat
+         </button>
+        </div>
+        <div class="doc">
+         <div class="avatar">
+          AM
+         </div>
+         <div style="flex:1">
+          <strong>
+           Dr. Amit Patel
+          </strong>
+          <small>
+           Cardiologist &middot;
+           <span class="">
+            Offline
+           </span>
+          </small>
+         </div>
+         <button class="btn soft" data-chat="Dr. Amit Patel">
+          Chat
+         </button>
+        </div>
+        <div class="doc">
+         <div class="avatar">
+          SK
+         </div>
+         <div style="flex:1">
+          <strong>
+           Dr. Sneha Kulkarni
+          </strong>
+          <small>
+           Gynecologist &middot;
+           <span class="dot">
+            Online
+           </span>
+          </small>
+         </div>
+         <button class="btn soft" data-chat="Dr. Sneha Kulkarni">
+          Chat
+         </button>
+        </div>
+       </div>
+      </section>
+      <section class="panel chat">
+       <div class="chat-head">
+        Dr. Priya Sharma
+        <small class="muted" style="font-weight:400">
+         &middot; General Physician
+        </small>
+       </div>
+       <div class="msgs" id="msgs">
+        <div class="msg">
+         Hello Avishkar, how are you feeling today?
+         <small>
+          10:30 AM
+         </small>
+        </div>
+        <div class="msg me">
+         Hello Doctor. I have a question about my medicine.
+         <small>
+          10:32 AM
+         </small>
+        </div>
+       </div>
+       <form class="send" id="chatForm">
+        <input id="chatText" maxlength="500" placeholder="Type a message..." required=""/>
+        <button class="btn">
+         ➤
+        </button>
+       </form>
+      </section>
+     </div>
+     <div class="grid two" style="margin-top:18px">
+      <div class="card">
+       <h3>
+        Upcoming follow-up
+       </h3>
+       <p class="muted">
+        15 Oct 2026 &middot; Follow-up online
+       </p>
+       <button class="btn alt" id="remind">
+        ＋ Add reminder
+       </button>
+      </div>
+      <div class="card">
+       <h3>
+        Emergency reminder
+       </h3>
+       <p class="muted">
+        This demo is not monitored for urgent issues. Contact local emergency services if you need urgent medical help.
+       </p>
+      </div>
+     </div>
+     <div class="modalbg" hidden="" id="bmodal">
+      <form class="modal" id="bform">
+       <h2>
+        Book an appointment
+       </h2>
+       <label class="field">
+        Doctor
+        <select name="doctor">
+         <option>
+          Dr. Priya Sharma
+         </option>
+         <option>
+          Dr. Amit Patel
+         </option>
+         <option>
+          Dr. Sneha Kulkarni
+         </option>
+        </select>
+       </label>
+       <label class="field">
+        Date
+        <input name="date" required="" type="date"/>
+       </label>
+       <label class="field">
+        Time
+        <select name="time">
+         <option>
+          10:00 AM
+         </option>
+         <option>
+          11:30 AM
+         </option>
+         <option>
+          02:00 PM
+         </option>
+         <option>
+          04:30 PM
+         </option>
+        </select>
+       </label>
+       <div class="modalfoot">
+        <button class="btn alt" id="bcancel" type="button">
+         Cancel
+        </button>
+        <button class="btn">
+         Request appointment
+        </button>
+       </div>
+      </form>
+     </div>
+    </section>
+   </main>
+   <div class="toast" hidden="" id="toast">
+   </div>
+  </div>
+   <script src="app.js" defer></script>
+ </body>
+</html>

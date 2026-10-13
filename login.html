@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   MediCare+ | Login
+  </title>
+  <link href="style.css" rel="stylesheet"/>
+ </head>
+ <body data-page="login">
+  <div class="login-wrap">
+   <section class="login-info">
+    <a class="logo" href="index.html">
+     <span class="mark">
+      &hearts;
+     </span>
+     MediCare
+     <em>
+      +
+     </em>
+    </a>
+    <h1>
+     Your Health.
+     <br/>
+     <span style="color:var(--b)">
+      Our Priority.
+     </span>
+    </h1>
+    <p>
+     A simple place to organize your medical reports, medicine schedule and communication with your care team.
+    </p>
+    <div class="tip">
+     🔒 This demo login is for navigation only. Do not enter a real password or sensitive information.
+    </div>
+   </section>
+   <section class="login-card">
+    <a class="logo" href="index.html">
+     <span class="mark">
+      &hearts;
+     </span>
+     MediCare
+     <em>
+      +
+     </em>
+    </a>
+    <h2 id="ltitle">
+     Login to your account
+    </h2>
+    <p class="muted">
+     Welcome back. Please enter your details.
+    </p>
+    <form id="loginForm">
+     <label class="field">
+      Email / Phone Number
+      <input name="email" placeholder="you@example.com" required=""/>
+     </label>
+     <label class="field">
+      Password
+      <input minlength="3" name="password" placeholder="Enter any demo password" required="" type="password"/>
+     </label>
+     <div class="login-links">
+      <a href="#" id="forgot">
+       Forgot password?
+      </a>
+      <a href="#" id="signup">
+       Create account
+      </a>
+     </div>
+     <button class="btn full" type="submit">
+      Login &rarr;
+     </button>
+    </form>
+    <p class="muted" style="margin-top:20px">
+     Demo only &middot; no account is created and credentials are not saved.
+    </p>
+    <a class="muted" href="index.html">
+     &larr; Back to home
+    </a>
+   </section>
+  </div>
+   <script src="app.js" defer></script>
+ </body>
+</html>
