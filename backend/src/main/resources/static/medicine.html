@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   MediCare+ | Medicine
+  </title>
+  <link href="style.css" rel="stylesheet"/>
+ </head>
+ <body data-page="medicine">
+  <div class="shell">
+   <aside class="side" id="side">
+    <a class="logo" href="index.html">
+     <span class="mark">
+      &hearts;
+     </span>
+     MediCare
+     <em>
+      +
+     </em>
+    </a>
+    <div class="side-label">
+     MAIN MENU
+    </div>
+    <nav>
+     <a class="" href="dashboard.html">
+      <span>
+       ▦
+      </span>
+      Dashboard
+     </a>
+     <a class="" href="reports.html">
+      <span>
+       ▤
+      </span>
+      Reports
+     </a>
+     <a class="on" href="medicine.html">
+      <span>
+       ♧
+      </span>
+      Medicine
+     </a>
+     <a class="" href="videos.html">
+      <span>
+       ▷
+      </span>
+      Instruction Videos
+     </a>
+     <a class="" href="doctor.html">
+      <span>
+       ☏
+      </span>
+      Doctor Communication
+     </a>
+     <a class="" href="services.html">
+      <span>
+       &target;
+      </span>
+      Nearby Medical Services
+     </a>
+     <a class="" href="progress.html">
+      <span>
+       &nearrow;
+      </span>
+      Improvement / Progress
+     </a>
+    </nav>
+    <div class="side-bottom">
+     <a class="out" href="login.html">
+      ♙ My Profile
+     </a>
+     <button class="out" id="logout">
+      &rarrb; Logout
+     </button>
+     <div class="side-label">
+      &copy; 2026 MediCare+
+     </div>
+    </div>
+   </aside>
+   <main class="main">
+    <header class="bar">
+     <button class="hamb" id="hamb">
+      ☰
+     </button>
+     <a class="logo" href="index.html">
+      <span class="mark">
+       &hearts;
+      </span>
+      MediCare
+      <em>
+       +
+      </em>
+     </a>
+     <label class="search">
+      <input aria-label="Search" id="globalSearch" placeholder="&telrec;  Search anything..."/>
+     </label>
+     <button class="mini" id="bell" title="Notifications">
+      ♧
+     </button>
+     <div class="user">
+      <span class="avatar">
+       A
+      </span>
+      <span>
+       Avishkar ⌄
+      </span>
+     </div>
+    </header>
+    <section class="content">
+     <div class="welcome">
+      <div>
+       <div class="crumb">
+        Home
+        <span>
+         /
+        </span>
+        My Medicines
+       </div>
+       <h1>
+        My Medicines
+       </h1>
+       <p class="muted">
+        Manage your prescribed medicines and reminders.
+       </p>
+      </div>
+      <button class="btn" id="addMed">
+       ＋ Add Medicine
+      </button>
+     </div>
+      <div class="grid" style="margin-bottom:18px">
+      <div class="card stat">
+       <div class="fi">
+        💊
+       </div>
+       <div>
+        <small>
+         Medicines listed
+        </small>
+        <strong>
+         4
+        </strong>
+       </div>
+      </div>
+      <div class="card stat">
+       <div class="fi">
+        ◷
+       </div>
+       <div>
+        <small>
+         Daily reminders
+        </small>
+        <strong>
+         4
+        </strong>
+       </div>
+      </div>
+      <div class="card stat">
+       <div class="fi">
+        &checkmark;
+       </div>
+       <div>
+        <small>
+         Reminder status
+        </small>
+        <strong style="font-size:18px">
+         Active
+        </strong>
+       </div>
+      </div>
+     </div>
+     <section class="panel">
+      <div class="ph">
+       <div>
+        <h2>
+         Medicine schedule
+        </h2>
+        <p class="muted">
+         Follow your clinician's prescription and instructions.
+        </p>
+       </div>
+      </div>
+     <section class="panel">
+      <div class="ph">
+       <div>
+        <h2>
+         Medicine schedule
+        </h2>
+        <p class="muted">
+         Follow your clinician's prescription and instructions.
+        </p>
+       </div>
+      </div>
+      <div class="medicine-list" id="ml" style="padding:0 15px 15px">
+       <div class="med">
+        <div class="fi">
+         💊
+        </div>
+        <div class="med-info">
+         <strong>
+          Paracetamol 500mg
+         </strong>
+         <small>
+          1 tablet after food
+         </small>
+        </div>
+        <span class="time">
+         ◷ 08:00 AM
+        </span>
+        <label title="Toggle reminder">
+         <input checked="" class="toggle" data-med="1" type="checkbox"/>
+        </label>
+        <button class="mini" data-md="1">
+         &vellip;
+        </button>
+       </div>
+       <div class="med">
+        <div class="fi">
+         💊
+        </div>
+        <div class="med-info">
+         <strong>
+          Vitamin D3
+         </strong>
+         <small>
+          1 tablet (once daily)
+         </small>
+        </div>
+        <span class="time">
+         ◷ 09:00 AM
+        </span>
+        <label title="Toggle reminder">
+         <input checked="" class="toggle" data-med="2" type="checkbox"/>
+        </label>
+        <button class="mini" data-md="2">
+         &vellip;
+        </button>
+       </div>
+       <div class="med">
+        <div class="fi">
+         💊
+        </div>
+        <div class="med-info">
+         <strong>
+          Iron Tablet
+         </strong>
+         <small>
+          1 tablet after food
+         </small>
+        </div>
+        <span class="time">
+         ◷ 01:00 PM
+        </span>
+        <label title="Toggle reminder">
+         <input checked="" class="toggle" data-med="3" type="checkbox"/>
+        </label>
+        <button class="mini" data-md="3">
+         &vellip;
+        </button>
+       </div>
+       <div class="med">
+        <div class="fi">
+         💊
+        </div>
+        <div class="med-info">
+         <strong>
+          Calcium Tablet
+         </strong>
+         <small>
+          1 tablet at night
+         </small>
+        </div>
+        <span class="time">
+         ◷ 08:00 PM
+        </span>
+        <label title="Toggle reminder">
+         <input checked="" class="toggle" data-med="4" type="checkbox"/>
+        </label>
+        <button class="mini" data-md="4">
+         &vellip;
+        </button>
+       </div>
+      </div>
+     </section>
+     <div class="modalbg" hidden="" id="mmodal">
+      <form class="modal" id="mform">
+       <h2>
+        Add medicine
+       </h2>
+       <label class="field">
+        Medicine name
+        <input name="name" placeholder="e.g. Vitamin D3" required=""/>
+       </label>
+       <label class="field">
+        Dose / instructions
+        <input name="dose" placeholder="e.g. 1 tablet after food" required=""/>
+       </label>
+       <label class="field">
+        Reminder time
+        <input name="time" required="" type="time"/>
+       </label>
+       <div class="modalfoot">
+        <button class="btn alt" id="mcancel" type="button">
+         Cancel
+        </button>
+        <button class="btn">
+         Add medicine
+        </button>
+       </div>
+      </form>
+     </div>
+    </section>
+   </main>
+   <div class="toast" hidden="" id="toast">
+   </div>
+  </div>
+   <script src="app.js" defer></script>
+ </body>
+</html>

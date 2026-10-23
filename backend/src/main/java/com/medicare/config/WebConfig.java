@@ -1,0 +1,27 @@
+package com.medicare.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+
+    @Value("${medicare.upload.dir:uploads}")
+    private String uploadDir;
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        Path uploadPath = Paths.get(uploadDir).toAbsolutePath().normalize();
+        registry.addResourceHandler("/uploads/**")
+                .addResourceLocations("file:" + uploadPath.toString() + "/");
+
+        // Serve static frontend resources from classpath:/static/
+        registry.addResourceHandler("/**")
+                .addResourceLocations("classpath:/static/");
+    }
+}

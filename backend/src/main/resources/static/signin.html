@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare+ | Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="signup-container">
+        <div class="signup-card">
+
+            <div class="brand">
+                <div class="brand-icon">♥</div>
+                <span>MediCare <b>+</b></span>
+            </div>
+
+            <div class="heading">
+                <h1>Create your account</h1>
+                <p>Join MediCare+ for better care.</p>
+            </div>
+
+            <form id="signupForm">
+
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" autocomplete="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" pattern="[0-9+\-\s()]{10,20}" title="Enter a valid phone number" autocomplete="tel" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Create Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter a strong password" minlength="8" autocomplete="new-password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" minlength="8" autocomplete="new-password" required>
+                </div>
+
+                <label class="terms">
+                    <input type="checkbox" id="agree" required>
+                    <span>I agree to the
+                        <a href="#terms">Terms &amp; Privacy Policy</a>
+                    </span>
+                </label>
+
+                <button type="submit" class="signup-btn">
+                    Create Account <span>→</span>
+                </button>
+
+                <p id="message" class="message" role="status"></p>
+            </form>
+
+            <p class="login-link">
+                Already have an account?
+                <a href="login.html">Log in</a>
+            </p>
+
+            <a href="index.html" class="back-home">← Back to home</a>
+
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
