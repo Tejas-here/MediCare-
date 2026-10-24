@@ -1,0 +1,1625 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "patientId": "MED-1001",
+      "fullName": "Avishkar",
+      "email": "avishkar@example.com",
+      "phone": "+91 98765 43210",
+      "password": "password123",
+      "role": "patient",
+      "age": 28,
+      "gender": "Male",
+      "bloodGroup": "B+",
+      "address": "Flat 402, Green Avenue, Pune, Maharashtra",
+      "emergencyContact": "+91 98765 00000 (Brother)",
+      "chronicConditions": "Mild Seasonal Allergies",
+      "createdAt": "2026-09-01T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "patientId": "MED-8500",
+      "fullName": "Rahul Sharma",
+      "email": "rahul.sharma@example.com",
+      "phone": "+91 91234 56789",
+      "password": "password123",
+      "role": "patient",
+      "age": 45,
+      "gender": "Male",
+      "bloodGroup": "O+",
+      "address": "Plot 12, Baner Road, Pune",
+      "emergencyContact": "+91 91234 11111 (Wife)",
+      "chronicConditions": "Type 2 Diabetes, Hypertension",
+      "createdAt": "2026-09-10T11:30:00Z"
+    },
+    {
+      "id": 3,
+      "patientId": "MED-4210",
+      "fullName": "Ananya Verma",
+      "email": "ananya.verma@example.com",
+      "phone": "+91 97654 32109",
+      "password": "password123",
+      "role": "patient",
+      "age": 32,
+      "gender": "Female",
+      "bloodGroup": "A+",
+      "address": "15 Lotus Towers, Viman Nagar, Pune",
+      "emergencyContact": "+91 97654 00000 (Mother)",
+      "chronicConditions": "Asthma, Iron Deficiency",
+      "createdAt": "2026-09-18T14:15:00Z"
+    },
+    {
+      "id": 4,
+      "patientId": "MED-6102",
+      "fullName": "Suresh Patil",
+      "email": "suresh.patil@example.com",
+      "phone": "+91 98220 12345",
+      "password": "password123",
+      "role": "patient",
+      "age": 58,
+      "gender": "Male",
+      "bloodGroup": "AB+",
+      "address": "22 Shivaji Housing Society, Kothrud, Pune",
+      "emergencyContact": "+91 98220 99999 (Son)",
+      "chronicConditions": "Post-Cardiac Angioplasty recovery",
+      "createdAt": "2026-10-02T09:20:00Z"
+    },
+    {
+      "id": 5,
+      "patientId": "MED-3944",
+      "fullName": "Test Health Member",
+      "email": "testuser_1792810588279@example.com",
+      "phone": "+91 99999 88888",
+      "password": "password123",
+      "role": "patient",
+      "age": 28,
+      "gender": "Male",
+      "bloodGroup": "B+",
+      "address": "Pune, Maharashtra",
+      "emergencyContact": "+91 98765 00000",
+      "chronicConditions": "None recorded",
+      "createdAt": "2026-10-24T02:56:28.280Z"
+    },
+    {
+      "id": 6,
+      "patientId": "MED-3123",
+      "fullName": "Test Health Member",
+      "email": "testuser_1792810615959@example.com",
+      "phone": "+91 99999 88888",
+      "password": "password123",
+      "role": "patient",
+      "age": 28,
+      "gender": "Male",
+      "bloodGroup": "B+",
+      "address": "Pune, Maharashtra",
+      "emergencyContact": "+91 98765 00000",
+      "chronicConditions": "None recorded",
+      "createdAt": "2026-10-24T02:56:55.960Z"
+    }
+  ],
+  "doctors": [
+    {
+      "id": 1,
+      "name": "Dr. Priya Sharma",
+      "email": "dr.priya@medicare.com",
+      "password": "doctor123",
+      "role": "doctor",
+      "specialization": "General Physician & Internal Medicine",
+      "status": "Online",
+      "avatarInitials": "PS",
+      "phone": "+91 98111 22334",
+      "qualification": "MBBS, MD (Medicine)",
+      "experience": "12 Years",
+      "bio": "Senior Consultant Physician specializing in lifestyle disease management and preventive care."
+    },
+    {
+      "id": 2,
+      "name": "Dr. Amit Patel",
+      "email": "dr.amit@medicare.com",
+      "password": "doctor123",
+      "role": "doctor",
+      "specialization": "Cardiologist",
+      "status": "Offline",
+      "avatarInitials": "AM",
+      "phone": "+91 98222 33445",
+      "qualification": "MBBS, DM (Cardiology)",
+      "experience": "16 Years",
+      "bio": "Interventional Cardiologist focused on coronary artery disease and heart health optimization."
+    },
+    {
+      "id": 3,
+      "name": "Dr. Sneha Kulkarni",
+      "email": "dr.sneha@medicare.com",
+      "password": "doctor123",
+      "role": "doctor",
+      "specialization": "Gynecologist",
+      "status": "Online",
+      "avatarInitials": "SK",
+      "phone": "+91 98333 44556",
+      "qualification": "MBBS, MS (OBGYN)",
+      "experience": "9 Years",
+      "bio": "Specialist in women healthcare, prenatal nutrition, and endocrine balance."
+    }
+  ],
+  "admins": [
+    {
+      "id": 1,
+      "fullName": "Super Administrator",
+      "email": "admin@medicare.com",
+      "password": "admin123",
+      "role": "admin",
+      "phone": "+91 90000 00000",
+      "designation": "Chief Health Informatics Officer"
+    }
+  ],
+  "medicines": [
+    {
+      "id": 1,
+      "userId": 1,
+      "name": "Paracetamol 500mg",
+      "dose": "1 tablet after food",
+      "reminderTime": "08:00 AM",
+      "reminderActive": true,
+      "prescribedBy": "Dr. Priya Sharma",
+      "createdAt": "2026-10-01"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "name": "Vitamin D3 60k",
+      "dose": "1 tablet (weekly once)",
+      "reminderTime": "09:00 AM",
+      "reminderActive": true,
+      "prescribedBy": "Dr. Priya Sharma",
+      "createdAt": "2026-10-02"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "name": "Iron Complex",
+      "dose": "1 tablet after lunch",
+      "reminderTime": "01:00 PM",
+      "reminderActive": true,
+      "prescribedBy": "Dr. Sneha Kulkarni",
+      "createdAt": "2026-10-03"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "name": "Calcium Tablet",
+      "dose": "1 tablet at bedtime",
+      "reminderTime": "08:00 PM",
+      "reminderActive": true,
+      "prescribedBy": "Dr. Priya Sharma",
+      "createdAt": "2026-10-04"
+    },
+    {
+      "id": 5,
+      "userId": 2,
+      "name": "Metformin 500mg",
+      "dose": "1 tablet after dinner",
+      "reminderTime": "09:00 PM",
+      "reminderActive": true,
+      "prescribedBy": "Dr. Priya Sharma",
+      "createdAt": "2026-10-05"
+    },
+    {
+      "id": 6,
+      "userId": 2,
+      "name": "Telmisartan 40mg",
+      "dose": "1 tablet morning empty stomach",
+      "reminderTime": "07:30 AM",
+      "reminderActive": true,
+      "prescribedBy": "Dr. Amit Patel",
+      "createdAt": "2026-10-06"
+    },
+    {
+      "id": 7,
+      "userId": 3,
+      "name": "Levocetirizine 5mg",
+      "dose": "1 tablet before sleep",
+      "reminderTime": "10:00 PM",
+      "reminderActive": true,
+      "prescribedBy": "Dr. Priya Sharma",
+      "createdAt": "2026-10-07"
+    },
+    {
+      "id": 8,
+      "userId": 4,
+      "name": "Aspirin 75mg",
+      "dose": "1 tablet post breakfast",
+      "reminderTime": "08:30 AM",
+      "reminderActive": true,
+      "prescribedBy": "Dr. Amit Patel",
+      "createdAt": "2026-10-08"
+    },
+    {
+      "id": 9,
+      "userId": 4,
+      "name": "Atorvastatin 20mg",
+      "dose": "1 tablet post dinner",
+      "reminderTime": "09:30 PM",
+      "reminderActive": true,
+      "prescribedBy": "Dr. Amit Patel",
+      "createdAt": "2026-10-09"
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "name": "Zinc Sulfate 50mg",
+      "dose": "1 tablet daily",
+      "reminderTime": "10:00 AM",
+      "reminderActive": true,
+      "prescribedBy": "Dr. Priya Sharma",
+      "instructions": "After breakfast",
+      "createdAt": "2026-10-23"
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "name": "Zinc Sulfate 50mg",
+      "dose": "1 tablet daily",
+      "reminderTime": "10:00 AM",
+      "reminderActive": true,
+      "prescribedBy": "Dr. Priya Sharma",
+      "instructions": "Take as instructed",
+      "createdAt": "2026-10-23"
+    }
+  ],
+  "medicineAdherence": [
+    {
+      "id": 13,
+      "userId": 1,
+      "medicineId": 1,
+      "medicineName": "Paracetamol 500mg",
+      "dose": "1 tablet after food",
+      "status": "Not Eaten",
+      "actionTime": "2026-10-24T03:06:33.845Z",
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "medicineId": 10,
+      "medicineName": "Zinc Sulfate 50mg",
+      "dose": "1 tablet daily",
+      "status": "Not Eaten",
+      "actionTime": "2026-10-24T03:06:31.799Z",
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "medicineId": 4,
+      "medicineName": "Calcium Tablet",
+      "dose": "1 tablet at bedtime",
+      "status": "Eaten",
+      "actionTime": "2026-10-24T03:06:28.828Z",
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "medicineId": 1,
+      "medicineName": "Paracetamol 500mg",
+      "dose": "1 tablet after food",
+      "status": "Eaten",
+      "actionTime": "2026-10-24T03:06:25.036Z",
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "userId": 1,
+      "medicineId": 12,
+      "medicineName": "Zinc 50mg Tablet",
+      "dose": "1 tablet after breakfast",
+      "status": "Eaten",
+      "actionTime": "2026-10-24T03:06:20.826Z",
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "userId": 1,
+      "medicineId": 1,
+      "medicineName": "Paracetamol 500mg",
+      "dose": "1 tablet after food",
+      "status": "Eaten",
+      "actionTime": "2026-10-24T03:06:19.223Z",
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "medicineId": 1,
+      "medicineName": "Paracetamol 500mg",
+      "dose": "1 tablet",
+      "status": "Eaten",
+      "actionTime": "2026-10-24T02:56:56.003Z",
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "medicineId": 1,
+      "medicineName": "Paracetamol 500mg",
+      "dose": "1 tablet",
+      "status": "Eaten",
+      "actionTime": "2026-10-24T02:56:28.325Z",
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "medicineId": 1,
+      "medicineName": "Zinc Sulfate 50mg",
+      "dose": "1 dose",
+      "status": "Eaten",
+      "actionTime": "2026-10-23T19:08:07.353Z",
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "medicineId": 1,
+      "medicineName": "Zinc Sulfate 50mg",
+      "dose": "1 dose",
+      "status": "Eaten",
+      "actionTime": "2026-10-23T19:07:39.847Z",
+      "notes": ""
+    },
+    {
+      "id": 1,
+      "userId": 1,
+      "medicineId": 1,
+      "medicineName": "Paracetamol 500mg",
+      "dose": "1 tablet after food",
+      "status": "Eaten",
+      "actionTime": "2026-10-23T08:15:00Z",
+      "notes": "Taken with breakfast"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "medicineId": 2,
+      "medicineName": "Vitamin D3 60k",
+      "dose": "1 tablet",
+      "status": "Eaten",
+      "actionTime": "2026-10-23T09:05:00Z",
+      "notes": "Taken on schedule"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "medicineId": 3,
+      "medicineName": "Iron Complex",
+      "dose": "1 tablet after lunch",
+      "status": "Not Eaten",
+      "actionTime": "2026-10-23T13:40:00Z",
+      "notes": "Patient had mild nausea, postponed"
+    }
+  ],
+  "reports": [
+    {
+      "id": 1,
+      "userId": 1,
+      "reportName": "Complete Blood Count (CBC) & Lipid Profile",
+      "category": "Blood Test",
+      "reportDate": "12 Sep 2026",
+      "doctorOrLab": "City Diagnostic Centre",
+      "status": "Reviewed",
+      "fileName": "cbc-lipid-profile.pdf",
+      "fileSize": "1.2 MB",
+      "notes": "Hemoglobin 13.8 g/dL (Normal). Fasting Blood Sugar 94 mg/dL (Optimal). Total Cholesterol 178 mg/dL.",
+      "downloadUrl": "/api/reports/1/download"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "reportName": "Chest Digital X-Ray (PA View)",
+      "category": "X-Ray",
+      "reportDate": "01 Aug 2026",
+      "doctorOrLab": "Metro Advanced Imaging Lab",
+      "status": "Reviewed",
+      "fileName": "chest-xray-digital.pdf",
+      "fileSize": "2.4 MB",
+      "notes": "Bilateral lung fields are clear. Normal bronchovascular markings. Normal cardiac size and configuration.",
+      "downloadUrl": "/api/reports/2/download"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "reportName": "12-Lead Electrocardiogram (ECG)",
+      "category": "ECG",
+      "reportDate": "15 Jul 2026",
+      "doctorOrLab": "Dr. Amit Patel (Cardiology Clinic)",
+      "status": "Reviewed",
+      "fileName": "ecg-evaluation-report.pdf",
+      "fileSize": "840 KB",
+      "notes": "Normal sinus rhythm at 72 bpm. PR interval 150 ms, QRS duration 86 ms. No acute ST-T wave abnormalities.",
+      "downloadUrl": "/api/reports/3/download"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "reportName": "Medical Prescription & Health Regimen",
+      "category": "Prescription",
+      "reportDate": "10 Jul 2026",
+      "doctorOrLab": "Dr. Priya Sharma",
+      "status": "Reviewed",
+      "fileName": "prescription-july2026.pdf",
+      "fileSize": "540 KB",
+      "notes": "Follow-up prescription for seasonal allergy care, hydration regimen, and nutritional vitamin supplements.",
+      "downloadUrl": "/api/reports/4/download"
+    },
+    {
+      "id": 5,
+      "userId": 2,
+      "reportName": "HbA1c Glycated Hemoglobin Test",
+      "category": "Blood Test",
+      "reportDate": "18 Oct 2026",
+      "doctorOrLab": "City Diagnostic Centre",
+      "status": "Reviewed",
+      "fileName": "hba1c-report.pdf",
+      "fileSize": "1.1 MB",
+      "notes": "HbA1c: 6.8% (Fair diabetic control). Serum Creatinine 0.9 mg/dL.",
+      "downloadUrl": "/api/reports/5/download"
+    },
+    {
+      "id": 6,
+      "userId": 4,
+      "reportName": "Post-Angioplasty Echocardiogram 2D",
+      "category": "ECG",
+      "reportDate": "20 Oct 2026",
+      "doctorOrLab": "Life Care Heart Institute",
+      "status": "Pending",
+      "fileName": "2d-echo-cardio.pdf",
+      "fileSize": "3.1 MB",
+      "notes": "Left ventricular ejection fraction (LVEF) 55%. Normal chamber dimensions.",
+      "downloadUrl": "/api/reports/6/download"
+    }
+  ],
+  "appointments": [
+    {
+      "id": 7,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "appointmentDate": "2026-10-30",
+      "timeSlot": "11:00 AM",
+      "status": "Confirmed",
+      "notes": "Routine consultation"
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "appointmentDate": "2026-10-30",
+      "timeSlot": "11:00 AM",
+      "status": "Confirmed",
+      "notes": "Routine consultation"
+    },
+    {
+      "id": 1,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "appointmentDate": "2026-10-25",
+      "timeSlot": "10:30 AM",
+      "status": "Confirmed",
+      "notes": "Routine health checkup & review"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 2,
+      "doctorName": "Dr. Amit Patel",
+      "appointmentDate": "2026-10-28",
+      "timeSlot": "11:30 AM",
+      "status": "Confirmed",
+      "notes": "Cardiac routine consultation"
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "patientName": "Rahul Sharma",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "appointmentDate": "2026-10-26",
+      "timeSlot": "02:00 PM",
+      "status": "Confirmed",
+      "notes": "Diabetes checkup"
+    },
+    {
+      "id": 4,
+      "userId": 3,
+      "patientName": "Ananya Verma",
+      "doctorId": 3,
+      "doctorName": "Dr. Sneha Kulkarni",
+      "appointmentDate": "2026-10-27",
+      "timeSlot": "04:30 PM",
+      "status": "Pending",
+      "notes": "Women health and vitamins check"
+    },
+    {
+      "id": 5,
+      "userId": 4,
+      "patientName": "Suresh Patil",
+      "doctorId": 2,
+      "doctorName": "Dr. Amit Patel",
+      "appointmentDate": "2026-10-29",
+      "timeSlot": "10:00 AM",
+      "status": "Confirmed",
+      "notes": "Post-angioplasty 3-month follow-up"
+    }
+  ],
+  "chatMessages": [
+    {
+      "id": 1,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "doctor",
+      "message": "Hello Avishkar! How are you feeling after starting the new vitamin supplement?",
+      "createdAt": "2026-10-22T09:00:00Z"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "patient",
+      "message": "Hello Doctor Priya! I am feeling much better and more energetic today.",
+      "createdAt": "2026-10-22T09:05:00Z"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "doctor",
+      "message": "Excellent! Keep taking it with food and maintain your 2.5 litres daily water intake.",
+      "createdAt": "2026-10-22T09:12:00Z"
+    },
+    {
+      "id": 4,
+      "userId": 2,
+      "patientName": "Rahul Sharma",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "patient",
+      "message": "Doctor, my fasting sugar was 110 mg/dL this morning. Should I adjust Metformin?",
+      "createdAt": "2026-10-23T08:30:00Z"
+    },
+    {
+      "id": 5,
+      "userId": 2,
+      "patientName": "Rahul Sharma",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "doctor",
+      "message": "110 mg/dL is within our targeted range Rahul. Continue your current dosage.",
+      "createdAt": "2026-10-23T09:10:00Z"
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "patient",
+      "message": "Hello Doctor! What is the optimal time to take my vitamins?",
+      "createdAt": "2026-10-24T02:56:28.331Z"
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "doctor",
+      "message": "Certainly Avishkar! You can select your preferred consultation date and slot using the \"Book Appointment\" button right here on the portal. I will confirm your booking.",
+      "createdAt": "2026-10-24T02:56:29.331Z"
+    },
+    {
+      "id": 8,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "patient",
+      "message": "Hello Doctor! What is the optimal time to take my vitamins?",
+      "createdAt": "2026-10-24T02:56:56.010Z"
+    },
+    {
+      "id": 9,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "doctor",
+      "message": "Certainly Avishkar! You can select your preferred consultation date and slot using the \"Book Appointment\" button right here on the portal. I will confirm your booking.",
+      "createdAt": "2026-10-24T02:56:57.010Z"
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "patient",
+      "message": "hello",
+      "createdAt": "2026-10-24T03:05:09.716Z"
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "doctor",
+      "message": "Hello Avishkar! Good to connect with you. How are you feeling today and how is your daily medicine adherence going?",
+      "createdAt": "2026-10-24T03:05:10.716Z"
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Amit Patel",
+      "sender": "patient",
+      "message": "helo",
+      "createdAt": "2026-10-24T03:05:36.561Z"
+    },
+    {
+      "id": 13,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Amit Patel",
+      "sender": "doctor",
+      "message": "Thank you for your message, Avishkar. I have updated your clinical records accordingly. Please keep following your prescribed medications and stay well-hydrated.",
+      "createdAt": "2026-10-24T03:05:37.561Z"
+    },
+    {
+      "id": 14,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "patient",
+      "message": "Hello Doctor Priya, I am experiencing mild headache today.",
+      "createdAt": "2026-10-24T03:43:40.851Z"
+    },
+    {
+      "id": 15,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "doctor",
+      "message": "Please drink plenty of water and rest for 30 minutes. Let me know if it persists.",
+      "createdAt": "2026-10-24T03:43:40.864Z"
+    },
+    {
+      "id": 16,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "patient",
+      "message": "Hello Doctor Priya, I am experiencing mild headache today.",
+      "createdAt": "2026-10-24T03:49:18.305Z"
+    },
+    {
+      "id": 17,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "doctor",
+      "message": "Please drink plenty of water and rest for 30 minutes. Let me know if it persists.",
+      "createdAt": "2026-10-24T03:49:18.323Z"
+    },
+    {
+      "id": 18,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "patient",
+      "message": "Hello Doctor Priya, I am experiencing mild headache today.",
+      "createdAt": "2026-10-24T03:49:43.695Z"
+    },
+    {
+      "id": 19,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "doctor",
+      "message": "Please drink plenty of water and rest for 30 minutes. Let me know if it persists.",
+      "createdAt": "2026-10-24T03:49:43.707Z"
+    },
+    {
+      "id": 20,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "doctor",
+      "message": "hello",
+      "createdAt": "2026-10-24T03:52:16.406Z"
+    },
+    {
+      "id": 21,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "patient",
+      "message": "bye",
+      "createdAt": "2026-10-24T03:52:47.500Z"
+    },
+    {
+      "id": 22,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "patient",
+      "message": "Hello Doctor Priya, I am experiencing mild headache today.",
+      "createdAt": "2026-10-24T04:21:27.331Z"
+    },
+    {
+      "id": 23,
+      "userId": 1,
+      "patientName": "Avishkar",
+      "doctorId": 1,
+      "doctorName": "Dr. Priya Sharma",
+      "sender": "doctor",
+      "message": "Please drink plenty of water and rest for 30 minutes. Let me know if it persists.",
+      "createdAt": "2026-10-24T04:21:27.337Z"
+    }
+  ],
+  "videos": [
+    {
+      "id": 13,
+      "title": "fuzi tailer",
+      "category": "General Health",
+      "duration": "06:30 min",
+      "badge": "Clinical Guide",
+      "badgeType": "general",
+      "icon": "🎬",
+      "videoUrl": "https://youtu.be/ujzBbf9uqdY?si=wF3UoP3n6pLaODzn",
+      "summary": "Clinical guidance video assigned by your doctor.",
+      "isAi": true,
+      "assignedTo": [
+        1
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Post-Operative Recovery Routine",
+      "category": "Surgery Recovery",
+      "duration": "14 mins",
+      "badge": "Clinical Guide",
+      "badgeType": "general",
+      "icon": "🎬",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "summary": "Essential daily exercises and breathing guidelines post-surgery.",
+      "isAi": false,
+      "assignedTo": [
+        1
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Cardiac Rehabilitation Routine",
+      "category": "Surgery Recovery",
+      "duration": "11 mins",
+      "badge": "Clinical Guide",
+      "badgeType": "general",
+      "icon": "🎬",
+      "videoUrl": "https://www.youtube.com/embed/d3LzZ9pvd1Y",
+      "summary": "Post-operative recovery exercises for heart health.",
+      "isAi": false,
+      "assignedTo": [
+        1
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Post-Operative Recovery Routine",
+      "category": "Surgery Recovery",
+      "duration": "14 mins",
+      "badge": "Clinical Guide",
+      "badgeType": "general",
+      "icon": "🎬",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "summary": "Essential daily exercises and breathing guidelines post-surgery.",
+      "isAi": false,
+      "assignedTo": [
+        1
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Post-Operative Recovery Routine",
+      "category": "Surgery Recovery",
+      "duration": "14 mins",
+      "badge": "Clinical Guide",
+      "badgeType": "general",
+      "icon": "🎬",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "summary": "Essential daily exercises and breathing guidelines post-surgery.",
+      "isAi": false,
+      "assignedTo": [
+        1
+      ]
+    },
+    {
+      "id": 1,
+      "title": "AI Clinical Guide: Understanding Blood Tests & Vital Signs",
+      "category": "AI Guidance",
+      "duration": "06:45 min",
+      "tag": "AI Medical Explainer",
+      "icon": "🤖",
+      "isAi": true,
+      "assignedTo": [
+        1,
+        2
+      ],
+      "summary": "AI Doctor explains what Hemoglobin, White Blood Cells, Platelets, and Fasting Blood Glucose mean for your daily energy and immune system.",
+      "videoUrl": "https://www.youtube.com/embed/5a2qH6iFkXg"
+    },
+    {
+      "id": 2,
+      "title": "AI Health Assistant: Proper Medicine Routine & Adherence",
+      "category": "AI Guidance",
+      "duration": "05:10 min",
+      "tag": "AI Prescription Safety",
+      "icon": "💊",
+      "isAi": true,
+      "assignedTo": [
+        1,
+        3
+      ],
+      "summary": "Interactive AI guidance on how food affects tablet absorption, the danger of skipping doses, and setting smart notification routines.",
+      "videoUrl": "https://www.youtube.com/embed/5a2qH6iFkXg"
+    },
+    {
+      "id": 3,
+      "title": "AI Nutritionist: Personalized Heart & Diabetic Diet Protocol",
+      "category": "AI Guidance",
+      "duration": "08:20 min",
+      "tag": "AI Nutrition Advice",
+      "icon": "🥗",
+      "isAi": true,
+      "assignedTo": [
+        2,
+        4
+      ],
+      "summary": "Smart AI dietician breaks down balanced carbohydrate intake, low sodium seasoning, high fiber legumes, and optimal hydration.",
+      "videoUrl": "https://www.youtube.com/embed/5a2qH6iFkXg"
+    },
+    {
+      "id": 4,
+      "title": "AI Physiotherapist: Post-Surgery Breathing & Mobility",
+      "category": "AI Guidance",
+      "duration": "07:15 min",
+      "tag": "AI Rehabilitation",
+      "icon": "🧘",
+      "isAi": true,
+      "assignedTo": [
+        4,
+        1
+      ],
+      "summary": "Step-by-step guided diaphragmatic breathing and gentle thoracic expansion exercises for post-operative recovery.",
+      "videoUrl": "https://www.youtube.com/embed/5a2qH6iFkXg"
+    },
+    {
+      "id": 5,
+      "title": "How to take medicines correctly and safely",
+      "category": "Medicine Usage",
+      "duration": "05:30 min",
+      "tag": "Health Education",
+      "icon": "💊",
+      "isAi": false,
+      "assignedTo": [
+        1
+      ],
+      "summary": "Standard clinical guidance on reading prescription labels, storing medicines at room temperature, and using pill organizers.",
+      "videoUrl": "https://www.youtube.com/embed/jQ2e0KH5WrI"
+    },
+    {
+      "id": 6,
+      "title": "Breathing Exercises for Better Heart Health",
+      "category": "Exercise",
+      "duration": "07:12 min",
+      "tag": "Health Education",
+      "icon": "🫁",
+      "isAi": false,
+      "assignedTo": [
+        1,
+        2
+      ],
+      "summary": "Calming pranayama and rhythmic cardiovascular breathing routines to reduce stress and stabilize resting blood pressure.",
+      "videoUrl": "https://www.youtube.com/embed/d3LzZ9pvd1Y"
+    },
+    {
+      "id": 7,
+      "title": "Healthy Diet Plan for Busy Professionals",
+      "category": "Diet & Nutrition",
+      "duration": "06:20 min",
+      "tag": "Health Education",
+      "icon": "🥗",
+      "isAi": false,
+      "assignedTo": [
+        1,
+        3
+      ],
+      "summary": "Easy meal prepping tips, quick healthy breakfast ideas, and managing afternoon energy crashes.",
+      "videoUrl": "https://www.youtube.com/embed/1kH3n3EeVbM"
+    },
+    {
+      "id": 8,
+      "title": "Diabetes Daily Care & Blood Sugar Tracking",
+      "category": "General Health",
+      "duration": "08:10 min",
+      "tag": "Health Education",
+      "icon": "🩸",
+      "isAi": false,
+      "assignedTo": [
+        2
+      ],
+      "summary": "Guide to using glucometers correctly, preventing hypoglycemia, and foot care for diabetic individuals.",
+      "videoUrl": "https://www.youtube.com/embed/X9ivR4UKTUQ"
+    }
+  ],
+  "notifications": [
+    {
+      "id": 43,
+      "userId": 1,
+      "type": "video",
+      "title": "New Video Added to Care Plan",
+      "message": "Dr. Priya Sharma prescribed: \"fuzi tailer\".",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T04:23:44.156Z"
+    },
+    {
+      "id": 42,
+      "userId": 1,
+      "type": "system",
+      "title": "Health Log Recorded",
+      "message": "Recorded: Weight 69.5 kg, Feeling \"Energized and hydrated\". Great tracking!",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T04:21:27.345Z"
+    },
+    {
+      "id": 41,
+      "userId": 1,
+      "type": "video",
+      "title": "New Video Added to Care Plan",
+      "message": "Dr. Priya Sharma prescribed: \"Post-Operative Recovery Routine\".",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T04:21:27.341Z"
+    },
+    {
+      "id": 40,
+      "userId": 1,
+      "type": "system",
+      "title": "Message from Dr. Priya Sharma",
+      "message": "Please drink plenty of water and rest for 30 minutes. Let...",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T04:21:27.337Z"
+    },
+    {
+      "id": 39,
+      "userId": 1,
+      "type": "video",
+      "title": "New Video Added to Care Plan",
+      "message": "Dr. Priya Sharma prescribed: \"Cardiac Rehabilitation Routine\".",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T04:20:07.235Z"
+    },
+    {
+      "id": 38,
+      "userId": 1,
+      "type": "system",
+      "title": "Message from Dr. Priya Sharma",
+      "message": "hello",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T03:52:16.406Z"
+    },
+    {
+      "id": 37,
+      "userId": 1,
+      "type": "video",
+      "title": "Educational Video Assigned by Doctor",
+      "message": "Your doctor assigned: \"AI Physiotherapist: Post-Surgery Breathing & Mobility\" to your health education plan.",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T03:51:56.599Z"
+    },
+    {
+      "id": 36,
+      "userId": 1,
+      "type": "video",
+      "title": "Educational Video Assigned by Doctor",
+      "message": "Your doctor assigned: \"Post-Operative Recovery Routine\" to your health education plan.",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T03:51:46.963Z"
+    },
+    {
+      "id": 35,
+      "userId": 1,
+      "type": "system",
+      "title": "Health Log Recorded",
+      "message": "Recorded: Weight 69.5 kg, Feeling \"Energized and hydrated\". Great tracking!",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T03:49:43.727Z"
+    },
+    {
+      "id": 34,
+      "userId": 1,
+      "type": "video",
+      "title": "New Video Added to Care Plan",
+      "message": "Dr. Priya Sharma prescribed: \"Post-Operative Recovery Routine\".",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T03:49:43.715Z"
+    },
+    {
+      "id": 33,
+      "userId": 1,
+      "type": "system",
+      "title": "Message from Dr. Priya Sharma",
+      "message": "Please drink plenty of water and rest for 30 minutes. Let...",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T03:49:43.707Z"
+    },
+    {
+      "id": 32,
+      "userId": 1,
+      "type": "system",
+      "title": "Health Log Recorded",
+      "message": "Recorded: Weight 69.5 kg, Feeling \"Energized and hydrated\". Great tracking!",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T03:49:18.342Z"
+    },
+    {
+      "id": 31,
+      "userId": 1,
+      "type": "video",
+      "title": "New Video Added to Care Plan",
+      "message": "Dr. Priya Sharma prescribed: \"Post-Operative Recovery Routine\".",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T03:49:18.332Z"
+    },
+    {
+      "id": 30,
+      "userId": 1,
+      "type": "system",
+      "title": "Message from Dr. Priya Sharma",
+      "message": "Please drink plenty of water and rest for 30 minutes. Let...",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T03:49:18.323Z"
+    },
+    {
+      "id": 29,
+      "userId": 1,
+      "type": "system",
+      "title": "Message from Dr. Priya Sharma",
+      "message": "Please drink plenty of water and rest for 30 minutes. Let...",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T03:43:40.864Z"
+    },
+    {
+      "id": 28,
+      "userId": 1,
+      "type": "medicine",
+      "medicineId": 2,
+      "medicineName": "Vitamin D3 60k",
+      "dose": "1 tablet (weekly once)",
+      "title": "Time for your Medicine! (09:00 AM)",
+      "message": "Scheduled dose: Please take Vitamin D3 60k (1 tablet (weekly once)) now.",
+      "actionStatus": "pending",
+      "createdAt": "2026-10-24T03:30:11.052Z"
+    },
+    {
+      "id": 27,
+      "userId": 1,
+      "type": "system",
+      "title": "Dr. Amit Patel Replied",
+      "message": "Thank you for your message, Avishkar. I have updated your clinical ...",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T03:05:37.561Z"
+    },
+    {
+      "id": 26,
+      "userId": 1,
+      "type": "system",
+      "title": "Dr. Priya Sharma Replied",
+      "message": "Hello Avishkar! Good to connect with you. How are you feeling today...",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T03:05:10.716Z"
+    },
+    {
+      "id": 25,
+      "userId": 4,
+      "type": "medicine",
+      "medicineId": 8,
+      "medicineName": "Aspirin 75mg",
+      "dose": "1 tablet post breakfast",
+      "title": "Time for your Medicine! (08:30 AM)",
+      "message": "Scheduled dose: Please take Aspirin 75mg (1 tablet post breakfast) now.",
+      "actionStatus": "pending",
+      "createdAt": "2026-10-24T03:00:10.624Z"
+    },
+    {
+      "id": 24,
+      "userId": 1,
+      "type": "system",
+      "title": "Health Log Recorded",
+      "message": "Recorded: Weight 71.4 kg, Feeling \"Great\". Great tracking!",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T02:56:56.028Z"
+    },
+    {
+      "id": 23,
+      "userId": 1,
+      "type": "appointment",
+      "title": "Appointment Confirmed!",
+      "message": "Your appointment with Dr. Priya Sharma is confirmed for 2026-10-30 at 11:00 AM.",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T02:56:56.016Z"
+    },
+    {
+      "id": 22,
+      "userId": 1,
+      "type": "system",
+      "title": "Dr. Priya Sharma Replied",
+      "message": "Certainly Avishkar! You can select your preferred consultation date...",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T02:56:57.010Z"
+    },
+    {
+      "id": 21,
+      "userId": 1,
+      "type": "medicine",
+      "medicineId": 1,
+      "medicineName": "Paracetamol 500mg",
+      "dose": "1 tablet after food",
+      "title": "Time for your Medicine! (Paracetamol 500mg)",
+      "message": "Scheduled dose: Please take Paracetamol 500mg (1 tablet after food) now.",
+      "actionStatus": "eaten",
+      "createdAt": "2026-10-24T02:56:55.992Z",
+      "actionTime": "2026-10-24T03:06:19.223Z"
+    },
+    {
+      "id": 20,
+      "userId": 1,
+      "type": "medicine",
+      "medicineId": 12,
+      "medicineName": "Zinc 50mg Tablet",
+      "dose": "1 tablet after breakfast",
+      "title": "Medicine Reminder Added: Zinc 50mg Tablet",
+      "message": "Scheduled daily dose for Zinc 50mg Tablet (1 tablet after breakfast) at 08:30 AM.",
+      "actionStatus": "eaten",
+      "createdAt": "2026-10-24T02:56:55.982Z",
+      "actionTime": "2026-10-24T03:06:20.826Z"
+    },
+    {
+      "id": 19,
+      "userId": 1,
+      "type": "report",
+      "title": "Medical Report Saved",
+      "message": "\"Thyroid Function Test (TFT)\" (Blood Test) has been verified and stored in your health records.",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T02:56:55.965Z"
+    },
+    {
+      "id": 18,
+      "userId": 6,
+      "type": "system",
+      "title": "Welcome to MediCare+!",
+      "message": "Hello Test Health Member! Your patient account (MED-3123) is active. You can schedule doctor appointments, track medicines, and view reports.",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T02:56:55.960Z"
+    },
+    {
+      "id": 17,
+      "userId": 1,
+      "type": "system",
+      "title": "Health Log Recorded",
+      "message": "Recorded: Weight 71.4 kg, Feeling \"Great\". Great tracking!",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T02:56:28.347Z"
+    },
+    {
+      "id": 16,
+      "userId": 1,
+      "type": "appointment",
+      "title": "Appointment Confirmed!",
+      "message": "Your appointment with Dr. Priya Sharma is confirmed for 2026-10-30 at 11:00 AM.",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T02:56:28.337Z"
+    },
+    {
+      "id": 15,
+      "userId": 1,
+      "type": "system",
+      "title": "Dr. Priya Sharma Replied",
+      "message": "Certainly Avishkar! You can select your preferred consultation date...",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T02:56:29.331Z"
+    },
+    {
+      "id": 14,
+      "userId": 1,
+      "type": "medicine",
+      "medicineId": 1,
+      "medicineName": "Paracetamol 500mg",
+      "dose": "1 tablet after food",
+      "title": "Time for your Medicine! (Paracetamol 500mg)",
+      "message": "Scheduled dose: Please take Paracetamol 500mg (1 tablet after food) now.",
+      "actionStatus": "eaten",
+      "createdAt": "2026-10-24T02:56:28.313Z",
+      "actionTime": "2026-10-24T03:06:25.036Z"
+    },
+    {
+      "id": 13,
+      "userId": 1,
+      "type": "medicine",
+      "medicineId": 12,
+      "medicineName": "Zinc 50mg Tablet",
+      "dose": "1 tablet after breakfast",
+      "title": "Medicine Reminder Added: Zinc 50mg Tablet",
+      "message": "Scheduled daily dose for Zinc 50mg Tablet (1 tablet after breakfast) at 08:30 AM.",
+      "actionStatus": "pending",
+      "createdAt": "2026-10-24T02:56:28.306Z"
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "type": "report",
+      "title": "Medical Report Saved",
+      "message": "\"Thyroid Function Test (TFT)\" (Blood Test) has been verified and stored in your health records.",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T02:56:28.286Z"
+    },
+    {
+      "id": 11,
+      "userId": 5,
+      "type": "system",
+      "title": "Welcome to MediCare+!",
+      "message": "Hello Test Health Member! Your patient account (MED-3944) is active. You can schedule doctor appointments, track medicines, and view reports.",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T02:56:28.280Z"
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "type": "video",
+      "title": "Educational Video Assigned by Doctor",
+      "message": "Your doctor assigned: \"AI Health Assistant: Proper Medicine Routine & Adherence\" to your health education plan.",
+      "actionStatus": "read",
+      "createdAt": "2026-10-23T19:08:07.348Z"
+    },
+    {
+      "id": 9,
+      "userId": 1,
+      "type": "medicine",
+      "medicineId": 11,
+      "medicineName": "Zinc Sulfate 50mg",
+      "dose": "1 tablet daily",
+      "title": "New Medicine Prescribed!",
+      "message": "Dr. Priya Sharma added: Zinc Sulfate 50mg (1 tablet daily) at 10:00 AM.",
+      "actionStatus": "pending",
+      "createdAt": "2026-10-23T19:08:07.342Z"
+    },
+    {
+      "id": 8,
+      "userId": 1,
+      "type": "video",
+      "title": "Educational Video Assigned by Doctor",
+      "message": "Your doctor assigned: \"AI Health Assistant: Proper Medicine Routine & Adherence\" to your health education plan.",
+      "actionStatus": "read",
+      "createdAt": "2026-10-23T19:07:39.836Z"
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "type": "medicine",
+      "medicineId": 10,
+      "medicineName": "Zinc Sulfate 50mg",
+      "dose": "1 tablet daily",
+      "title": "New Medicine Prescribed!",
+      "message": "Dr. Priya Sharma added: Zinc Sulfate 50mg (1 tablet daily) at 10:00 AM.",
+      "actionStatus": "not_eaten",
+      "createdAt": "2026-10-23T19:07:39.826Z",
+      "actionTime": "2026-10-24T03:06:31.799Z"
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "type": "video",
+      "title": "Educational Video Assigned by Doctor",
+      "message": "Your doctor assigned: \"AI Clinical Guide: Understanding Blood Tests & Vital Signs\" to your health education plan.",
+      "actionStatus": "read",
+      "createdAt": "2026-10-23T19:04:39.495Z"
+    },
+    {
+      "id": 1,
+      "userId": 1,
+      "type": "medicine",
+      "medicineId": 1,
+      "medicineName": "Paracetamol 500mg",
+      "dose": "1 tablet after food",
+      "title": "Time for your Medicine!",
+      "message": "Please take Paracetamol 500mg (1 tablet after food) now.",
+      "actionStatus": "not_eaten",
+      "createdAt": "2026-10-23T20:00:00Z",
+      "actionTime": "2026-10-24T03:06:33.845Z"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "type": "medicine",
+      "medicineId": 4,
+      "medicineName": "Calcium Tablet",
+      "dose": "1 tablet at bedtime",
+      "title": "Night Medicine Reminder",
+      "message": "Time to take Calcium Tablet (1 tablet at bedtime).",
+      "actionStatus": "eaten",
+      "createdAt": "2026-10-23T20:30:00Z",
+      "actionTime": "2026-10-24T03:06:28.828Z"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "type": "appointment",
+      "title": "Upcoming Doctor Consultation",
+      "message": "Appointment confirmed with Dr. Priya Sharma on 25 Oct 2026 at 10:30 AM.",
+      "actionStatus": "read",
+      "createdAt": "2026-10-23T15:00:00Z"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "type": "video",
+      "title": "New Educational Video Prescribed",
+      "message": "Dr. Priya Sharma assigned you: \"AI Clinical Guide: Understanding Blood Tests\".",
+      "actionStatus": "read",
+      "createdAt": "2026-10-23T16:20:00Z"
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "type": "report",
+      "title": "Medical Report Verified",
+      "message": "Your Complete Blood Count report has been reviewed and signed by Dr. Priya Sharma.",
+      "actionStatus": "read",
+      "createdAt": "2026-10-23T14:10:00Z"
+    }
+  ],
+  "progressLogs": [
+    {
+      "id": 11,
+      "userId": 1,
+      "logDate": "2026-10-24",
+      "weightKg": 69.5,
+      "feeling": "Energized and hydrated",
+      "medicinesTaken": "4 of 4 planned",
+      "waterIntake": "3.2 litres",
+      "exerciseMinutes": 45,
+      "stepsToday": 8200,
+      "bloodPressure": "120/80",
+      "hemoglobin": 13.8
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "logDate": "2026-10-24",
+      "weightKg": 69.5,
+      "feeling": "Energized and hydrated",
+      "medicinesTaken": "4 of 4 planned",
+      "waterIntake": "3.2 litres",
+      "exerciseMinutes": 45,
+      "stepsToday": 8200,
+      "bloodPressure": "120/80",
+      "hemoglobin": 13.8
+    },
+    {
+      "id": 9,
+      "userId": 1,
+      "logDate": "2026-10-24",
+      "weightKg": 69.5,
+      "feeling": "Energized and hydrated",
+      "medicinesTaken": "4 of 4 planned",
+      "waterIntake": "3.2 litres",
+      "exerciseMinutes": 45,
+      "stepsToday": 8200,
+      "bloodPressure": "120/80",
+      "hemoglobin": 13.8
+    },
+    {
+      "id": 8,
+      "userId": 1,
+      "logDate": "2026-10-24",
+      "weightKg": 71.4,
+      "feeling": "Great",
+      "medicinesTaken": "4 of 4 planned",
+      "waterIntake": "3.0 litres",
+      "exerciseMinutes": 30,
+      "stepsToday": 9200,
+      "bloodPressure": "120/80",
+      "hemoglobin": 13.8
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "logDate": "2026-10-24",
+      "weightKg": 71.4,
+      "feeling": "Great",
+      "medicinesTaken": "4 of 4 planned",
+      "waterIntake": "3.0 litres",
+      "exerciseMinutes": 30,
+      "stepsToday": 9200,
+      "bloodPressure": "120/80",
+      "hemoglobin": 13.8
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "logDate": "2026-10-24",
+      "weightKg": 71.5,
+      "feeling": "Good",
+      "medicinesTaken": "4 of 4 planned",
+      "waterIntake": "2.5 litres",
+      "exerciseMinutes": 30,
+      "stepsToday": 8000,
+      "bloodPressure": "120/80",
+      "hemoglobin": 13.8
+    },
+    {
+      "id": 1,
+      "userId": 1,
+      "logDate": "2026-10-18",
+      "weightKg": 72.8,
+      "feeling": "Good",
+      "medicinesTaken": "4 of 4 planned",
+      "waterIntake": "2.5 litres",
+      "exerciseMinutes": 30,
+      "stepsToday": 8200,
+      "bloodPressure": "122/82",
+      "hemoglobin": 13.8
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "logDate": "2026-10-20",
+      "weightKg": 72.2,
+      "feeling": "Energetic",
+      "medicinesTaken": "4 of 4 planned",
+      "waterIntake": "3.0 litres",
+      "exerciseMinutes": 40,
+      "stepsToday": 9500,
+      "bloodPressure": "120/80",
+      "hemoglobin": 13.8
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "logDate": "2026-10-22",
+      "weightKg": 71.8,
+      "feeling": "Good",
+      "medicinesTaken": "3 of 4 planned",
+      "waterIntake": "2.8 litres",
+      "exerciseMinutes": 35,
+      "stepsToday": 8700,
+      "bloodPressure": "118/78",
+      "hemoglobin": 13.8
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "logDate": "2026-10-23",
+      "weightKg": 71.5,
+      "feeling": "Excellent",
+      "medicinesTaken": "4 of 4 planned",
+      "waterIntake": "3.0 litres",
+      "exerciseMinutes": 45,
+      "stepsToday": 10200,
+      "bloodPressure": "119/79",
+      "hemoglobin": 13.8
+    },
+    {
+      "id": 5,
+      "userId": 2,
+      "logDate": "2026-10-22",
+      "weightKg": 84,
+      "feeling": "Fair",
+      "medicinesTaken": "2 of 2 planned",
+      "waterIntake": "2.0 litres",
+      "exerciseMinutes": 20,
+      "stepsToday": 6000,
+      "bloodPressure": "135/88",
+      "hemoglobin": 14.1
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "name": "City Care Hospital",
+      "type": "Hospital",
+      "category": "Hospitals",
+      "distance": "2.1 km",
+      "phone": "+91 20 5550 0100",
+      "address": "Plot 45, FC Road, Shivaji Nagar, Pune",
+      "icon": "🏥",
+      "specialty": "Multispecialty & 24/7 Trauma Care"
+    },
+    {
+      "id": 2,
+      "name": "Shree Medical Store",
+      "type": "Medical Store",
+      "category": "Medical Stores",
+      "distance": "1.5 km",
+      "phone": "+91 20 5550 0101",
+      "address": "Shop 4, College Road, Pune",
+      "icon": "💊",
+      "specialty": "Prescriptions & Emergency Medicines"
+    },
+    {
+      "id": 3,
+      "name": "ABC Diagnostic Lab",
+      "type": "Diagnostic Lab",
+      "category": "Diagnostic Labs",
+      "distance": "2.5 km",
+      "phone": "+91 20 5550 0102",
+      "address": "2nd Floor, Apex Plaza, Baner, Pune",
+      "icon": "🧪",
+      "specialty": "Pathology & Digital Blood Tests"
+    },
+    {
+      "id": 4,
+      "name": "Life Care Hospital",
+      "type": "Hospital",
+      "category": "Hospitals",
+      "distance": "3.0 km",
+      "phone": "+91 20 5550 0103",
+      "address": "Survey 12, Kothrud, Pune",
+      "icon": "🏥",
+      "specialty": "General & Cardiac Emergency"
+    },
+    {
+      "id": 5,
+      "name": "Apollo 24/7 Pharmacy",
+      "type": "Medical Store",
+      "category": "Medical Stores",
+      "distance": "0.9 km",
+      "phone": "+91 20 5550 0104",
+      "address": "Station Road, Pune",
+      "icon": "💊",
+      "specialty": "24-Hour Pharmacy & Delivery"
+    },
+    {
+      "id": 6,
+      "name": "Metro Advanced Imaging Lab",
+      "type": "Diagnostic Lab",
+      "category": "Diagnostic Labs",
+      "distance": "3.4 km",
+      "phone": "+91 20 5550 0105",
+      "address": "Commercial Complex, Viman Nagar, Pune",
+      "icon": "🧪",
+      "specialty": "X-Ray, MRI, CT & ECG Diagnostics"
+    }
+  ]
+}

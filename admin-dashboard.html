@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>MediCare+ | Admin Dashboard</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body data-page="admin-dashboard">
+    <div class="shell">
+        <!-- Sidebar Navigation -->
+        <aside class="side" id="side">
+            <a class="logo" href="admin-dashboard.html">
+                <span class="mark">&hearts;</span> MediCare<em>+</em>
+            </a>
+            <div class="side-label">ADMINISTRATION</div>
+            <nav id="adminNav">
+                <a class="on" href="#admin-overview" data-nav="overview">
+                    <span>📊</span> Platform Overview
+                </a>
+                <a class="" href="#admin-patients" data-nav="patients">
+                    <span>👥</span> Patient Directory
+                </a>
+                <a class="" href="#admin-doctors" data-nav="doctors">
+                    <span>🩺</span> Medical Staff
+                </a>
+                <a class="" href="#admin-reports" data-nav="reports">
+                    <span>📑</span> Reports &amp; Records
+                </a>
+            </nav>
+            <div class="side-bottom">
+                <div style="padding:10px 12px;background:#1a3d66;border-radius:10px;margin-bottom:12px">
+                    <small style="color:#9ebbd8;display:block">System Role:</small>
+                    <strong style="color:#ffffff;font-size:13px">Super Administrator</strong>
+                    <small style="color:#64b5f6;display:block;font-size:11px">Health Informatics</small>
+                </div>
+                <div class="side-label">&copy; 2026 MediCare+ Core System</div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Top Bar -->
+            <header class="bar">
+                <button class="hamb" id="hamb">☰</button>
+                <a class="logo" href="admin-dashboard.html">
+                    <span class="mark">&hearts;</span> MediCare<em>+</em>
+                </a>
+                <label class="search">
+                    <input aria-label="Search" id="globalAdminSearch" placeholder="Search system records, patients, doctors..." />
+                </label>
+
+                <!-- System Health Indicator -->
+                <div style="display:flex;align-items:center;gap:6px;background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0;padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700">
+                    <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981"></span>
+                    <span>Database &amp; API Online (Port 8080)</span>
+                </div>
+
+                <!-- Notifications -->
+                <div class="notification-wrap">
+                    <button class="notification-btn" id="bell" title="System Notifications">
+                        <span>🔔</span>
+                        <span class="notification-badge" id="adminNotifBadge">4</span>
+                    </button>
+                    <!-- Notification Panel -->
+                    <div class="notif-panel" id="notifPanel" hidden>
+                        <div class="notif-panel-header">
+                            <h3>🔔 System Audit Alerts</h3>
+                            <button class="clear-btn" id="clearAdminNotifs">Dismiss</button>
+                        </div>
+                        <div class="notif-body" id="adminNotifList">
+                            <div class="notif-item">
+                                <div class="notif-icon appt">📈</div>
+                                <div class="notif-content">
+                                    <div class="notif-title">Platform Daily Audit OK</div>
+                                    <p class="notif-text">All MySQL relational tables and patient logs synced successfully.</p>
+                                    <span class="notif-time">10 mins ago</span>
+                                </div>
+                            </div>
+                            <div class="notif-item">
+                                <div class="notif-icon med">💊</div>
+                                <div class="notif-content">
+                                    <div class="notif-title">High Adherence Recorded</div>
+                                    <p class="notif-text">Patients maintained 94% medicine adherence compliance today.</p>
+                                    <span class="notif-time">1 hour ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Profile Menu Container with Dropdown -->
+                <div class="user-menu-container">
+                    <div class="user" id="userMenuToggle">
+                        <span class="avatar" style="background:#e11d48;color:#fff">SA</span>
+                        <span id="userNameDisplay">Admin &#x2304;</span>
+                    </div>
+                    <!-- Profile Dropdown -->
+                    <div class="profile-dropdown" id="profileDropdown" hidden>
+                        <div class="profile-dropdown-header">
+                            <strong>System Administrator</strong>
+                            <small>admin@medicare.com</small>
+                            <span class="role-tag" style="background:#ffe4e6;color:#e11d48">Super Admin</span>
+                        </div>
+                        <ul class="profile-dropdown-list">
+                            <li><button type="button" id="openAdminProfileBtn">👤 Admin Profile</button></li>
+                            <li><button type="button" id="openAdminChangePassBtn">🔑 Change Password</button></li>
+                            <li><a href="doctor-dashboard.html">🩺 Switch to Doctor Portal</a></li>
+                            <li><a href="dashboard.html">👤 Switch to Patient Portal</a></li>
+                            <li class="divider"></li>
+                            <li class="logout-item"><button type="button" id="adminLogoutBtn">🚪 Log Out</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <section class="content">
+                <!-- Welcome Title -->
+                <div class="welcome">
+                    <div>
+                        <div class="crumb">Administration <span>/</span> Real-Time Analytics Dashboard</div>
+                        <h1>System Statistics &amp; Platform Health</h1>
+                        <p class="muted">Live relational statistics across patients, medical specialists, diagnostic documents, and care adherence.</p>
+                    </div>
+                    <div style="display:flex;gap:10px">
+                        <button class="btn soft" id="btnRefreshStats">🔄 Refresh Live Stats</button>
+                        <button class="btn" id="btnExportFullData">📥 Export Clinical DB</button>
+                    </div>
+                </div>
+
+                <!-- ================================================================= -->
+                <!-- REAL STATISTICS SUMMARY CARDS (Patients, Doctors, Reports, Appointments, Messages, Notifications, Videos) -->
+                <!-- ================================================================= -->
+                <div class="admin-stats-grid">
+                    <!-- 1. Total Patients -->
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-top">
+                            <div class="admin-stat-icon" style="background:#e0f2fe;color:#0284c7">👥</div>
+                            <span class="admin-stat-trend up">+14% MoM</span>
+                        </div>
+                        <div>
+                            <div class="stat-value" id="statPatients">4</div>
+                            <div class="stat-label">Total Patients</div>
+                            <small class="muted" style="font-size:11px">100% active profile verification</small>
+                        </div>
+                    </div>
+
+                    <!-- 2. Total Doctors -->
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-top">
+                            <div class="admin-stat-icon" style="background:#ecfdf5;color:#059669">🩺</div>
+                            <span class="admin-stat-trend up">2 Online</span>
+                        </div>
+                        <div>
+                            <div class="stat-value" id="statDoctors">3</div>
+                            <div class="stat-label">Total Doctors</div>
+                            <small class="muted" style="font-size:11px">General, Cardiology, OBGYN</small>
+                        </div>
+                    </div>
+
+                    <!-- 3. Total Medical Reports -->
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-top">
+                            <div class="admin-stat-icon" style="background:#fef3c7;color:#d97706">📑</div>
+                            <span class="admin-stat-trend up">5 Reviewed</span>
+                        </div>
+                        <div>
+                            <div class="stat-value" id="statReports">6</div>
+                            <div class="stat-label">Total Reports</div>
+                            <small class="muted" style="font-size:11px">Blood Test, X-Ray, ECG, Rx</small>
+                        </div>
+                    </div>
+
+                    <!-- 4. Total Appointments -->
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-top">
+                            <div class="admin-stat-icon" style="background:#f3e8ff;color:#7c3aed">📅</div>
+                            <span class="admin-stat-trend info">4 Confirmed</span>
+                        </div>
+                        <div>
+                            <div class="stat-value" id="statAppointments">5</div>
+                            <div class="stat-label">Total Appointments</div>
+                            <small class="muted" style="font-size:11px">Consultation schedule</small>
+                        </div>
+                    </div>
+
+                    <!-- 5. Total Messages -->
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-top">
+                            <div class="admin-stat-icon" style="background:#e0e7ff;color:#4f46e5">💬</div>
+                            <span class="admin-stat-trend up">Active</span>
+                        </div>
+                        <div>
+                            <div class="stat-value" id="statMessages">5</div>
+                            <div class="stat-label">Total Messages</div>
+                            <small class="muted" style="font-size:11px">Encrypted clinician chats</small>
+                        </div>
+                    </div>
+
+                    <!-- 6. Total Notifications -->
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-top">
+                            <div class="admin-stat-icon" style="background:#fee2e2;color:#dc2626">🔔</div>
+                            <span class="admin-stat-trend info">Real-Time</span>
+                        </div>
+                        <div>
+                            <div class="stat-value" id="statNotifications">5</div>
+                            <div class="stat-label">Total Notifications</div>
+                            <small class="muted" style="font-size:11px">Medicine reminders &amp; alerts</small>
+                        </div>
+                    </div>
+
+                    <!-- 7. Total Health & AI Videos -->
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-top">
+                            <div class="admin-stat-icon" style="background:#fae8ff;color:#c026d3">🎬</div>
+                            <span class="ai-badge">4 AI Generated</span>
+                        </div>
+                        <div>
+                            <div class="stat-value" id="statVideos">8</div>
+                            <div class="stat-label">Instruction Videos</div>
+                            <small class="muted" style="font-size:11px">AI guidance &amp; clinical care</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================================================================= -->
+                <!-- CHARTS ROW: Visual Breakdown Charts -->
+                <!-- ================================================================= -->
+                <div class="charts-row">
+                    <!-- Chart 1: Monthly Patient Growth & Registrations -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <div>
+                                <h3>📈 Patient Registrations Trend</h3>
+                                <p class="muted" style="margin:2px 0 0;font-size:12px">Platform growth over the last 6 months</p>
+                            </div>
+                            <span class="pill good">+62% Growth</span>
+                        </div>
+                        <!-- Canvas / SVG Visual Chart -->
+                        <div style="padding:10px 0;height:220px;display:flex;align-items:flex-end;gap:18px;border-bottom:1px solid #edf2f7">
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px">
+                                <span style="font-size:11px;font-weight:700;color:var(--b)">18</span>
+                                <div style="width:100%;height:45px;background:linear-gradient(180deg,#93c5fd,#3b82f6);border-radius:6px 6px 0 0"></div>
+                                <span style="font-size:10px;color:var(--m)">May</span>
+                            </div>
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px">
+                                <span style="font-size:11px;font-weight:700;color:var(--b)">27</span>
+                                <div style="width:100%;height:68px;background:linear-gradient(180deg,#93c5fd,#3b82f6);border-radius:6px 6px 0 0"></div>
+                                <span style="font-size:10px;color:var(--m)">Jun</span>
+                            </div>
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px">
+                                <span style="font-size:11px;font-weight:700;color:var(--b)">39</span>
+                                <div style="width:100%;height:95px;background:linear-gradient(180deg,#93c5fd,#3b82f6);border-radius:6px 6px 0 0"></div>
+                                <span style="font-size:10px;color:var(--m)">Jul</span>
+                            </div>
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px">
+                                <span style="font-size:11px;font-weight:700;color:var(--b)">54</span>
+                                <div style="width:100%;height:130px;background:linear-gradient(180deg,#93c5fd,#3b82f6);border-radius:6px 6px 0 0"></div>
+                                <span style="font-size:10px;color:var(--m)">Aug</span>
+                            </div>
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px">
+                                <span style="font-size:11px;font-weight:700;color:var(--b)">78</span>
+                                <div style="width:100%;height:165px;background:linear-gradient(180deg,#93c5fd,#3b82f6);border-radius:6px 6px 0 0"></div>
+                                <span style="font-size:10px;color:var(--m)">Sep</span>
+                            </div>
+                            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px">
+                                <span style="font-size:11px;font-weight:700;color:var(--b)">112</span>
+                                <div style="width:100%;height:200px;background:linear-gradient(180deg,#60a5fa,#1d4ed8);border-radius:6px 6px 0 0;box-shadow:0 4px 12px rgba(29,78,216,0.3)"></div>
+                                <span style="font-size:10px;font-weight:700;color:var(--n)">Oct</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chart 2: Medical Reports Breakdown by Category -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <div>
+                                <h3>📊 Diagnostic Reports Distribution</h3>
+                                <p class="muted" style="margin:2px 0 0;font-size:12px">Uploaded and reviewed laboratory documents</p>
+                            </div>
+                            <span class="pill">6 Total</span>
+                        </div>
+                        <div style="display:flex;flex-direction:column;gap:14px;padding-top:10px">
+                            <div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px">
+                                    <span><strong>Blood Tests (CBC, Lipid, HbA1c)</strong></span>
+                                    <span>33% (2 reports)</span>
+                                </div>
+                                <div style="height:10px;background:#edf2f7;border-radius:5px;overflow:hidden">
+                                    <div style="width:33%;height:100%;background:#ef4444;border-radius:5px"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px">
+                                    <span><strong>Electrocardiogram (ECG &amp; 2D Echo)</strong></span>
+                                    <span>33% (2 reports)</span>
+                                </div>
+                                <div style="height:10px;background:#edf2f7;border-radius:5px;overflow:hidden">
+                                    <div style="width:33%;height:100%;background:#3b82f6;border-radius:5px"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px">
+                                    <span><strong>Digital Chest X-Ray</strong></span>
+                                    <span>17% (1 report)</span>
+                                </div>
+                                <div style="height:10px;background:#edf2f7;border-radius:5px;overflow:hidden">
+                                    <div style="width:17%;height:100%;background:#10b981;border-radius:5px"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px">
+                                    <span><strong>Doctor Prescriptions &amp; Regimens</strong></span>
+                                    <span>17% (1 report)</span>
+                                </div>
+                                <div style="height:10px;background:#edf2f7;border-radius:5px;overflow:hidden">
+                                    <div style="width:17%;height:100%;background:#8b5cf6;border-radius:5px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary Charts: Medicine Adherence Rate & Appointment Status -->
+                <div class="charts-row">
+                    <!-- Chart 3: Medicine Adherence Rate Gauge -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <div>
+                                <h3>💊 Medicine Adherence Rate (Eaten vs Missed)</h3>
+                                <p class="muted" style="margin:2px 0 0;font-size:12px">Real patient response to scheduled dose notifications</p>
+                            </div>
+                            <span class="pill good">94% Target Achieved</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:24px;padding:12px 0">
+                            <div style="width:120px;height:120px;border-radius:50%;background:conic-gradient(#10b981 0% 94%, #ef4444 94% 100%);display:grid;place-items:center;box-shadow:0 6px 18px rgba(16,185,129,0.25)">
+                                <div style="width:84px;height:84px;border-radius:50%;background:#fff;display:grid;place-items:center">
+                                    <div style="text-align:center">
+                                        <strong style="font-size:22px;color:var(--n)">94%</strong>
+                                        <small style="display:block;font-size:10px;color:var(--m)">Eaten</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="flex:1">
+                                <p style="margin:0 0 8px 0;font-size:13px"><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#10b981;margin-right:6px"></span> <strong>Eaten on Schedule:</strong> 94% compliance</p>
+                                <p style="margin:0 0 8px 0;font-size:13px"><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#ef4444;margin-right:6px"></span> <strong>Missed / Postponed:</strong> 6% reported</p>
+                                <small class="muted">Patients receive immediate reminders with [✓ Eaten] and [✗ Not Eaten] interactive actions.</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chart 4: Appointment Status Breakdown -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <div>
+                                <h3>📅 Appointment Status Breakdown</h3>
+                                <p class="muted" style="margin:2px 0 0;font-size:12px">Confirmed consultations vs pending requests</p>
+                            </div>
+                            <span class="pill">5 Total</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:20px;padding:12px 0">
+                            <div style="flex:1;background:#f0fdf4;border:1px solid #bbf7d0;padding:16px;border-radius:12px;text-align:center">
+                                <span style="font-size:24px">✅</span>
+                                <div style="font-size:24px;font-weight:800;color:#166534;margin-top:4px">4</div>
+                                <div style="font-size:12px;font-weight:700;color:#15803d">Confirmed Slots</div>
+                            </div>
+                            <div style="flex:1;background:#fffbeb;border:1px solid #fde68a;padding:16px;border-radius:12px;text-align:center">
+                                <span style="font-size:24px">⏳</span>
+                                <div style="font-size:24px;font-weight:800;color:#92400e;margin-top:4px">1</div>
+                                <div style="font-size:12px;font-weight:700;color:#b45309">Pending Review</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================================================================= -->
+                <!-- DATA TABLES: Patients Roster & Doctors Staff -->
+                <!-- ================================================================= -->
+                <section class="panel" style="margin-bottom:24px">
+                    <div class="ph">
+                        <div>
+                            <h2>👥 Patient Roster (Relational Database)</h2>
+                            <p class="muted">All verified patient accounts registered in Medicare+ database.</p>
+                        </div>
+                    </div>
+                    <div class="tablewrap">
+                        <table class="tbl">
+                            <thead>
+                                <tr>
+                                    <th>PATIENT ID</th>
+                                    <th>FULL NAME</th>
+                                    <th>AGE / GENDER</th>
+                                    <th>BLOOD GROUP</th>
+                                    <th>CONTACT PHONE</th>
+                                    <th>EMAIL</th>
+                                    <th>REPORTS</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminPatientsTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <div class="ph">
+                        <div>
+                            <h2>🩺 Medical Staff &amp; Doctors</h2>
+                            <p class="muted">Attending clinicians, consultants, and specialists.</p>
+                        </div>
+                    </div>
+                    <div class="tablewrap">
+                        <table class="tbl">
+                            <thead>
+                                <tr>
+                                    <th>DOCTOR NAME</th>
+                                    <th>SPECIALIZATION</th>
+                                    <th>QUALIFICATION</th>
+                                    <th>EXPERIENCE</th>
+                                    <th>CONTACT</th>
+                                    <th>AVAILABILITY</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminDoctorsTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div class="custom-modal-backdrop" id="modalAdminProfile" hidden>
+        <div class="custom-modal">
+            <div class="custom-modal-header">
+                <h2>👤 Administrator Profile</h2>
+                <button type="button" class="close-modal" data-close="modalAdminProfile">&times;</button>
+            </div>
+            <div class="custom-modal-body">
+                <p><strong>Designation:</strong> Chief Health Informatics Officer</p>
+                <p><strong>Email:</strong> admin@medicare.com</p>
+                <p><strong>System Role:</strong> Super Administrator (Full Access)</p>
+                <p><strong>Database Status:</strong> Connected to MySQL localhost:3306 (medicare_db)</p>
+            </div>
+            <div class="custom-modal-footer">
+                <button type="button" class="btn" data-close="modalAdminProfile">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-modal-backdrop" id="modalAdminChangePass" hidden>
+        <div class="custom-modal">
+            <div class="custom-modal-header">
+                <h2>🔑 Change Admin Password</h2>
+                <button type="button" class="close-modal" data-close="modalAdminChangePass">&times;</button>
+            </div>
+            <form id="formAdminChangePass">
+                <div class="custom-modal-body">
+                    <label class="field">
+                        Current Password
+                        <input type="password" id="acpCurrent" placeholder="Enter current admin password" required />
+                    </label>
+                    <label class="field">
+                        New Password
+                        <input type="password" id="acpNew" minlength="6" placeholder="Enter new password" required />
+                    </label>
+                    <label class="field">
+                        Confirm New Password
+                        <input type="password" id="acpConfirm" minlength="6" placeholder="Confirm new password" required />
+                    </label>
+                    <p id="acpMsg" style="font-size:13px;color:#d93025;margin:4px 0 0"></p>
+                </div>
+                <div class="custom-modal-footer">
+                    <button type="button" class="btn alt" data-close="modalAdminChangePass">Cancel</button>
+                    <button type="submit" class="btn">Save New Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast" hidden id="toast"></div>
+
+    <script src="app.js" defer></script>
+</body>
+
+</html>

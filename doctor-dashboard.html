@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>MediCare+ | Doctor Dashboard</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body data-page="doctor-dashboard">
+    <div class="shell">
+        <!-- Sidebar Navigation: ONLY 3 MODULES as requested -->
+        <aside class="side" id="side">
+            <a class="logo" href="doctor-dashboard.html">
+                <span class="mark">&hearts;</span> MediCare<em>+</em>
+            </a>
+            <div class="side-label">DOCTOR CLINICAL PORTAL</div>
+            <nav id="doctorNav">
+                <a class="on" href="#patient-list" data-module="patient-list">
+                    <span>👥</span> Patient List
+                </a>
+                <a class="" href="#appointments" data-module="appointments">
+                    <span>📅</span> Appointments
+                </a>
+                <a class="" href="#messages" data-module="messages">
+                    <span>💬</span> Messages
+                </a>
+            </nav>
+            <div class="side-bottom">
+                <div style="padding:10px 12px;background:#1a3d66;border-radius:10px;margin-bottom:12px">
+                    <small style="color:#9ebbd8;display:block">Logged in as:</small>
+                    <strong style="color:#ffffff;font-size:13px" id="sidebarDocName">Dr. Priya Sharma</strong>
+                    <small style="color:#64b5f6;display:block;font-size:11px">General Physician</small>
+                </div>
+                <div class="side-label">&copy; 2026 MediCare+ Clinical Suite</div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main">
+            <!-- Top Bar -->
+            <header class="bar">
+                <button class="hamb" id="hamb">☰</button>
+                <a class="logo" href="doctor-dashboard.html">
+                    <span class="mark">&hearts;</span> MediCare<em>+</em>
+                </a>
+                <label class="search">
+                    <input aria-label="Search" id="globalDocSearch" placeholder="Search patients, reports, medicines..." />
+                </label>
+
+                <!-- Notification Bell -->
+                <div class="notification-wrap">
+                    <button class="notification-btn" id="bell" title="Clinical Notifications">
+                        <span>🔔</span>
+                        <span class="notification-badge" id="notifBadge">3</span>
+                    </button>
+                    <!-- Notification Panel -->
+                    <div class="notif-panel" id="notifPanel" hidden>
+                        <div class="notif-panel-header">
+                            <h3>🔔 Clinical Alerts</h3>
+                            <button class="clear-btn" id="clearNotifs">Clear</button>
+                        </div>
+                        <div class="notif-body" id="notifList">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Profile Menu Container with Dropdown -->
+                <div class="user-menu-container">
+                    <div class="user" id="userMenuToggle">
+                        <span class="avatar" id="userAvatar">PS</span>
+                        <span id="userNameDisplay">Dr. Priya Sharma &#x2304;</span>
+                    </div>
+                    <!-- Profile Dropdown -->
+                    <div class="profile-dropdown" id="profileDropdown" hidden>
+                        <div class="profile-dropdown-header">
+                            <strong id="ddFullName">Dr. Priya Sharma</strong>
+                            <small id="ddEmail">dr.priya@medicare.com</small>
+                            <span class="role-tag">Physician</span>
+                        </div>
+                        <ul class="profile-dropdown-list">
+                            <li><button type="button" id="openProfileBtn">👤 View Profile</button></li>
+                            <li><button type="button" id="openChangePassBtn">🔑 Change Password</button></li>
+                            <li><a href="dashboard.html">🔄 Switch to Patient View</a></li>
+                            <li><a href="admin-dashboard.html">📊 Switch to Admin View</a></li>
+                            <li class="divider"></li>
+                            <li class="logout-item"><button type="button" id="dropdownLogoutBtn">🚪 Log Out</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <section class="content">
+                <!-- Welcome Title -->
+                <div class="welcome">
+                    <div>
+                        <div class="crumb">Doctor Portal <span>/</span> Clinical Workspace</div>
+                        <h1 id="docWelcomeTitle">Doctor Clinical Workspace</h1>
+                        <p class="muted">Manage your patient roster, clinical prescriptions, appointments, and care messaging.</p>
+                    </div>
+                    <div style="display:flex;gap:10px">
+                        <button class="btn" id="btnQuickAppointment">＋ Book Follow-Up</button>
+                    </div>
+                </div>
+
+                <!-- Doctor Navigation Tabs (Switching between the 3 main modules) -->
+                <div class="doc-modules-bar">
+                    <button class="doc-tab-btn active" data-target="patient-list">👥 Patient List</button>
+                    <button class="doc-tab-btn" data-target="appointments">📅 Appointments (<span id="apptCountBadge">3</span>)</button>
+                    <button class="doc-tab-btn" data-target="messages">💬 Patient Messages</button>
+                </div>
+
+                <!-- ================================================================= -->
+                <!-- MODULE 1: PATIENT LIST & SELECTED PATIENT WORKSPACE -->
+                <!-- ================================================================= -->
+                <div class="module-pane active" id="module-patient-list">
+                    <div class="patient-master-detail">
+                        <!-- Left Column: Patient List -->
+                        <div class="patient-list-sidebar">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+                                <h3 style="margin:0;font-size:15px;color:var(--n)">Assigned Patients</h3>
+                                <span class="pill" id="totalPatientsBadge">4 Patients</span>
+                            </div>
+                            <input id="patientFilterInput" placeholder="Filter patient name/ID..." style="width:100%;padding:8px 12px;border:1px solid var(--ln);border-radius:8px;margin-bottom:12px;font-size:12px" />
+                            <div id="patientsContainer">
+                                <!-- Populated dynamically via JS -->
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Selected Patient Workspace -->
+                        <div class="patient-workspace-card" id="patientWorkspace">
+                            <!-- Patient Banner Header -->
+                            <div class="patient-detail-banner">
+                                <div style="display:flex;align-items:center;gap:16px">
+                                    <div class="avatar" id="selPatientAvatar" style="width:52px;height:52px;font-size:22px">A</div>
+                                    <div>
+                                        <div style="display:flex;align-items:center;gap:8px">
+                                            <h2 style="margin:0;font-size:20px;color:var(--n)" id="selPatientName">Avishkar</h2>
+                                            <span class="pill good" id="selPatientStatus">Active Care</span>
+                                        </div>
+                                        <small class="muted" style="font-size:12px" id="selPatientMeta">ID: MED-1001 &middot; 28 Yrs / Male &middot; Blood: B+</small>
+                                    </div>
+                                </div>
+                                <div style="display:flex;gap:8px">
+                                    <button class="btn soft" id="btnCreateVideoModal">＋ New Video</button>
+                                    <button class="btn soft" id="btnAssignVideoModal">▶ Prescribe Video</button>
+                                    <button class="btn" id="btnAddMedModal">＋ Add Medicine</button>
+                                </div>
+                            </div>
+
+                            <!-- Patient Subtabs -->
+                            <div class="subtabs-nav" id="patientSubtabs">
+                                <button class="subtab-btn active" data-subtab="details">👤 Patient Details</button>
+                                <button class="subtab-btn" data-subtab="reports">📄 Medical Reports (<span id="pReportCount">4</span>)</button>
+                                <button class="subtab-btn" data-subtab="medicines">💊 Medicines &amp; Reminders (<span id="pMedCount">4</span>)</button>
+                                <button class="subtab-btn" data-subtab="progress">📈 Health Progress</button>
+                                <button class="subtab-btn" data-subtab="videos">🎬 Educational Videos (<span id="pVidCount">2</span>)</button>
+                            </div>
+
+                            <!-- Subtab 1: Patient Details -->
+                            <div class="patient-subtab-pane" id="pane-details">
+                                <div class="grid two">
+                                    <div class="card">
+                                        <h3 style="font-size:15px;margin-bottom:12px;color:var(--n)">Personal &amp; Demographics</h3>
+                                        <p><strong>Patient ID:</strong> <span id="dtPatientId">MED-1001</span></p>
+                                        <p><strong>Full Name:</strong> <span id="dtFullName">Avishkar</span></p>
+                                        <p><strong>Age &amp; Gender:</strong> <span id="dtAgeGender">28 Years &middot; Male</span></p>
+                                        <p><strong>Blood Group:</strong> <span class="pill" id="dtBloodGroup">B+</span></p>
+                                        <p><strong>Registration Date:</strong> <span id="dtRegDate">01 Sep 2026</span></p>
+                                    </div>
+                                    <div class="card">
+                                        <h3 style="font-size:15px;margin-bottom:12px;color:var(--n)">Contact &amp; Emergency</h3>
+                                        <p><strong>Primary Phone:</strong> <span id="dtPhone">+91 98765 43210</span></p>
+                                        <p><strong>Email Address:</strong> <span id="dtEmail">avishkar@example.com</span></p>
+                                        <p><strong>Emergency Contact:</strong> <span id="dtEmergency">+91 98765 00000 (Brother)</span></p>
+                                        <p><strong>Residential Address:</strong> <span id="dtAddress">Flat 402, Green Avenue, Pune, Maharashtra</span></p>
+                                        <p><strong>Known Allergies / Notes:</strong> <span id="dtConditions" style="color:#d9534f;font-weight:600">Mild Seasonal Allergies</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Subtab 2: Medical Reports (With Download Action) -->
+                            <div class="patient-subtab-pane" id="pane-reports" hidden>
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+                                    <h3 style="margin:0;font-size:15px;color:var(--n)">Verified Diagnostic Reports</h3>
+                                    <small class="muted">Click "Download" to generate &amp; save official clinical document</small>
+                                </div>
+                                <div class="tablewrap">
+                                    <table class="tbl">
+                                        <thead>
+                                            <tr>
+                                                <th>REPORT NAME</th>
+                                                <th>CATEGORY</th>
+                                                <th>DATE</th>
+                                                <th>DIAGNOSTIC LAB</th>
+                                                <th>STATUS</th>
+                                                <th>ACTIONS</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="doctorReportsTableBody">
+                                            <!-- Dynamically populated -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Subtab 3: Medicines (With Option to ADD and REMOVE Medicine) -->
+                            <div class="patient-subtab-pane" id="pane-medicines" hidden>
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+                                    <div>
+                                        <h3 style="margin:0;font-size:15px;color:var(--n)">Current Prescription &amp; Regimen</h3>
+                                        <p class="muted" style="margin:2px 0 0">Doctor can prescribe new drugs or discontinue existing medicines.</p>
+                                    </div>
+                                    <button class="btn" id="btnOpenAddMedFromTab">＋ Prescribe Medicine</button>
+                                </div>
+                                <div class="tablewrap">
+                                    <table class="tbl">
+                                        <thead>
+                                            <tr>
+                                                <th>MEDICINE NAME</th>
+                                                <th>DOSAGE / FREQUENCY</th>
+                                                <th>SCHEDULE TIME</th>
+                                                <th>PRESCRIBED BY</th>
+                                                <th>ACTIONS</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="doctorMedsTableBody">
+                                            <!-- Dynamically populated with Add / Remove options -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Subtab 4: Health Progress & Metrics -->
+                            <div class="patient-subtab-pane" id="pane-progress" hidden>
+                                <div class="grid three" style="margin-bottom:18px">
+                                    <div class="card stat">
+                                        <div class="fi">⚖️</div>
+                                        <div>
+                                            <small>Current Weight</small>
+                                            <strong style="font-size:18px" id="prWeight">71.5 kg</strong>
+                                            <small style="color:#059669">↓ 1.3 kg healthy trend</small>
+                                        </div>
+                                    </div>
+                                    <div class="card stat">
+                                        <div class="fi">❤️</div>
+                                        <div>
+                                            <small>Blood Pressure</small>
+                                            <strong style="font-size:18px" id="prBp">119/79 mmHg</strong>
+                                            <small style="color:#059669">Optimal range</small>
+                                        </div>
+                                    </div>
+                                    <div class="card stat">
+                                        <div class="fi">💊</div>
+                                        <div>
+                                            <small>Medicine Adherence</small>
+                                            <strong style="font-size:18px" id="prAdherence">94%</strong>
+                                            <small style="color:#059669">High compliance</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <h3 style="font-size:15px;margin-bottom:12px;color:var(--n)">Recent Daily Logs &amp; Patient Wellbeing</h3>
+                                    <div class="tablewrap">
+                                        <table class="tbl">
+                                            <thead>
+                                                <tr>
+                                                    <th>LOG DATE</th>
+                                                    <th>WEIGHT</th>
+                                                    <th>REPORTED FEELING</th>
+                                                    <th>MEDICINES TAKEN</th>
+                                                    <th>WATER INTAKE</th>
+                                                    <th>EXERCISE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="doctorProgressLogsTableBody">
+                                                <!-- Dynamically populated -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Subtab 5: Educational Videos Assigned to Patient -->
+                            <div class="patient-subtab-pane" id="pane-videos" hidden>
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+                                    <div>
+                                        <h3 style="margin:0;font-size:15px;color:var(--n)">Prescribed Educational &amp; AI Health Videos</h3>
+                                        <p class="muted" style="margin:2px 0 0">Interactive video instructions tailored for this patient's condition.</p>
+                                    </div>
+                                    <div style="display:flex;gap:8px">
+                                        <button class="btn soft" id="btnOpenCreateVidFromTab">＋ Create New Video</button>
+                                        <button class="btn" id="btnOpenAssignVidFromTab">▶ Assign Video</button>
+                                    </div>
+                                </div>
+                                <div class="grid two" id="assignedVideosList">
+                                    <!-- Populated dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================================================================= -->
+                <!-- MODULE 2: APPOINTMENTS SCHEDULE -->
+                <!-- ================================================================= -->
+                <div class="module-pane" id="module-appointments" hidden>
+                    <section class="panel">
+                        <div class="ph">
+                            <div>
+                                <h2>Patient Consultation Appointments</h2>
+                                <p class="muted">Review confirmed, pending, and scheduled appointments for your care roster.</p>
+                            </div>
+                            <div class="filters">
+                                <button class="chip on" data-af="All">All</button>
+                                <button class="chip" data-af="Confirmed">Confirmed</button>
+                                <button class="chip" data-af="Pending">Pending</button>
+                            </div>
+                        </div>
+                        <div class="tablewrap">
+                            <table class="tbl">
+                                <thead>
+                                    <tr>
+                                        <th>PATIENT</th>
+                                        <th>CONSULTATION DATE</th>
+                                        <th>TIME SLOT</th>
+                                        <th>PURPOSE / CLINICAL NOTES</th>
+                                        <th>STATUS</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="doctorApptsTableBody">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- ================================================================= -->
+                <!-- MODULE 3: MESSAGES / DOCTOR-PATIENT COMMUNICATION -->
+                <!-- ================================================================= -->
+                <div class="module-pane" id="module-messages" hidden>
+                    <div class="grid two" style="grid-template-columns:300px 1fr;align-items:stretch">
+                        <!-- Left: Conversations List -->
+                        <div class="panel" style="padding:16px">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <h3 style="margin:0;font-size:15px;color:var(--n)">Patient Conversations</h3>
+                                <span class="pill" id="docMsgCountBadge">Active</span>
+                            </div>
+                            <input id="docChatSearchInput" placeholder="Filter conversations..." style="width:100%;padding:8px 12px;border:1px solid var(--ln);border-radius:8px;margin-bottom:10px;font-size:12px" />
+                            <div id="doctorChatPatientsList" style="display:flex;flex-direction:column;gap:8px;max-height:450px;overflow-y:auto">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+                        <!-- Right: Active Chat Window -->
+                        <div class="chat-box" style="background:#fff;border:1px solid var(--ln);border-radius:14px;display:flex;flex-direction:column;height:540px">
+                            <div class="chat-head" id="docChatHeader" style="padding:14px 20px;border-bottom:1px solid var(--ln);display:flex;justify-content:space-between;align-items:center">
+                                <div>
+                                    <strong id="docActiveChatPatient">Avishkar</strong>
+                                    <small class="muted" style="display:block" id="docActiveChatSub">Patient ID: MED-1001 &middot; Active Consultation</small>
+                                </div>
+                                <span class="pill good">Encrypted Consultation</span>
+                            </div>
+                            <div class="chat-msgs" id="docChatMessagesArea" style="flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:10px">
+                                <!-- Populated dynamically -->
+                            </div>
+                            <form id="docChatSendForm" style="display:flex;padding:12px;border-top:1px solid var(--ln);gap:8px">
+                                <input id="docChatInput" placeholder="Type clinical advice or response..." style="flex:1;padding:10px 14px;border:1px solid var(--ln);border-radius:8px" required />
+                                <button class="btn" type="submit">Send Reply &rarr;</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- MODALS: Add Medicine, Assign Video, Profile, Change Password -->
+    <!-- ================================================================= -->
+
+    <!-- 1. Add Medicine Modal -->
+    <div class="custom-modal-backdrop" id="modalAddMed" hidden>
+        <div class="custom-modal">
+            <div class="custom-modal-header">
+                <h2>💊 Prescribe New Medicine</h2>
+                <button type="button" class="close-modal" data-close="modalAddMed">&times;</button>
+            </div>
+            <form id="formAddMed">
+                <div class="custom-modal-body">
+                    <p style="margin-top:0;font-size:13px;color:var(--m)">
+                        Adding prescription for: <strong id="modalAddMedPatientName" style="color:var(--n)">Avishkar</strong>
+                    </p>
+                    <label class="field">
+                        Medicine Name &amp; Strength *
+                        <input name="medName" id="inputMedName" placeholder="e.g. Amoxicillin 500mg, Metformin 500mg" required />
+                    </label>
+                    <label class="field">
+                        Dosage &amp; Frequency *
+                        <input name="medDose" id="inputMedDose" placeholder="e.g. 1 tablet twice daily after meals" required />
+                    </label>
+                    <div class="grid two" style="gap:12px">
+                        <label class="field">
+                            Reminder Schedule Time
+                            <input name="medTime" id="inputMedTime" value="08:00 AM" placeholder="e.g. 08:00 AM" />
+                        </label>
+                        <label class="field">
+                            Prescribing Clinician
+                            <input name="prescribedBy" id="inputPrescribedBy" value="Dr. Priya Sharma" readonly />
+                        </label>
+                    </div>
+                    <label class="field">
+                        Special Instructions / Warnings
+                        <textarea name="medInstructions" id="inputMedInstructions" rows="2" placeholder="Take with plenty of water. Do not skip doses."></textarea>
+                    </label>
+                </div>
+                <div class="custom-modal-footer">
+                    <button type="button" class="btn alt" data-close="modalAddMed">Cancel</button>
+                    <button type="submit" class="btn">Prescribe &amp; Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. Assign Video Modal -->
+    <div class="custom-modal-backdrop" id="modalAssignVideo" hidden>
+        <div class="custom-modal" style="width:620px">
+            <div class="custom-modal-header">
+                <h2>🎬 Prescribe Educational Video</h2>
+                <button type="button" class="close-modal" data-close="modalAssignVideo">&times;</button>
+            </div>
+            <div class="custom-modal-body">
+                <p style="margin-top:0;font-size:13px;color:var(--m)">
+                    Select health education video for: <strong id="modalAssignVidPatientName" style="color:var(--n)">Avishkar</strong>
+                </p>
+                <div id="videoPickerList" style="display:flex;flex-direction:column;gap:10px;max-height:360px;overflow-y:auto">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+            <div class="custom-modal-footer">
+                <button type="button" class="btn alt" data-close="modalAssignVideo">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2b. Create Video Modal -->
+    <div class="custom-modal-backdrop" id="modalCreateVideo" hidden>
+        <div class="custom-modal" style="width:620px">
+            <div class="custom-modal-header">
+                <h2>🎬 Create &amp; Add New Health Video</h2>
+                <button type="button" class="close-modal" data-close="modalCreateVideo">&times;</button>
+            </div>
+            <form id="formCreateVideo">
+                <div class="custom-modal-body">
+                    <label class="field">
+                        Video Title *
+                        <input id="cvTitle" placeholder="e.g. Daily Blood Pressure Monitoring Protocol" required />
+                    </label>
+                    <div class="grid two" style="gap:12px">
+                        <label class="field">
+                            Category *
+                            <select id="cvCategory">
+                                <option value="AI Guidance">🤖 AI Health Guidance</option>
+                                <option value="Medicine Usage">💊 Medicine Usage</option>
+                                <option value="Exercise">🏃 Exercise &amp; Mobility</option>
+                                <option value="Diet & Nutrition">🥗 Diet &amp; Nutrition</option>
+                                <option value="General Health" selected>🩺 General Health</option>
+                            </select>
+                        </label>
+                        <label class="field">
+                            Duration *
+                            <input id="cvDuration" value="06:30 min" placeholder="e.g. 05:45 min" required />
+                        </label>
+                    </div>
+                    <label class="field">
+                        Video Stream / Embed URL (or YouTube Link)
+                        <input id="cvUrl" placeholder="https://www.youtube.com/embed/..." value="https://www.youtube.com/embed/dQw4w9WgXcQ" />
+                    </label>
+                    <label class="field">
+                        Clinical Summary &amp; Patient Instructions
+                        <textarea id="cvSummary" rows="3" placeholder="Explain what the patient should learn from this clinical video..."></textarea>
+                    </label>
+                    <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-top:8px">
+                        <input type="checkbox" id="cvAssignToPatient" checked />
+                        <span>Immediately assign this video to current patient (<strong id="cvPatientName">Avishkar</strong>)</span>
+                    </label>
+                </div>
+                <div class="custom-modal-footer">
+                    <button type="button" class="btn alt" data-close="modalCreateVideo">Cancel</button>
+                    <button type="submit" class="btn">Create &amp; Publish Video</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2c. Book Follow-Up Modal for Doctor -->
+    <div class="custom-modal-backdrop" id="modalBookFollowup" hidden>
+        <div class="custom-modal">
+            <div class="custom-modal-header">
+                <h2>📅 Schedule Follow-Up Consultation</h2>
+                <button type="button" class="close-modal" data-close="modalBookFollowup">&times;</button>
+            </div>
+            <form id="formBookFollowup">
+                <div class="custom-modal-body">
+                    <p style="margin-top:0;font-size:13px;color:var(--m)">
+                        Scheduling follow-up for: <strong id="followupPatientName" style="color:var(--n)">Avishkar</strong>
+                    </p>
+                    <div class="grid two" style="gap:12px">
+                        <label class="field">
+                            Consultation Date *
+                            <input type="date" id="fuDate" required />
+                        </label>
+                        <label class="field">
+                            Time Slot *
+                            <select id="fuTime">
+                                <option>10:00 AM</option>
+                                <option>11:30 AM</option>
+                                <option>02:00 PM</option>
+                                <option>04:30 PM</option>
+                                <option>06:00 PM</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label class="field">
+                        Clinical Purpose / Notes *
+                        <input id="fuPurpose" value="Post-medication follow-up and vitals review" required />
+                    </label>
+                </div>
+                <div class="custom-modal-footer">
+                    <button type="button" class="btn alt" data-close="modalBookFollowup">Cancel</button>
+                    <button type="submit" class="btn">Confirm Appointment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 3. Profile Modal -->
+    <div class="custom-modal-backdrop" id="modalProfile" hidden>
+        <div class="custom-modal">
+            <div class="custom-modal-header">
+                <h2>👤 Clinician Profile</h2>
+                <button type="button" class="close-modal" data-close="modalProfile">&times;</button>
+            </div>
+            <div class="custom-modal-body">
+                <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px">
+                    <div class="avatar" style="width:60px;height:60px;font-size:24px">PS</div>
+                    <div>
+                        <h3 style="margin:0;font-size:18px;color:var(--n)">Dr. Priya Sharma</h3>
+                        <p class="muted" style="margin:2px 0 0">MBBS, MD (Internal Medicine) &middot; Reg: MCI-98745</p>
+                        <span class="pill good" style="margin-top:4px">Verified Consultant</span>
+                    </div>
+                </div>
+                <label class="field">
+                    Full Name
+                    <input id="profFullName" value="Dr. Priya Sharma" readonly />
+                </label>
+                <label class="field">
+                    Specialization
+                    <input id="profSpec" value="General Physician &amp; Internal Medicine" readonly />
+                </label>
+                <div class="grid two" style="gap:12px">
+                    <label class="field">
+                        Email Address
+                        <input id="profEmail" value="dr.priya@medicare.com" readonly />
+                    </label>
+                    <label class="field">
+                        Contact Phone
+                        <input id="profPhone" value="+91 98111 22334" readonly />
+                    </label>
+                </div>
+                <label class="field">
+                    Clinical Experience &amp; Bio
+                    <textarea rows="3" readonly>Senior Consultant Physician with 12+ years clinical experience in preventive medicine, cardiovascular risk management, and chronic illness care.</textarea>
+                </label>
+            </div>
+            <div class="custom-modal-footer">
+                <button type="button" class="btn" data-close="modalProfile">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Change Password Modal -->
+    <div class="custom-modal-backdrop" id="modalChangePass" hidden>
+        <div class="custom-modal">
+            <div class="custom-modal-header">
+                <h2>🔑 Change Password</h2>
+                <button type="button" class="close-modal" data-close="modalChangePass">&times;</button>
+            </div>
+            <form id="formChangePass">
+                <div class="custom-modal-body">
+                    <label class="field">
+                        Current Password
+                        <input type="password" id="cpCurrent" placeholder="Enter current password" required />
+                    </label>
+                    <label class="field">
+                        New Password (minimum 6 characters)
+                        <input type="password" id="cpNew" minlength="6" placeholder="Enter new password" required />
+                    </label>
+                    <label class="field">
+                        Confirm New Password
+                        <input type="password" id="cpConfirm" minlength="6" placeholder="Confirm new password" required />
+                    </label>
+                    <p id="cpErrorMsg" style="font-size:13px;color:#d93025;margin:5px 0 0" role="status"></p>
+                </div>
+                <div class="custom-modal-footer">
+                    <button type="button" class="btn alt" data-close="modalChangePass">Cancel</button>
+                    <button type="submit" class="btn">Update Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Global Toast -->
+    <div class="toast" hidden id="toast"></div>
+
+    <script src="app.js" defer></script>
+</body>
+
+</html>

@@ -68,11 +68,8 @@
      </a>
     </nav>
     <div class="side-bottom">
-     <a class="out" href="login.html">
+     <button class="out" id="openProfileSidebarBtn" style="border:none;background:transparent;cursor:pointer">
       ♙ My Profile
-     </a>
-     <button class="out" id="logout">
-      &rarrb; Logout
      </button>
      <div class="side-label">
       &copy; 2026 MediCare+
@@ -96,16 +93,43 @@
      <label class="search">
       <input aria-label="Search" id="globalSearch" placeholder="&telrec;  Search anything..."/>
      </label>
-     <button class="mini" id="bell" title="Notifications">
-      ♧
-     </button>
-     <div class="user">
-      <span class="avatar">
-       A
-      </span>
-      <span>
-       Avishkar ⌄
-      </span>
+     <div class="notification-wrap">
+      <button class="notification-btn" id="bell" title="Notifications">
+       🔔
+       <span class="notification-badge" id="notifBadge">2</span>
+      </button>
+      <div class="notif-panel" id="notifPanel" hidden>
+       <div class="notif-panel-header">
+        <h3>🔔 Notifications</h3>
+        <button class="clear-btn" id="clearNotifs">Clear</button>
+       </div>
+       <div class="notif-body" id="notifList"></div>
+      </div>
+     </div>
+     <div class="user-menu-container">
+      <div class="user" id="userMenuToggle">
+       <span class="avatar">
+        A
+       </span>
+       <span id="userNameDisplay">
+        Avishkar &#x2304;
+       </span>
+      </div>
+      <div class="profile-dropdown" id="profileDropdown" hidden>
+       <div class="profile-dropdown-header">
+        <strong id="ddFullName">Avishkar</strong>
+        <small id="ddEmail">avishkar@example.com</small>
+        <span class="role-tag" id="ddRole">Patient</span>
+       </div>
+       <ul class="profile-dropdown-list">
+        <li><button type="button" id="openProfileBtn">👤 Profile</button></li>
+        <li><button type="button" id="openChangePassBtn">🔑 Change Password</button></li>
+        <li><a href="doctor-dashboard.html">🩺 Switch to Doctor Portal</a></li>
+        <li><a href="admin-dashboard.html">📊 Switch to Admin Portal</a></li>
+        <li class="divider"></li>
+        <li class="logout-item"><button type="button" id="dropdownLogoutBtn">🚪 Log Out</button></li>
+       </ul>
+      </div>
      </div>
     </header>
     <section class="content">
@@ -202,6 +226,22 @@
        </p>
       </a>
      </div>
+
+     <!-- Prescribed Videos Section for Patient -->
+     <section class="panel" style="margin-top:24px" id="dashboardPrescribedVideosSection">
+      <div class="ph" style="display:flex;justify-content:space-between;align-items:center">
+       <div>
+        <h2 style="margin:0;display:flex;align-items:center;gap:8px">
+         <span>🩺</span> Prescribed Health Videos for You
+        </h2>
+        <p class="muted" style="margin:4px 0 0">Educational guides prescribed by your physician Dr. Priya Sharma</p>
+       </div>
+       <a href="videos.html?filter=Prescribed" class="btn soft mini" style="text-decoration:none">View All Assigned &rarr;</a>
+      </div>
+      <div class="vids" id="dashboardVideosContainer" style="padding:16px;display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px">
+       <div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--m)">Loading your prescribed health videos...</div>
+      </div>
+     </section>
     </section>
    </main>
    <div class="toast" hidden="" id="toast">

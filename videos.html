@@ -68,11 +68,8 @@
      </a>
     </nav>
     <div class="side-bottom">
-     <a class="out" href="login.html">
+     <button class="out" id="openProfileSidebarBtn" style="border:none;background:transparent;cursor:pointer">
       ♙ My Profile
-     </a>
-     <button class="out" id="logout">
-      &rarrb; Logout
      </button>
      <div class="side-label">
       &copy; 2026 MediCare+
@@ -96,16 +93,43 @@
      <label class="search">
       <input aria-label="Search" id="globalSearch" placeholder="&telrec;  Search anything..."/>
      </label>
-     <button class="mini" id="bell" title="Notifications">
-      ♧
-     </button>
-     <div class="user">
-      <span class="avatar">
-       A
-      </span>
-      <span>
-       Avishkar ⌄
-      </span>
+     <div class="notification-wrap">
+      <button class="notification-btn" id="bell" title="Notifications">
+       🔔
+       <span class="notification-badge" id="notifBadge">2</span>
+      </button>
+      <div class="notif-panel" id="notifPanel" hidden>
+       <div class="notif-panel-header">
+        <h3>🔔 Notifications</h3>
+        <button class="clear-btn" id="clearNotifs">Clear</button>
+       </div>
+       <div class="notif-body" id="notifList"></div>
+      </div>
+     </div>
+     <div class="user-menu-container">
+      <div class="user" id="userMenuToggle">
+       <span class="avatar">
+        A
+       </span>
+       <span id="userNameDisplay">
+        Avishkar &#x2304;
+       </span>
+      </div>
+      <div class="profile-dropdown" id="profileDropdown" hidden>
+       <div class="profile-dropdown-header">
+        <strong id="ddFullName">Avishkar</strong>
+        <small id="ddEmail">avishkar@example.com</small>
+        <span class="role-tag" id="ddRole">Patient</span>
+       </div>
+       <ul class="profile-dropdown-list">
+        <li><button type="button" id="openProfileBtn">👤 Profile</button></li>
+        <li><button type="button" id="openChangePassBtn">🔑 Change Password</button></li>
+        <li><a href="doctor-dashboard.html">🩺 Switch to Doctor Portal</a></li>
+        <li><a href="admin-dashboard.html">📊 Switch to Admin Portal</a></li>
+        <li class="divider"></li>
+        <li class="logout-item"><button type="button" id="dropdownLogoutBtn">🚪 Log Out</button></li>
+       </ul>
+      </div>
      </div>
     </header>
     <section class="content">
@@ -119,16 +143,24 @@
         Health Instruction Videos
        </div>
        <h1>
-        Health Instruction Videos
+        Health Instruction &amp; AI Guidance Videos
        </h1>
        <p class="muted">
-        Watch useful videos related to medicines, exercises, diet and general health.
+        Watch interactive clinical guidance powered by AI health tutors, exercise specialists, and dietician protocols.
        </p>
       </div>
      </div>
+
+     <!-- Category Filters including AI Health Guidance and Prescriptions -->
      <div class="filters" id="vf">
       <button class="chip on" data-vf="All">
-       All
+       All Videos (<span id="countAllVideos">10</span>)
+      </button>
+      <button class="chip" data-vf="Prescribed" style="background:#e0f2fe;color:#0369a1;font-weight:700">
+       🩺 Prescribed by Doctor (<span id="countPrescribedVideos">4</span>)
+      </button>
+      <button class="chip" data-vf="AI Guidance">
+       🤖 AI Health Guidance
       </button>
       <button class="chip" data-vf="Medicine Usage">
        Medicine Usage
@@ -139,116 +171,189 @@
       <button class="chip" data-vf="Diet &amp; Nutrition">
        Diet &amp; Nutrition
       </button>
+      <button class="chip" data-vf="Surgery Recovery">
+       Surgery Recovery
+      </button>
       <button class="chip" data-vf="General Health">
        General Health
       </button>
      </div>
+
+     <!-- Video Cards Grid -->
      <div class="vids" id="vl">
-      <article class="card vid" data-vcat="Medicine Usage">
+      <!-- AI Video 1 -->
+      <article class="card vid" data-vcat="AI Guidance" data-id="1">
+       <div class="thumb" style="background:radial-gradient(circle, #2e1065, #0f172a)">
+        🤖
+        <span class="ai-badge" style="position:absolute;top:10px;left:10px">AI Doctor</span>
+        <button aria-label="Play video" class="play play-video-trigger" data-title="AI Clinical Guide: Understanding Blood Tests &amp; Vital Signs" data-duration="06:45 min" data-cat="AI Guidance">
+         ▶
+        </button>
+       </div>
+       <div class="vid-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+         <h3>AI Clinical Guide: Understanding Blood Tests</h3>
+         <span class="ai-badge">AI Assistant</span>
+        </div>
+        <small>▶ 06:45 min &middot; AI Medical Explainer</small>
+        <p style="margin:6px 0 0;font-size:12px;color:var(--m)">AI Doctor explains what Hemoglobin, Fasting Blood Sugar, and Platelets mean for your daily energy.</p>
+       </div>
+      </article>
+
+      <!-- AI Video 2 -->
+      <article class="card vid" data-vcat="AI Guidance" data-id="2">
+       <div class="thumb" style="background:radial-gradient(circle, #1e1b4b, #090d16)">
+        💊
+        <span class="ai-badge" style="position:absolute;top:10px;left:10px">AI Safety</span>
+        <button aria-label="Play video" class="play play-video-trigger" data-title="AI Health Assistant: Proper Medicine Routine &amp; Adherence" data-duration="05:10 min" data-cat="AI Guidance">
+         ▶
+        </button>
+       </div>
+       <div class="vid-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+         <h3>AI Health Assistant: Proper Medicine Routine</h3>
+         <span class="ai-badge">AI Assistant</span>
+        </div>
+        <small>▶ 05:10 min &middot; AI Prescription Safety</small>
+        <p style="margin:6px 0 0;font-size:12px;color:var(--m)">Interactive AI guidance on how meals affect tablet absorption and the importance of never skipping doses.</p>
+       </div>
+      </article>
+
+      <!-- AI Video 3 -->
+      <article class="card vid" data-vcat="AI Guidance" data-id="3">
+       <div class="thumb" style="background:radial-gradient(circle, #064e3b, #022c22)">
+        🥗
+        <span class="ai-badge" style="position:absolute;top:10px;left:10px">AI Diet</span>
+        <button aria-label="Play video" class="play play-video-trigger" data-title="AI Nutritionist: Personalized Heart &amp; Diabetic Diet Protocol" data-duration="08:20 min" data-cat="AI Guidance">
+         ▶
+        </button>
+       </div>
+       <div class="vid-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+         <h3>AI Nutritionist: Diabetic &amp; Heart Diet Plan</h3>
+         <span class="ai-badge">AI Dietician</span>
+        </div>
+        <small>▶ 08:20 min &middot; AI Nutrition Advice</small>
+        <p style="margin:6px 0 0;font-size:12px;color:var(--m)">Smart AI dietician breaks down balanced carbohydrate intake, low sodium, and heart-healthy hydration.</p>
+       </div>
+      </article>
+
+      <!-- AI Video 4 -->
+      <article class="card vid" data-vcat="AI Guidance" data-id="4">
+       <div class="thumb" style="background:radial-gradient(circle, #3b0764, #1e1b4b)">
+        🧘
+        <span class="ai-badge" style="position:absolute;top:10px;left:10px">AI Physio</span>
+        <button aria-label="Play video" class="play play-video-trigger" data-title="AI Physiotherapist: Post-Surgery Breathing &amp; Mobility" data-duration="07:15 min" data-cat="AI Guidance">
+         ▶
+        </button>
+       </div>
+       <div class="vid-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+         <h3>AI Physiotherapist: Breathing &amp; Mobility</h3>
+         <span class="ai-badge">AI Physio</span>
+        </div>
+        <small>▶ 07:15 min &middot; AI Rehabilitation</small>
+        <p style="margin:6px 0 0;font-size:12px;color:var(--m)">Step-by-step guided diaphragmatic breathing and gentle thoracic expansion for recovery.</p>
+       </div>
+      </article>
+
+      <!-- Standard Health Education Videos -->
+      <article class="card vid" data-vcat="Medicine Usage" data-id="5">
        <div class="thumb">
         💊
-        <button aria-label="Play video" class="play" data-play="0">
+        <button aria-label="Play video" class="play play-video-trigger" data-title="How to take medicines correctly and safely" data-duration="05:30 min" data-cat="Medicine Usage">
          ▶
         </button>
        </div>
        <div class="vid-body">
-        <h3>
-         How to take medicines correctly
-        </h3>
-        <small>
-         ▶ 05:30 min &middot; Health education
-        </small>
+        <h3>How to take medicines correctly</h3>
+        <small>▶ 05:30 min &middot; Health Education</small>
        </div>
       </article>
-      <article class="card vid" data-vcat="Exercise">
+
+      <article class="card vid" data-vcat="Exercise" data-id="6">
        <div class="thumb">
-        🧘
-        <button aria-label="Play video" class="play" data-play="1">
+        🫁
+        <button aria-label="Play video" class="play play-video-trigger" data-title="Breathing Exercises for Better Heart Health" data-duration="07:12 min" data-cat="Exercise">
          ▶
         </button>
        </div>
        <div class="vid-body">
-        <h3>
-         Breathing Exercises for Better Health
-        </h3>
-        <small>
-         ▶ 07:12 min &middot; Health education
-        </small>
+        <h3>Breathing Exercises for Better Health</h3>
+        <small>▶ 07:12 min &middot; Health Education</small>
        </div>
       </article>
-      <article class="card vid" data-vcat="Diet &amp; Nutrition">
+
+      <article class="card vid" data-vcat="Diet &amp; Nutrition" data-id="7">
        <div class="thumb">
         🥗
-        <button aria-label="Play video" class="play" data-play="2">
+        <button aria-label="Play video" class="play play-video-trigger" data-title="Healthy Diet Plan for Busy Professionals" data-duration="06:20 min" data-cat="Diet &amp; Nutrition">
          ▶
         </button>
        </div>
        <div class="vid-body">
-        <h3>
-         Healthy Diet Plan
-        </h3>
-        <small>
-         ▶ 06:20 min &middot; Health education
-        </small>
+        <h3>Healthy Diet Plan</h3>
+        <small>▶ 06:20 min &middot; Health Education</small>
        </div>
       </article>
-      <article class="card vid" data-vcat="General Health">
-       <div class="thumb">
-        🛏️
-        <button aria-label="Play video" class="play" data-play="3">
-         ▶
-        </button>
-       </div>
-       <div class="vid-body">
-        <h3>
-         Post-Surgery Care Tips
-        </h3>
-        <small>
-         ▶ 04:15 min &middot; Health education
-        </small>
-       </div>
-      </article>
-      <article class="card vid" data-vcat="General Health">
+
+      <article class="card vid" data-vcat="General Health" data-id="8">
        <div class="thumb">
         🩸
-        <button aria-label="Play video" class="play" data-play="4">
+        <button aria-label="Play video" class="play play-video-trigger" data-title="Diabetes Daily Care &amp; Blood Sugar Tracking" data-duration="08:10 min" data-cat="General Health">
          ▶
         </button>
        </div>
        <div class="vid-body">
-        <h3>
-         Diabetes Care Guide
-        </h3>
-        <small>
-         ▶ 08:10 min &middot; Health education
-        </small>
-       </div>
-      </article>
-      <article class="card vid" data-vcat="General Health">
-       <div class="thumb">
-        👩&zwj;⚕️
-        <button aria-label="Play video" class="play" data-play="5">
-         ▶
-        </button>
-       </div>
-       <div class="vid-body">
-        <h3>
-         Women's Health Tips
-        </h3>
-        <small>
-         ▶ 07:25 min &middot; Health education
-        </small>
+        <h3>Diabetes Care Guide</h3>
+        <small>▶ 08:10 min &middot; Health Education</small>
        </div>
       </article>
      </div>
-     <p class="tip" style="margin-top:18px">
-      Video thumbnails are demo placeholders. For medical care, follow the personalized advice from your healthcare professional.
-     </p>
     </section>
    </main>
-   <div class="toast" hidden="" id="toast">
+   <div class="toast" hidden="" id="toast"></div>
+  </div>
+
+  <!-- Interactive Instruction Video Player Modal (Starts Instructions Video Module!) -->
+  <div class="custom-modal-backdrop" id="modalVideoPlayer" hidden>
+   <div class="custom-modal" style="width:780px;max-width:calc(100vw - 32px)">
+    <div class="custom-modal-header">
+     <div style="display:flex;align-items:center;gap:10px">
+      <span class="pill good" id="vpBadge">AI Medical Tutor</span>
+      <h2 style="margin:0;font-size:16px;color:var(--n)" id="vpTitle">AI Clinical Guide: Understanding Blood Tests</h2>
+     </div>
+     <button type="button" class="close-modal" id="closeVideoPlayer">&times;</button>
+    </div>
+    <div class="custom-modal-body" style="padding:16px">
+     <!-- Real Embedded Video Player -->
+     <div style="position:relative;width:100%;padding-top:56.25%;background:#090d16;border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.3)">
+      <iframe id="vpIframe" src="" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+     </div>
+
+     <!-- Clinical Key Takeaways Checklist -->
+     <div style="margin-top:16px;background:#f8fbff;border:1px solid #dce8f5;border-radius:12px;padding:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+       <strong style="color:var(--n);font-size:14px;display:flex;align-items:center;gap:6px">
+        📋 Clinical Takeaways &amp; Doctor Instructions
+       </strong>
+       <span id="vpDuration" style="font-size:12px;color:var(--m);font-weight:600">06:45 min</span>
+      </div>
+      <p id="vpSummary" style="font-size:13px;color:#334155;line-height:1.6;margin:0 0 8px"></p>
+      <ul style="margin:4px 0 0;padding-left:18px;font-size:13px;color:#334155;line-height:1.6" id="vpTakeaways">
+       <li>Take scheduled medicines immediately after meals to reduce stomach irritation.</li>
+       <li>Maintain healthy blood pressure by avoiding excessive table salt and caffeine.</li>
+       <li>Report any dizziness or unusual fatigue to your assigned physician Dr. Priya Sharma.</li>
+      </ul>
+     </div>
+    </div>
+    <div class="custom-modal-footer">
+     <button type="button" class="btn soft" id="btnMarkVideoWatched">✓ Mark as Watched &amp; Understood</button>
+     <button type="button" class="btn" id="btnCloseVideoFooter">Done Watching</button>
+    </div>
    </div>
   </div>
-   <script src="app.js" defer></script>
+
+  <script src="app.js" defer></script>
  </body>
 </html>
