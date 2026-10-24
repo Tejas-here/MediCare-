@@ -196,7 +196,7 @@ Generated Digitally via MediCare+ Healthcare Platform on ${new Date().toUTCStrin
 // -------------------------------------------------------------------
 // Dynamic Report Viewer Modal
 // -------------------------------------------------------------------
-function openReportViewerModal(report) {
+function openReportViewerModal(report, patient) {
     let modal = document.getElementById('reportViewerModal');
     if (!modal) {
         modal = document.createElement('div');
@@ -205,7 +205,9 @@ function openReportViewerModal(report) {
         document.body.appendChild(modal);
     }
 
-    const user = getCurrentUser();
+    const curr = getCurrentUser();
+    const ptName = (patient && patient.fullName) || (report && report.patientName) || (curr && curr.patientId ? curr.fullName : 'Avishkar');
+    const ptId = (patient && patient.patientId) || (report && report.patientId) || (curr && curr.patientId ? curr.patientId : 'MED-1001');
     modal.innerHTML = `
         <div class="custom-modal" style="max-width:680px">
             <div class="custom-modal-header" style="background:#f8fafc;border-bottom:1px solid #e2e8f0;padding:16px 20px">
@@ -220,7 +222,7 @@ function openReportViewerModal(report) {
             </div>
             <div class="custom-modal-body" style="padding:20px;max-height:70vh;overflow-y:auto">
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;background:#f1f5f9;padding:12px;border-radius:8px;margin-bottom:16px;font-size:13px">
-                    <div><strong>Patient:</strong> ${escapeHtml(user.fullName)} (${escapeHtml(user.patientId)})</div>
+                    <div><strong>Patient:</strong> ${escapeHtml(ptName)} (${escapeHtml(ptId)})</div>
                     <div><strong>Doctor / Lab:</strong> ${escapeHtml(report.doctorOrLab || 'City Diagnostic Centre')}</div>
                     <div><strong>Status:</strong> <span class="pill good">Reviewed &amp; Signed</span></div>
                     <div><strong>File Name:</strong> ${escapeHtml(report.fileName || 'report.pdf')} (${escapeHtml(report.fileSize || '1.2 MB')})</div>
@@ -257,11 +259,23 @@ function openReportViewerModal(report) {
         </div>
     `;
 
+    modal.removeAttribute('hidden');
+    modal.style.display = 'grid';
     modal.hidden = false;
-    document.getElementById('closeReportViewer')?.addEventListener('click', () => modal.hidden = true);
-    document.getElementById('btnCloseReportViewer')?.addEventListener('click', () => modal.hidden = true);
+
+    const hideViewer = () => {
+        modal.hidden = true;
+        modal.setAttribute('hidden', '');
+        modal.style.display = 'none';
+    };
+
+    document.getElementById('closeReportViewer')?.addEventListener('click', hideViewer);
+    document.getElementById('btnCloseReportViewer')?.addEventListener('click', hideViewer);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) hideViewer();
+    });
     document.getElementById('btnDownloadFromViewer')?.addEventListener('click', () => {
-        downloadReportDocument(report.reportName, user.fullName, user.patientId, report.category, report.reportDate, report.doctorOrLab, report.notes);
+        downloadReportDocument(report.reportName, ptName, ptId, report.category, report.reportDate, report.doctorOrLab, report.notes);
     });
 }
 
@@ -747,8 +761,12 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.hidden = false;
     }
 
-    // Global Search Handling across pages
+    // Global Search Handling across pages (Only navigates if on dashboard or general pages; in-page handlers manage dedicated pages)
     $('#globalSearch')?.addEventListener('keydown', (e) => {
+        if (['reports', 'medicine', 'doctor', 'services', 'videos', 'progress', 'doctor-dashboard'].includes(page)) {
+            // Let the dedicated in-page search handler filter current content
+            return;
+        }
         if (e.key === 'Enter') {
             const query = e.target.value.trim().toLowerCase();
             if (!query) return;
@@ -904,8 +922,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         docSearchInput?.addEventListener('input', (e) => filterDoctors(e.target.value));
+        docSearchInput?.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') { e.preventDefault(); filterDoctors(e.target.value); }
+        });
         $('#globalSearch')?.addEventListener('input', (e) => {
             if (page === 'doctor') filterDoctors(e.target.value);
+        });
+        $('#globalSearch')?.addEventListener('keydown', (e) => {
+            if (page === 'doctor' && e.key === 'Enter') {
+                e.preventDefault();
+                filterDoctors(e.target.value);
+            }
         });
 
         // Doctor switching buttons
@@ -1306,6 +1333,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 .catch(() => {});
         };
 
+        // Medicine In-Page Search Filter
+        function filterPatientMedicines(query) {
+            const q = (query || '').toLowerCase().trim();
+            $$('#ml .med').forEach(med => {
+                const txt = med.textContent.toLowerCase();
+                med.style.display = (!q || txt.includes(q)) ? 'flex' : 'none';
+            });
+            $$('#adherenceHistoryBody tr').forEach(row => {
+                const txt = row.textContent.toLowerCase();
+                row.style.display = (!q || txt.includes(q)) ? '' : 'none';
+            });
+        }
+
+        $('#globalSearch')?.addEventListener('input', (e) => {
+            if (page === 'medicine') filterPatientMedicines(e.target.value);
+        });
+        $('#globalSearch')?.addEventListener('keydown', (e) => {
+            if (page === 'medicine' && e.key === 'Enter') {
+                e.preventDefault();
+                filterPatientMedicines(e.target.value);
+            }
+        });
+
         window.loadPatientMedicines();
         window.loadMedicineAdherenceHistory();
     }
@@ -1447,8 +1497,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         }
 
-        // Search input
+        // Search inputs (both in-page #rs and top bar #globalSearch)
         searchInput?.addEventListener('input', () => renderReportsTable());
+        searchInput?.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') { e.preventDefault(); renderReportsTable(); }
+        });
+        $('#globalSearch')?.addEventListener('input', (e) => {
+            if (page === 'reports') {
+                if (searchInput) searchInput.value = e.target.value;
+                renderReportsTable();
+            }
+        });
+        $('#globalSearch')?.addEventListener('keydown', (e) => {
+            if (page === 'reports' && e.key === 'Enter') {
+                e.preventDefault();
+                if (searchInput) searchInput.value = e.target.value;
+                renderReportsTable();
+            }
+        });
 
         // Category filter chips
         filterChips.forEach(chip => {
@@ -1527,6 +1593,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------------------------------------------------------------
     if (page === 'progress') {
         const logForm = $('#logForm');
+        let cachedProgressLogs = [];
 
         function loadProgressData() {
             const uId = user ? user.id : 1;
@@ -1536,6 +1603,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(r => r.json())
                 .then(logs => {
                     if (logs && logs.length > 0) {
+                        cachedProgressLogs = logs;
                         updateVitalsCards(logs[0], logs);
                         renderWeightChart(logs);
                         renderProgressHistoryTable(logs);
@@ -1567,13 +1635,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function updateVitalsCards(latestLog, logs) {
-            if ($('#progWeightVal')) $('#progWeightVal').textContent = (latestLog.weightKg || '71.5') + ' kg';
+            if ($('#progWeightVal')) $('#progWeightVal').textContent = (latestLog.weightKg || '71.4') + ' kg';
             if ($('#progBpVal')) $('#progBpVal').textContent = latestLog.bloodPressure || '120/80';
             if ($('#progHbVal')) $('#progHbVal').textContent = (latestLog.hemoglobin || '13.8') + '';
             if ($('#progStepsVal')) $('#progStepsVal').textContent = (latestLog.stepsToday || 8500).toLocaleString();
 
-            if ($('#progWaterText')) $('#progWaterText').textContent = latestLog.waterIntake || '3.0 litres';
-            if ($('#progExerciseText')) $('#progExerciseText').textContent = `${latestLog.exerciseMinutes || 30} minutes`;
+            const waterVal = latestLog.waterIntake || '3.0 litres';
+            if ($('#progWaterText')) $('#progWaterText').textContent = waterVal;
+            if ($('#progExerciseText')) $('#progExerciseText').textContent = `${latestLog.exerciseMinutes || 35} minutes`;
+
+            // Pre-fill input form with current values
+            if ($('#inputProgWeight') && !$('#inputProgWeight').value) $('#inputProgWeight').value = latestLog.weightKg;
+            if ($('#inputProgBp')) $('#inputProgBp').value = latestLog.bloodPressure || '120/80';
+            const numWater = parseFloat(waterVal);
+            if ($('#inputProgWater') && !isNaN(numWater)) $('#inputProgWater').value = numWater;
+            if ($('#inputProgExercise')) $('#inputProgExercise').value = latestLog.exerciseMinutes || 35;
+            if ($('#inputProgSteps')) $('#inputProgSteps').value = latestLog.stepsToday || 8500;
+            if ($('#inputProgFeel')) $('#inputProgFeel').value = latestLog.feeling || 'Good';
 
             // Calculate weight difference from first log
             if (logs && logs.length > 1 && $('#progWeightSub')) {
@@ -1593,6 +1671,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const tbody = $('#progressHistoryTableBody');
             if (!tbody) return;
             tbody.innerHTML = '';
+            if (!logs || logs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:20px;color:var(--m)">No health logs found matching your search.</td></tr>';
+                return;
+            }
             logs.forEach(l => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
@@ -1600,13 +1682,35 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${l.weightKg} kg</td>
                     <td>${escapeHtml(l.bloodPressure || '120/80')}</td>
                     <td>${escapeHtml(l.waterIntake || '3.0 litres')}</td>
-                    <td>${l.exerciseMinutes || 30} mins</td>
+                    <td>${l.exerciseMinutes || 35} mins</td>
                     <td>${escapeHtml(l.medicinesTaken || '4 of 4 planned')}</td>
                     <td><span class="pill ${(l.feeling === 'Excellent' || l.feeling === 'Great') ? 'good' : ''}">${escapeHtml(l.feeling || 'Good')}</span></td>
                 `;
                 tbody.appendChild(tr);
             });
         }
+
+        function filterProgressLogs(query) {
+            const q = (query || '').toLowerCase().trim();
+            const filtered = q ? cachedProgressLogs.filter(l =>
+                (l.logDate && l.logDate.toLowerCase().includes(q)) ||
+                (String(l.weightKg) && String(l.weightKg).includes(q)) ||
+                (l.bloodPressure && l.bloodPressure.toLowerCase().includes(q)) ||
+                (l.waterIntake && l.waterIntake.toLowerCase().includes(q)) ||
+                (l.feeling && l.feeling.toLowerCase().includes(q))
+            ) : cachedProgressLogs;
+            renderProgressHistoryTable(filtered);
+        }
+
+        $('#globalSearch')?.addEventListener('input', (e) => {
+            if (page === 'progress') filterProgressLogs(e.target.value);
+        });
+        $('#globalSearch')?.addEventListener('keydown', (e) => {
+            if (page === 'progress' && e.key === 'Enter') {
+                e.preventDefault();
+                filterProgressLogs(e.target.value);
+            }
+        });
 
         function renderWeightChart(logs) {
             const chartPanel = $('.panel.chart');
@@ -1653,10 +1757,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         logForm?.addEventListener('submit', (e) => {
             e.preventDefault();
-            const weightVal = parseFloat($('#inputProgWeight')?.value || 71.5);
+            const weightVal = parseFloat($('#inputProgWeight')?.value || 71.4);
             const bpVal = $('#inputProgBp')?.value || '120/80';
             const waterVal = $('#inputProgWater')?.value || '3.0';
-            const exerciseVal = parseInt($('#inputProgExercise')?.value || 30, 10);
+            const exerciseVal = parseInt($('#inputProgExercise')?.value || 35, 10);
             const stepsVal = parseInt($('#inputProgSteps')?.value || 8500, 10);
             const feelVal = $('#inputProgFeel')?.value || 'Good';
 
@@ -2177,18 +2281,32 @@ document.addEventListener('DOMContentLoaded', () => {
         const subtabBtns = $$('#patientSubtabs .subtab-btn');
         const subtabPanes = $$('.patient-subtab-pane');
 
+        function switchPatientSubtab(targetSub) {
+            subtabBtns.forEach(b => {
+                const isTarget = (b.dataset.subtab === targetSub);
+                b.classList.toggle('active', isTarget);
+            });
+            subtabPanes.forEach(p => {
+                const isTarget = (p.id === `pane-${targetSub}`);
+                p.hidden = !isTarget;
+                if (isTarget) {
+                    p.removeAttribute('hidden');
+                    p.style.display = 'block';
+                } else {
+                    p.setAttribute('hidden', '');
+                    p.style.display = 'none';
+                }
+            });
+        }
+
         subtabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                subtabBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
                 const targetSub = btn.dataset.subtab;
-                subtabPanes.forEach(p => {
-                    p.hidden = (p.id !== `pane-${targetSub}`);
-                });
+                if (targetSub) switchPatientSubtab(targetSub);
             });
         });
 
-        // Global Doctor Search & Filter
+        // Global Doctor Search & Filter across patients, appointments, reports, medicines, videos, progress
         function filterDoctorWorkspace(query) {
             const q = (query || '').toLowerCase().trim();
             $$('#patientsContainer .patient-item').forEach(item => {
@@ -2203,6 +2321,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 const txt = row.textContent.toLowerCase();
                 row.style.display = (!q || txt.includes(q)) ? '' : 'none';
             });
+            $$('#doctorMedsTableBody tr').forEach(row => {
+                const txt = row.textContent.toLowerCase();
+                row.style.display = (!q || txt.includes(q)) ? '' : 'none';
+            });
+            $$('#assignedVideosList .card').forEach(card => {
+                const txt = card.textContent.toLowerCase();
+                card.style.display = (!q || txt.includes(q)) ? 'flex' : 'none';
+            });
+            $$('#doctorProgressLogsTableBody tr').forEach(row => {
+                const txt = row.textContent.toLowerCase();
+                row.style.display = (!q || txt.includes(q)) ? '' : 'none';
+            });
+            $$('#doctorChatPatientsList .doc-chat-item').forEach(item => {
+                const txt = item.textContent.toLowerCase();
+                item.style.display = (!q || txt.includes(q)) ? 'flex' : 'none';
+            });
         }
 
         $('#patientFilterInput')?.addEventListener('input', (e) => {
@@ -2212,9 +2346,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.style.display = (!q || txt.includes(q)) ? 'flex' : 'none';
             });
         });
+        $('#patientFilterInput')?.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const q = e.target.value.toLowerCase().trim();
+                const matched = cachedPatients.find(p => p.fullName.toLowerCase().includes(q) || p.patientId.toLowerCase().includes(q));
+                if (matched) selectPatientInWorkspace(matched.id);
+            }
+        });
 
         $('#globalDocSearch')?.addEventListener('input', (e) => {
             filterDoctorWorkspace(e.target.value);
+        });
+        $('#globalDocSearch')?.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const q = e.target.value.toLowerCase().trim();
+                const matched = cachedPatients.find(p => p.fullName.toLowerCase().includes(q) || p.patientId.toLowerCase().includes(q));
+                if (matched) selectPatientInWorkspace(matched.id);
+            }
         });
 
         // Load Patients List in Left Sidebar
@@ -2339,7 +2489,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             const rId = parseInt(btn.dataset.id, 10);
                             const rep = data.reports.find(r => r.id === rId);
                             if (rep) {
-                                openReportViewerModal(rep);
+                                openReportViewerModal(rep, p);
                             }
                         });
                     });
@@ -2453,13 +2603,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        // Modal Show/Hide Helpers for Doctor Workspace
+        function showDocModal(m) {
+            if (!m) return;
+            m.removeAttribute('hidden');
+            m.style.display = 'grid';
+            m.hidden = false;
+        }
+        function hideDocModal(m) {
+            if (!m) return;
+            m.hidden = true;
+            m.setAttribute('hidden', '');
+            m.style.display = 'none';
+        }
+
         // Add Medicine Modal Logic for Doctor
         const modalAddMed = $('#modalAddMed');
         [$('#btnAddMedModal'), $('#btnOpenAddMedFromTab')].forEach(btn => {
             btn?.addEventListener('click', () => {
                 const p = cachedPatients.find(x => x.id === activePatientId) || { fullName: 'Patient' };
                 if ($('#modalAddMedPatientName')) $('#modalAddMedPatientName').textContent = p.fullName;
-                if (modalAddMed) modalAddMed.hidden = false;
+                showDocModal(modalAddMed);
             });
         });
 
@@ -2478,19 +2642,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     dose,
                     reminderTime: time,
                     instructions,
-                    prescribedBy: 'Dr. Priya Sharma'
+                    prescribedBy: (user && user.role === 'doctor' && user.fullName) ? user.fullName : 'Dr. Priya Sharma'
                 })
             })
             .then(r => r.json())
             .then(() => {
                 showToast(`✓ Prescribed ${name} to patient!`);
-                if (modalAddMed) modalAddMed.hidden = true;
+                hideDocModal(modalAddMed);
                 $('#formAddMed').reset();
                 selectPatientInWorkspace(activePatientId);
+                switchPatientSubtab('medicines');
             })
             .catch(() => {
                 showToast(`Prescribed ${name} successfully!`);
-                if (modalAddMed) modalAddMed.hidden = true;
+                hideDocModal(modalAddMed);
+                switchPatientSubtab('medicines');
             });
         });
 
@@ -2509,6 +2675,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (!list) return;
                         list.innerHTML = '';
                         videos.forEach(v => {
+                            const isAssigned = (v.assignedTo || []).includes(activePatientId);
                             const item = document.createElement('div');
                             item.style.display = 'flex';
                             item.style.justifyContent = 'space-between';
@@ -2516,13 +2683,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             item.style.padding = '10px 14px';
                             item.style.border = '1px solid var(--ln)';
                             item.style.borderRadius = '8px';
-                            item.style.background = '#f8fafc';
+                            item.style.background = isAssigned ? '#eff6ff' : '#f8fafc';
                             item.innerHTML = `
                                 <div>
                                     <strong style="display:block;font-size:13px">${escapeHtml(v.title)}</strong>
-                                    <small style="color:var(--m)">${escapeHtml(v.category)} &middot; ${v.duration || '05:00 min'}</small>
+                                    <small style="color:var(--m)">${escapeHtml(v.category)} &middot; ${v.duration || '05:00 min'} ${isAssigned ? '&middot; <span style="color:#059669;font-weight:700">✓ Assigned</span>' : ''}</small>
                                 </div>
-                                <button type="button" class="btn soft mini btn-assign-this-vid" data-id="${v.id}">＋ Prescribe</button>
+                                <button type="button" class="btn soft mini btn-assign-this-vid" data-id="${v.id}">${isAssigned ? '✓ Prescribed' : '＋ Prescribe'}</button>
                             `;
                             list.appendChild(item);
                         });
@@ -2538,12 +2705,13 @@ document.addEventListener('DOMContentLoaded', () => {
                                 .then(r => r.json())
                                 .then(() => {
                                     showToast('✓ Video assigned to patient education plan!');
-                                    modalAssignVideo.hidden = true;
+                                    hideDocModal(modalAssignVideo);
                                     selectPatientInWorkspace(activePatientId);
+                                    switchPatientSubtab('videos');
                                 });
                             });
                         });
-                        modalAssignVideo.hidden = false;
+                        showDocModal(modalAssignVideo);
                     });
             });
         });
@@ -2554,7 +2722,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn?.addEventListener('click', () => {
                 const p = cachedPatients.find(x => x.id === activePatientId) || { fullName: 'Patient' };
                 if ($('#cvPatientName')) $('#cvPatientName').textContent = p.fullName;
-                if (modalCreateVideo) modalCreateVideo.hidden = false;
+                showDocModal(modalCreateVideo);
             });
         });
 
@@ -2582,9 +2750,10 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(r => r.json())
             .then(() => {
                 showToast(`✓ Published "${title}" successfully!`);
-                if (modalCreateVideo) modalCreateVideo.hidden = true;
+                hideDocModal(modalCreateVideo);
                 $('#formCreateVideo').reset();
                 selectPatientInWorkspace(activePatientId);
+                switchPatientSubtab('videos');
             });
         });
 
@@ -2596,7 +2765,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const tomorrow = new Date();
             tomorrow.setDate(tomorrow.getDate() + 1);
             if ($('#fuDate')) $('#fuDate').value = tomorrow.toISOString().split('T')[0];
-            if (modalBookFollowup) modalBookFollowup.hidden = false;
+            showDocModal(modalBookFollowup);
         });
 
         $('#formBookFollowup')?.addEventListener('submit', (e) => {
@@ -2610,7 +2779,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     userId: activePatientId,
-                    doctor: 'Dr. Priya Sharma',
+                    doctor: (user && user.role === 'doctor' && user.fullName) ? user.fullName : 'Dr. Priya Sharma',
                     date,
                     time,
                     purpose
@@ -2619,17 +2788,24 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(r => r.json())
             .then(() => {
                 showToast('✓ Follow-up appointment scheduled!');
-                if (modalBookFollowup) modalBookFollowup.hidden = true;
+                hideDocModal(modalBookFollowup);
                 loadDoctorAppointments();
+                switchDocModule('appointments');
             });
         });
 
-        // Close generic modals with [data-close]
+        // Close generic modals with [data-close] or backdrop click
         $$('[data-close]').forEach(btn => {
             btn.addEventListener('click', () => {
                 const targetId = btn.dataset.close;
                 const m = document.getElementById(targetId);
-                if (m) m.hidden = true;
+                if (m) hideDocModal(m);
+            });
+        });
+
+        $$('.custom-modal-backdrop').forEach(bd => {
+            bd.addEventListener('click', (e) => {
+                if (e.target === bd) hideDocModal(bd);
             });
         });
 
@@ -2833,7 +3009,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({
                     userId: currentChatPatientId,
                     message: text,
-                    doctorName: 'Dr. Priya Sharma',
+                    doctorName: (user && user.role === 'doctor' && user.fullName) ? user.fullName : 'Dr. Priya Sharma',
                     sender: 'doctor'
                 })
             })
@@ -2847,6 +3023,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initial Load
         loadDoctorPatients();
         loadDoctorAppointments();
+        loadDoctorChatPatients();
     }
 
     // ---------------------------------------------------------------

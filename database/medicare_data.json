@@ -257,13 +257,13 @@
     {
       "id": 11,
       "userId": 1,
-      "name": "Zinc Sulfate 50mg",
-      "dose": "1 tablet daily",
-      "reminderTime": "10:00 AM",
+      "name": "Metformin 500mg",
+      "dose": "1 tablet with dinner",
+      "reminderTime": "08:00 PM",
       "reminderActive": true,
       "prescribedBy": "Dr. Priya Sharma",
-      "instructions": "Take as instructed",
-      "createdAt": "2026-10-23"
+      "instructions": "Take with food and water",
+      "createdAt": "2026-10-24"
     }
   ],
   "medicineAdherence": [
@@ -585,7 +585,7 @@
       "doctorId": 1,
       "doctorName": "Dr. Priya Sharma",
       "sender": "doctor",
-      "message": "Excellent! Keep taking it with food and maintain your 2.5 litres daily water intake.",
+      "message": "Excellent! Keep taking it with food and maintain your 3.0 litres daily water intake.",
       "createdAt": "2026-10-22T09:12:00Z"
     },
     {
@@ -615,8 +615,8 @@
       "doctorId": 1,
       "doctorName": "Dr. Priya Sharma",
       "sender": "patient",
-      "message": "Hello Doctor! What is the optimal time to take my vitamins?",
-      "createdAt": "2026-10-24T02:56:28.331Z"
+      "message": "Good morning Doctor, what should I eat before taking morning vitamins?",
+      "createdAt": "2026-10-24T06:02:14.778Z"
     },
     {
       "id": 7,
@@ -625,8 +625,8 @@
       "doctorId": 1,
       "doctorName": "Dr. Priya Sharma",
       "sender": "doctor",
-      "message": "Certainly Avishkar! You can select your preferred consultation date and slot using the \"Book Appointment\" button right here on the portal. I will confirm your booking.",
-      "createdAt": "2026-10-24T02:56:29.331Z"
+      "message": "Good morning Avishkar! Have a banana or oatmeal before taking your morning vitamins.",
+      "createdAt": "2026-10-24T06:02:14.791Z"
     },
     {
       "id": 8,
@@ -635,8 +635,8 @@
       "doctorId": 1,
       "doctorName": "Dr. Priya Sharma",
       "sender": "patient",
-      "message": "Hello Doctor! What is the optimal time to take my vitamins?",
-      "createdAt": "2026-10-24T02:56:56.010Z"
+      "message": "hi",
+      "createdAt": "2026-10-24T06:08:44.081Z"
     },
     {
       "id": 9,
@@ -645,221 +645,36 @@
       "doctorId": 1,
       "doctorName": "Dr. Priya Sharma",
       "sender": "doctor",
-      "message": "Certainly Avishkar! You can select your preferred consultation date and slot using the \"Book Appointment\" button right here on the portal. I will confirm your booking.",
-      "createdAt": "2026-10-24T02:56:57.010Z"
-    },
-    {
-      "id": 10,
-      "userId": 1,
-      "patientName": "Avishkar",
-      "doctorId": 1,
-      "doctorName": "Dr. Priya Sharma",
-      "sender": "patient",
       "message": "hello",
-      "createdAt": "2026-10-24T03:05:09.716Z"
-    },
-    {
-      "id": 11,
-      "userId": 1,
-      "patientName": "Avishkar",
-      "doctorId": 1,
-      "doctorName": "Dr. Priya Sharma",
-      "sender": "doctor",
-      "message": "Hello Avishkar! Good to connect with you. How are you feeling today and how is your daily medicine adherence going?",
-      "createdAt": "2026-10-24T03:05:10.716Z"
-    },
-    {
-      "id": 12,
-      "userId": 1,
-      "patientName": "Avishkar",
-      "doctorId": 1,
-      "doctorName": "Dr. Amit Patel",
-      "sender": "patient",
-      "message": "helo",
-      "createdAt": "2026-10-24T03:05:36.561Z"
-    },
-    {
-      "id": 13,
-      "userId": 1,
-      "patientName": "Avishkar",
-      "doctorId": 1,
-      "doctorName": "Dr. Amit Patel",
-      "sender": "doctor",
-      "message": "Thank you for your message, Avishkar. I have updated your clinical records accordingly. Please keep following your prescribed medications and stay well-hydrated.",
-      "createdAt": "2026-10-24T03:05:37.561Z"
-    },
-    {
-      "id": 14,
-      "userId": 1,
-      "patientName": "Avishkar",
-      "doctorId": 1,
-      "doctorName": "Dr. Priya Sharma",
-      "sender": "patient",
-      "message": "Hello Doctor Priya, I am experiencing mild headache today.",
-      "createdAt": "2026-10-24T03:43:40.851Z"
-    },
-    {
-      "id": 15,
-      "userId": 1,
-      "patientName": "Avishkar",
-      "doctorId": 1,
-      "doctorName": "Dr. Priya Sharma",
-      "sender": "doctor",
-      "message": "Please drink plenty of water and rest for 30 minutes. Let me know if it persists.",
-      "createdAt": "2026-10-24T03:43:40.864Z"
-    },
-    {
-      "id": 16,
-      "userId": 1,
-      "patientName": "Avishkar",
-      "doctorId": 1,
-      "doctorName": "Dr. Priya Sharma",
-      "sender": "patient",
-      "message": "Hello Doctor Priya, I am experiencing mild headache today.",
-      "createdAt": "2026-10-24T03:49:18.305Z"
-    },
-    {
-      "id": 17,
-      "userId": 1,
-      "patientName": "Avishkar",
-      "doctorId": 1,
-      "doctorName": "Dr. Priya Sharma",
-      "sender": "doctor",
-      "message": "Please drink plenty of water and rest for 30 minutes. Let me know if it persists.",
-      "createdAt": "2026-10-24T03:49:18.323Z"
-    },
-    {
-      "id": 18,
-      "userId": 1,
-      "patientName": "Avishkar",
-      "doctorId": 1,
-      "doctorName": "Dr. Priya Sharma",
-      "sender": "patient",
-      "message": "Hello Doctor Priya, I am experiencing mild headache today.",
-      "createdAt": "2026-10-24T03:49:43.695Z"
-    },
-    {
-      "id": 19,
-      "userId": 1,
-      "patientName": "Avishkar",
-      "doctorId": 1,
-      "doctorName": "Dr. Priya Sharma",
-      "sender": "doctor",
-      "message": "Please drink plenty of water and rest for 30 minutes. Let me know if it persists.",
-      "createdAt": "2026-10-24T03:49:43.707Z"
-    },
-    {
-      "id": 20,
-      "userId": 1,
-      "patientName": "Avishkar",
-      "doctorId": 1,
-      "doctorName": "Dr. Priya Sharma",
-      "sender": "doctor",
-      "message": "hello",
-      "createdAt": "2026-10-24T03:52:16.406Z"
-    },
-    {
-      "id": 21,
-      "userId": 1,
-      "patientName": "Avishkar",
-      "doctorId": 1,
-      "doctorName": "Dr. Priya Sharma",
-      "sender": "patient",
-      "message": "bye",
-      "createdAt": "2026-10-24T03:52:47.500Z"
-    },
-    {
-      "id": 22,
-      "userId": 1,
-      "patientName": "Avishkar",
-      "doctorId": 1,
-      "doctorName": "Dr. Priya Sharma",
-      "sender": "patient",
-      "message": "Hello Doctor Priya, I am experiencing mild headache today.",
-      "createdAt": "2026-10-24T04:21:27.331Z"
-    },
-    {
-      "id": 23,
-      "userId": 1,
-      "patientName": "Avishkar",
-      "doctorId": 1,
-      "doctorName": "Dr. Priya Sharma",
-      "sender": "doctor",
-      "message": "Please drink plenty of water and rest for 30 minutes. Let me know if it persists.",
-      "createdAt": "2026-10-24T04:21:27.337Z"
+      "createdAt": "2026-10-24T06:09:03.622Z"
     }
   ],
   "videos": [
     {
-      "id": 13,
-      "title": "fuzi tailer",
+      "id": 11,
+      "title": "kabbadi",
       "category": "General Health",
       "duration": "06:30 min",
       "badge": "Clinical Guide",
       "badgeType": "general",
       "icon": "🎬",
-      "videoUrl": "https://youtu.be/ujzBbf9uqdY?si=wF3UoP3n6pLaODzn",
+      "videoUrl": "https://www.youtube.com/embed/Vm6APOQLJYg",
       "summary": "Clinical guidance video assigned by your doctor.",
-      "isAi": true,
-      "assignedTo": [
-        1
-      ]
-    },
-    {
-      "id": 12,
-      "title": "Post-Operative Recovery Routine",
-      "category": "Surgery Recovery",
-      "duration": "14 mins",
-      "badge": "Clinical Guide",
-      "badgeType": "general",
-      "icon": "🎬",
-      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      "summary": "Essential daily exercises and breathing guidelines post-surgery.",
       "isAi": false,
       "assignedTo": [
-        1
-      ]
-    },
-    {
-      "id": 11,
-      "title": "Cardiac Rehabilitation Routine",
-      "category": "Surgery Recovery",
-      "duration": "11 mins",
-      "badge": "Clinical Guide",
-      "badgeType": "general",
-      "icon": "🎬",
-      "videoUrl": "https://www.youtube.com/embed/d3LzZ9pvd1Y",
-      "summary": "Post-operative recovery exercises for heart health.",
-      "isAi": false,
-      "assignedTo": [
-        1
+        2
       ]
     },
     {
       "id": 10,
-      "title": "Post-Operative Recovery Routine",
-      "category": "Surgery Recovery",
-      "duration": "14 mins",
+      "title": "Holistic Cardiovascular Health Routine",
+      "category": "Exercise",
+      "duration": "07:30 min",
       "badge": "Clinical Guide",
       "badgeType": "general",
       "icon": "🎬",
-      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      "summary": "Essential daily exercises and breathing guidelines post-surgery.",
-      "isAi": false,
-      "assignedTo": [
-        1
-      ]
-    },
-    {
-      "id": 9,
-      "title": "Post-Operative Recovery Routine",
-      "category": "Surgery Recovery",
-      "duration": "14 mins",
-      "badge": "Clinical Guide",
-      "badgeType": "general",
-      "icon": "🎬",
-      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      "summary": "Essential daily exercises and breathing guidelines post-surgery.",
+      "videoUrl": "https://www.youtube.com/embed/ujzBbf9uqdY",
+      "summary": "Doctor-prescribed cardiovascular exercise routine.",
       "isAi": false,
       "assignedTo": [
         1
@@ -869,122 +684,184 @@
       "id": 1,
       "title": "AI Clinical Guide: Understanding Blood Tests & Vital Signs",
       "category": "AI Guidance",
-      "duration": "06:45 min",
-      "tag": "AI Medical Explainer",
-      "icon": "🤖",
+      "duration": "06:30 min",
       "isAi": true,
+      "icon": "🤖",
+      "videoUrl": "https://www.youtube.com/embed/5a2qH6iFkXg",
+      "summary": "AI-assisted clinical breakdown of Complete Blood Count (CBC), Lipid Panel, and physiological biomarker metrics.",
       "assignedTo": [
         1,
         2
-      ],
-      "summary": "AI Doctor explains what Hemoglobin, White Blood Cells, Platelets, and Fasting Blood Glucose mean for your daily energy and immune system.",
-      "videoUrl": "https://www.youtube.com/embed/5a2qH6iFkXg"
+      ]
     },
     {
       "id": 2,
       "title": "AI Health Assistant: Proper Medicine Routine & Adherence",
-      "category": "AI Guidance",
-      "duration": "05:10 min",
-      "tag": "AI Prescription Safety",
-      "icon": "💊",
+      "category": "Medicine Usage",
+      "duration": "04:45 min",
       "isAi": true,
+      "icon": "💊",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "summary": "Smart guidance on medicine timing, meals coordination, avoiding missed doses, and managing mild side effects.",
       "assignedTo": [
         1,
         3
-      ],
-      "summary": "Interactive AI guidance on how food affects tablet absorption, the danger of skipping doses, and setting smart notification routines.",
-      "videoUrl": "https://www.youtube.com/embed/5a2qH6iFkXg"
+      ]
     },
     {
       "id": 3,
       "title": "AI Nutritionist: Personalized Heart & Diabetic Diet Protocol",
-      "category": "AI Guidance",
-      "duration": "08:20 min",
-      "tag": "AI Nutrition Advice",
-      "icon": "🥗",
+      "category": "Diet & Nutrition",
+      "duration": "08:15 min",
       "isAi": true,
+      "icon": "🥗",
+      "videoUrl": "https://www.youtube.com/embed/5a2qH6iFkXg",
+      "summary": "Nutrition science on low-glycemic indexing, sodium reduction, heart-protective fats, and daily hydration goals.",
       "assignedTo": [
         2,
         4
-      ],
-      "summary": "Smart AI dietician breaks down balanced carbohydrate intake, low sodium seasoning, high fiber legumes, and optimal hydration.",
-      "videoUrl": "https://www.youtube.com/embed/5a2qH6iFkXg"
+      ]
     },
     {
       "id": 4,
       "title": "AI Physiotherapist: Post-Surgery Breathing & Mobility",
-      "category": "AI Guidance",
-      "duration": "07:15 min",
-      "tag": "AI Rehabilitation",
-      "icon": "🧘",
+      "category": "Exercise",
+      "duration": "07:20 min",
       "isAi": true,
+      "icon": "🏃",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "summary": "Doctor-guided thoracic expansion exercises, gentle mobility routines, and progressive daily walking plans.",
       "assignedTo": [
-        4,
-        1
-      ],
-      "summary": "Step-by-step guided diaphragmatic breathing and gentle thoracic expansion exercises for post-operative recovery.",
-      "videoUrl": "https://www.youtube.com/embed/5a2qH6iFkXg"
+        1,
+        4
+      ]
     },
     {
       "id": 5,
       "title": "How to take medicines correctly and safely",
       "category": "Medicine Usage",
-      "duration": "05:30 min",
-      "tag": "Health Education",
-      "icon": "💊",
+      "duration": "05:12 min",
       "isAi": false,
+      "icon": "💊",
+      "videoUrl": "https://www.youtube.com/embed/5a2qH6iFkXg",
+      "summary": "Essential rules for taking prescription medicines, safe storage, and understanding interaction warnings.",
       "assignedTo": [
         1
-      ],
-      "summary": "Standard clinical guidance on reading prescription labels, storing medicines at room temperature, and using pill organizers.",
-      "videoUrl": "https://www.youtube.com/embed/jQ2e0KH5WrI"
+      ]
     },
     {
       "id": 6,
       "title": "Breathing Exercises for Better Heart Health",
       "category": "Exercise",
-      "duration": "07:12 min",
-      "tag": "Health Education",
-      "icon": "🫁",
+      "duration": "08:45 min",
       "isAi": false,
+      "icon": "🏃",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "summary": "Cardiopulmonary therapeutic breathing techniques for stress relief and lowering resting blood pressure.",
       "assignedTo": [
         1,
         2
-      ],
-      "summary": "Calming pranayama and rhythmic cardiovascular breathing routines to reduce stress and stabilize resting blood pressure.",
-      "videoUrl": "https://www.youtube.com/embed/d3LzZ9pvd1Y"
+      ]
     },
     {
       "id": 7,
       "title": "Healthy Diet Plan for Busy Professionals",
       "category": "Diet & Nutrition",
-      "duration": "06:20 min",
-      "tag": "Health Education",
-      "icon": "🥗",
+      "duration": "10:00 min",
       "isAi": false,
+      "icon": "🥗",
+      "videoUrl": "https://www.youtube.com/embed/5a2qH6iFkXg",
+      "summary": "Practical dietary recommendations and meal planning for maintaining steady energy levels.",
       "assignedTo": [
         1,
         3
-      ],
-      "summary": "Easy meal prepping tips, quick healthy breakfast ideas, and managing afternoon energy crashes.",
-      "videoUrl": "https://www.youtube.com/embed/1kH3n3EeVbM"
+      ]
     },
     {
       "id": 8,
       "title": "Diabetes Daily Care & Blood Sugar Tracking",
       "category": "General Health",
-      "duration": "08:10 min",
-      "tag": "Health Education",
-      "icon": "🩸",
+      "duration": "09:20 min",
       "isAi": false,
+      "icon": "🩺",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "summary": "How to accurately track fasting blood sugar levels and maintain glycemic stability.",
       "assignedTo": [
         2
-      ],
-      "summary": "Guide to using glucometers correctly, preventing hypoglycemia, and foot care for diabetic individuals.",
-      "videoUrl": "https://www.youtube.com/embed/X9ivR4UKTUQ"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Cardiac Rehabilitation Routine & Vitals Monitoring",
+      "category": "Exercise",
+      "duration": "06:15 min",
+      "isAi": false,
+      "icon": "🩺",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "summary": "Doctor-prescribed cardiac rehabilitation exercise and safe resting pulse recovery guidelines.",
+      "assignedTo": [
+        1
+      ]
     }
   ],
   "notifications": [
+    {
+      "id": 49,
+      "userId": 1,
+      "type": "system",
+      "title": "Message from Dr. Priya Sharma",
+      "message": "hello",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T06:09:03.622Z"
+    },
+    {
+      "id": 48,
+      "userId": 2,
+      "type": "video",
+      "title": "New Video Added to Care Plan",
+      "message": "Dr. Priya Sharma prescribed: \"kabbadi\".",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T06:05:27.918Z"
+    },
+    {
+      "id": 47,
+      "userId": 1,
+      "type": "system",
+      "title": "Health Log Recorded",
+      "message": "Recorded: Weight 71.2 kg, Water 3.2 litres. Great tracking!",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T06:02:14.821Z"
+    },
+    {
+      "id": 46,
+      "userId": 1,
+      "type": "video",
+      "title": "New Video Added to Care Plan",
+      "message": "Dr. Priya Sharma prescribed: \"Holistic Cardiovascular Health Routine\".",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T06:02:14.811Z"
+    },
+    {
+      "id": 45,
+      "userId": 1,
+      "type": "medicine",
+      "medicineId": 11,
+      "medicineName": "Metformin 500mg",
+      "dose": "1 tablet with dinner",
+      "title": "New Medicine Prescribed!",
+      "message": "Dr. Priya Sharma added: Metformin 500mg (1 tablet with dinner) at 08:00 PM.",
+      "actionStatus": "pending",
+      "createdAt": "2026-10-24T06:02:14.804Z"
+    },
+    {
+      "id": 44,
+      "userId": 1,
+      "type": "system",
+      "title": "Message from Dr. Priya Sharma",
+      "message": "Good morning Avishkar! Have a banana or oatmeal before ta...",
+      "actionStatus": "read",
+      "createdAt": "2026-10-24T06:02:14.792Z"
+    },
     {
       "id": 43,
       "userId": 1,
@@ -1411,133 +1288,68 @@
   ],
   "progressLogs": [
     {
-      "id": 11,
-      "userId": 1,
-      "logDate": "2026-10-24",
-      "weightKg": 69.5,
-      "feeling": "Energized and hydrated",
-      "medicinesTaken": "4 of 4 planned",
-      "waterIntake": "3.2 litres",
-      "exerciseMinutes": 45,
-      "stepsToday": 8200,
-      "bloodPressure": "120/80",
-      "hemoglobin": 13.8
-    },
-    {
-      "id": 10,
-      "userId": 1,
-      "logDate": "2026-10-24",
-      "weightKg": 69.5,
-      "feeling": "Energized and hydrated",
-      "medicinesTaken": "4 of 4 planned",
-      "waterIntake": "3.2 litres",
-      "exerciseMinutes": 45,
-      "stepsToday": 8200,
-      "bloodPressure": "120/80",
-      "hemoglobin": 13.8
-    },
-    {
-      "id": 9,
-      "userId": 1,
-      "logDate": "2026-10-24",
-      "weightKg": 69.5,
-      "feeling": "Energized and hydrated",
-      "medicinesTaken": "4 of 4 planned",
-      "waterIntake": "3.2 litres",
-      "exerciseMinutes": 45,
-      "stepsToday": 8200,
-      "bloodPressure": "120/80",
-      "hemoglobin": 13.8
-    },
-    {
-      "id": 8,
-      "userId": 1,
-      "logDate": "2026-10-24",
-      "weightKg": 71.4,
-      "feeling": "Great",
-      "medicinesTaken": "4 of 4 planned",
-      "waterIntake": "3.0 litres",
-      "exerciseMinutes": 30,
-      "stepsToday": 9200,
-      "bloodPressure": "120/80",
-      "hemoglobin": 13.8
-    },
-    {
-      "id": 7,
-      "userId": 1,
-      "logDate": "2026-10-24",
-      "weightKg": 71.4,
-      "feeling": "Great",
-      "medicinesTaken": "4 of 4 planned",
-      "waterIntake": "3.0 litres",
-      "exerciseMinutes": 30,
-      "stepsToday": 9200,
-      "bloodPressure": "120/80",
-      "hemoglobin": 13.8
-    },
-    {
       "id": 6,
       "userId": 1,
       "logDate": "2026-10-24",
-      "weightKg": 71.5,
-      "feeling": "Good",
-      "medicinesTaken": "4 of 4 planned",
-      "waterIntake": "2.5 litres",
-      "exerciseMinutes": 30,
-      "stepsToday": 8000,
-      "bloodPressure": "120/80",
-      "hemoglobin": 13.8
-    },
-    {
-      "id": 1,
-      "userId": 1,
-      "logDate": "2026-10-18",
-      "weightKg": 72.8,
-      "feeling": "Good",
-      "medicinesTaken": "4 of 4 planned",
-      "waterIntake": "2.5 litres",
-      "exerciseMinutes": 30,
-      "stepsToday": 8200,
-      "bloodPressure": "122/82",
-      "hemoglobin": 13.8
-    },
-    {
-      "id": 2,
-      "userId": 1,
-      "logDate": "2026-10-20",
-      "weightKg": 72.2,
-      "feeling": "Energetic",
-      "medicinesTaken": "4 of 4 planned",
-      "waterIntake": "3.0 litres",
+      "weightKg": 71.2,
+      "bloodPressure": "119/79",
+      "waterIntake": "3.2 litres",
       "exerciseMinutes": 40,
-      "stepsToday": 9500,
-      "bloodPressure": "120/80",
+      "stepsToday": 9100,
+      "feeling": "Great",
+      "medicinesTaken": "4 of 4 planned",
       "hemoglobin": 13.8
     },
     {
-      "id": 3,
+      "id": 5,
       "userId": 1,
-      "logDate": "2026-10-22",
-      "weightKg": 71.8,
-      "feeling": "Good",
-      "medicinesTaken": "3 of 4 planned",
-      "waterIntake": "2.8 litres",
-      "exerciseMinutes": 35,
-      "stepsToday": 8700,
-      "bloodPressure": "118/78",
+      "logDate": "2026-10-23",
+      "weightKg": 71.5,
+      "bloodPressure": "119/79",
+      "waterIntake": "3.0 litres",
+      "exerciseMinutes": 45,
+      "stepsToday": 10200,
+      "feeling": "Excellent",
+      "medicinesTaken": "4 of 4 planned",
       "hemoglobin": 13.8
     },
     {
       "id": 4,
       "userId": 1,
-      "logDate": "2026-10-23",
-      "weightKg": 71.5,
-      "feeling": "Excellent",
+      "logDate": "2026-10-22",
+      "weightKg": 71.8,
+      "bloodPressure": "118/78",
+      "waterIntake": "2.8 litres",
+      "exerciseMinutes": 35,
+      "stepsToday": 8700,
+      "feeling": "Good",
       "medicinesTaken": "4 of 4 planned",
+      "hemoglobin": 13.8
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "logDate": "2026-10-20",
+      "weightKg": 72.2,
+      "bloodPressure": "120/80",
       "waterIntake": "3.0 litres",
-      "exerciseMinutes": 45,
-      "stepsToday": 10200,
-      "bloodPressure": "119/79",
+      "exerciseMinutes": 40,
+      "stepsToday": 9500,
+      "feeling": "Energetic",
+      "medicinesTaken": "4 of 4 planned",
+      "hemoglobin": 13.8
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "logDate": "2026-10-18",
+      "weightKg": 72.8,
+      "bloodPressure": "122/82",
+      "waterIntake": "2.5 litres",
+      "exerciseMinutes": 30,
+      "stepsToday": 8200,
+      "feeling": "Good",
+      "medicinesTaken": "4 of 4 planned",
       "hemoglobin": 13.8
     },
     {

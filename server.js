@@ -988,7 +988,11 @@ const server = http.createServer(async (req, res) => {
             messages = messages.filter(m => m.userId === userId);
         }
         if (doc) {
-            messages = messages.filter(m => m.doctorName.toLowerCase() === doc.toLowerCase());
+            const cleanDoc = doc.toLowerCase().replace(/^(dr\.?|doctor)\s*/i, '').trim();
+            messages = messages.filter(m => {
+                const cleanMDoc = (m.doctorName || '').toLowerCase().replace(/^(dr\.?|doctor)\s*/i, '').trim();
+                return cleanMDoc.includes(cleanDoc) || cleanDoc.includes(cleanMDoc);
+            });
         }
         return sendJson(res, 200, messages);
     }
@@ -1474,6 +1478,15 @@ const server = http.createServer(async (req, res) => {
         const title = (body.title || '').trim();
         if (!title) return sendJson(res, 400, { success: false, message: 'Video title is required' });
 
+        let inputUrl = (body.videoUrl || body.url || 'https://www.youtube.com/embed/dQw4w9WgXcQ').trim();
+        if (inputUrl.includes('watch?v=')) {
+            const vidId = inputUrl.split('watch?v=')[1]?.split('&')[0];
+            if (vidId) inputUrl = `https://www.youtube.com/embed/${vidId}`;
+        } else if (inputUrl.includes('youtu.be/')) {
+            const vidId = inputUrl.split('youtu.be/')[1]?.split('?')[0];
+            if (vidId) inputUrl = `https://www.youtube.com/embed/${vidId}`;
+        }
+
         const newId = db.videos.length > 0 ? Math.max(...db.videos.map(v => v.id)) + 1 : 1;
         const newVideo = {
             id: newId,
@@ -1483,7 +1496,7 @@ const server = http.createServer(async (req, res) => {
             badge: body.badge || (body.category === 'AI Guidance' ? 'AI Doctor' : 'Clinical Guide'),
             badgeType: body.badgeType || 'general',
             icon: body.icon || (body.category === 'AI Guidance' ? '🤖' : '🎬'),
-            videoUrl: body.videoUrl || body.url || 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            videoUrl: inputUrl,
             summary: body.summary || body.description || 'Clinical guidance video assigned by your doctor.',
             isAi: body.category === 'AI Guidance' || title.toLowerCase().includes('ai'),
             assignedTo: (body.assignedTo || body.assignedPatients) ? (Array.isArray(body.assignedTo || body.assignedPatients) ? (body.assignedTo || body.assignedPatients).map(Number) : [parseInt(body.assignedTo || body.assignedPatients, 10)]) : []
@@ -1561,21 +1574,47 @@ const server = http.createServer(async (req, res) => {
     if ((pathname === '/api/progress' || pathname === '/api/progress/log') && req.method === 'POST') {
         const body = await parseBody(req);
         const userId = parseInt(body.userId || 1, 10);
-        const newId = db.progressLogs.length > 0 ? Math.max(...db.progressLogs.map(p => p.id)) + 1 : 1;
-        const newLog = {
-            id: newId,
-            userId,
-            logDate: body.logDate || new Date().toISOString().split('T')[0],
-            weightKg: parseFloat(body.weightKg || body.weight || 71.5),
-            feeling: body.feeling || body.feel || 'Good',
-            medicinesTaken: body.medicinesTaken || '4 of 4 planned',
-            waterIntake: body.waterIntake || (body.water ? (String(body.water).includes('litre') ? body.water : `${body.water} litres`) : '2.5 litres'),
-            exerciseMinutes: parseInt(body.exerciseMinutes || body.exercise || 30, 10),
-            stepsToday: parseInt(body.stepsToday || body.steps || 8000, 10),
-            bloodPressure: body.bloodPressure || body.bp || '120/80',
-            hemoglobin: parseFloat(body.hemoglobin || 13.8)
-        };
-        db.progressLogs.unshift(newLog);
+        const targetDate = body.logDate || new Date().toISOString().split('T')[0];
+        
+        let existingLog = db.progressLogs.find(p => p.userId === userId && p.logDate === targetDate);
+        let logResult;
+        
+        const weightVal = parseFloat(body.weightKg || body.weight || (existingLog ? existingLog.weightKg : 71.4));
+        const feelingVal = body.feeling || body.feel || (existingLog ? existingLog.feeling : 'Good');
+        const waterVal = body.waterIntake || (body.water ? (String(body.water).includes('litre') ? body.water : `${body.water} litres`) : (existingLog ? existingLog.waterIntake : '3.0 litres'));
+        const exerciseVal = parseInt(body.exerciseMinutes || body.exercise || (existingLog ? existingLog.exerciseMinutes : 35), 10);
+        const stepsVal = parseInt(body.stepsToday || body.steps || (existingLog ? existingLog.stepsToday : 8500), 10);
+        const bpVal = body.bloodPressure || body.bp || (existingLog ? existingLog.bloodPressure : '120/80');
+        const hbVal = parseFloat(body.hemoglobin || (existingLog ? existingLog.hemoglobin : 13.8));
+        const medTakenVal = body.medicinesTaken || (existingLog ? existingLog.medicinesTaken : '4 of 4 planned');
+
+        if (existingLog) {
+            existingLog.weightKg = weightVal;
+            existingLog.feeling = feelingVal;
+            existingLog.waterIntake = waterVal;
+            existingLog.exerciseMinutes = exerciseVal;
+            existingLog.stepsToday = stepsVal;
+            existingLog.bloodPressure = bpVal;
+            existingLog.hemoglobin = hbVal;
+            existingLog.medicinesTaken = medTakenVal;
+            logResult = existingLog;
+        } else {
+            const newId = db.progressLogs.length > 0 ? Math.max(...db.progressLogs.map(p => p.id)) + 1 : 1;
+            logResult = {
+                id: newId,
+                userId,
+                logDate: targetDate,
+                weightKg: weightVal,
+                feeling: feelingVal,
+                medicinesTaken: medTakenVal,
+                waterIntake: waterVal,
+                exerciseMinutes: exerciseVal,
+                stepsToday: stepsVal,
+                bloodPressure: bpVal,
+                hemoglobin: hbVal
+            };
+            db.progressLogs.unshift(logResult);
+        }
 
         // Add progress notification
         const newNotifId = db.notifications.length > 0 ? Math.max(...db.notifications.map(n => n.id)) + 1 : 1;
@@ -1584,13 +1623,13 @@ const server = http.createServer(async (req, res) => {
             userId,
             type: 'system',
             title: 'Health Log Recorded',
-            message: `Recorded: Weight ${newLog.weightKg} kg, Feeling "${newLog.feeling}". Great tracking!`,
+            message: `Recorded: Weight ${logResult.weightKg} kg, Water ${logResult.waterIntake}. Great tracking!`,
             actionStatus: 'read',
             createdAt: new Date().toISOString()
         });
 
         saveDatabase(db);
-        return sendJson(res, 201, newLog);
+        return sendJson(res, 201, logResult);
     }
 
     // -------------------------------------------------------------------------

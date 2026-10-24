@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
 :root {
     --n: #14365b;
     --n2: #204c78;
@@ -1214,24 +1215,31 @@ h3 {
     .side {
         width: 200px
     }
+
     .main {
         margin-left: 200px
     }
+
     .content {
         padding: 23px 20px
     }
+
     .bar {
         padding: 0 20px
     }
+
     .grid.four {
         grid-template-columns: repeat(2, 1fr)
     }
+
     .top nav {
         gap: 14px
     }
+
     .hero {
         padding-top: 50px
     }
+
     .hero h1 {
         font-size: 41px
     }
@@ -1242,13 +1250,16 @@ h3 {
         transform: translateX(-100%);
         transition: .2s
     }
+
     .side.open {
         transform: translateX(0);
         box-shadow: 10px 0 30px #10243c30
     }
+
     .main {
         margin-left: 0
     }
+
     .hamb {
         display: block;
         background: #fff;
@@ -1257,76 +1268,96 @@ h3 {
         padding: 8px 10px;
         color: var(--n)
     }
+
     .bar {
         height: 65px;
         padding: 0 13px;
         gap: 10px
     }
+
     .bar .logo {
         font-size: 17px
     }
+
     .bar .logo .mark {
         width: 28px;
         height: 28px
     }
+
     .user span:last-child {
         display: none
     }
+
     .content {
         padding: 20px 13px
     }
+
     .tiles,
     .vids {
         grid-template-columns: repeat(2, minmax(0, 1fr))
     }
+
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr))
     }
+
     .hero {
         grid-template-columns: 1fr;
         padding: 48px 20px;
         gap: 30px
     }
+
     .hero-art {
         min-height: 280px
     }
+
     .hero h1 {
         font-size: 42px
     }
+
     .top {
         padding: 0 15px;
         gap: 10px
     }
+
     .top nav {
         display: none
     }
+
     .features {
         grid-template-columns: repeat(2, 1fr)
     }
+
     .login-wrap {
         grid-template-columns: 1fr
     }
+
     .login-info {
         display: none
     }
+
     .login-card {
         margin: 30px auto
     }
+
     .service {
         grid-template-columns: 65px 1fr
     }
+
     .service-actions {
         grid-column: 2
     }
+
     .service-img {
         height: 60px
     }
+
     .welcome h1 {
         font-size: 22px
     }
 }
 
- @media (max-width: 900px) {
+@media (max-width: 900px) {
     .tiles {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -1339,6 +1370,7 @@ h3 {
 }
 
 @media(max-width:480px) {
+
     .grid,
     .grid.two,
     .grid.four,
@@ -1347,55 +1379,69 @@ h3 {
     .features {
         grid-template-columns: 1fr
     }
+
     .welcome {
         align-items: flex-start
     }
+
     .welcome .btn {
         padding: 10px;
         font-size: 10px
     }
+
     .bar .search {
         display: none
     }
+
     .bar .user {
         margin-left: auto
     }
+
     .hero h1 {
         font-size: 36px
     }
+
     .hero-art {
         min-height: 240px
     }
+
     .doctor-art {
         font-size: 95px
     }
+
     .service {
         grid-template-columns: 55px 1fr
     }
+
     .service-actions .btn {
         padding: 8px
     }
+
     .ph {
         padding: 16px;
         align-items: flex-start;
         flex-direction: column
     }
+
     .filters {
         padding-left: 15px
     }
+
     .tbl th,
     .tbl td {
         padding: 12px
     }
+
     .chart {
         padding: 15px
     }
+
     .metric {
         padding: 14px
     }
 }
 
- HEAD .tile {
+.tile {
     min-height: 190px;
     padding: 26px;
     border-radius: 18px;
@@ -1615,20 +1661,25 @@ body {
         padding: 14px;
         align-items: flex-start;
     }
+
     .signup-card {
         padding: 30px 22px;
         border-radius: 22px;
     }
+
     .brand {
         font-size: 25px;
     }
+
     .brand-icon {
         width: 42px;
         height: 42px;
     }
+
     .heading h1 {
         font-size: 25px;
     }
+
     .form-group input {
         height: 54px;
         font-size: 15px;
@@ -1687,8 +1738,15 @@ body {
 }
 
 @keyframes dropdownFade {
-    from { opacity: 0; transform: translateY(-6px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .profile-dropdown-header {
@@ -1904,10 +1962,25 @@ body {
     flex-shrink: 0;
 }
 
-.notif-icon.med { background: #e8f5e9; color: #2e7d32; }
-.notif-icon.appt { background: #e3f2fd; color: #1565c0; }
-.notif-icon.report { background: #fff3e0; color: #ef6c00; }
-.notif-icon.video { background: #f3e5f5; color: #7b1fa2; }
+.notif-icon.med {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.notif-icon.appt {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.notif-icon.report {
+    background: #fff3e0;
+    color: #ef6c00;
+}
+
+.notif-icon.video {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
 
 .notif-content {
     flex: 1;
@@ -2035,13 +2108,21 @@ body {
     animation: fadeIn 0.15s ease-out;
 }
 
-.custom-modal-backdrop[hidden] {
+[hidden],
+.module-pane[hidden],
+.custom-modal-backdrop[hidden],
+.patient-subtab-pane[hidden] {
     display: none !important;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .custom-modal {
@@ -2054,8 +2135,15 @@ body {
 }
 
 @keyframes modalSlide {
-    from { opacity: 0; transform: translateY(12px) scale(0.97); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .custom-modal-header {
@@ -2128,7 +2216,7 @@ body {
     justify-content: center;
     align-items: center;
     color: #ffffff;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .video-screen {
@@ -2153,9 +2241,17 @@ body {
 }
 
 @keyframes wavePulse {
-    0% { box-shadow: 0 0 0 0 rgba(24, 116, 210, 0.5); }
-    70% { box-shadow: 0 0 0 24px rgba(24, 116, 210, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(24, 116, 210, 0); }
+    0% {
+        box-shadow: 0 0 0 0 rgba(24, 116, 210, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 24px rgba(24, 116, 210, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(24, 116, 210, 0);
+    }
 }
 
 .video-controls-bar {
@@ -2394,8 +2490,15 @@ body {
     border-radius: 6px;
 }
 
-.admin-stat-trend.up { background: #d1fae5; color: #065f46; }
-.admin-stat-trend.info { background: #dbeafe; color: #1e40af; }
+.admin-stat-trend.up {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.admin-stat-trend.info {
+    background: #dbeafe;
+    color: #1e40af;
+}
 
 .charts-row {
     display: grid;
@@ -2468,7 +2571,9 @@ body {
     font-weight: 700;
 }
 
-.status-pill.confirmed, .status-pill.active, .status-pill.reviewed {
+.status-pill.confirmed,
+.status-pill.active,
+.status-pill.reviewed {
     background: #d1fae5;
     color: #065f46;
 }
@@ -2510,7 +2615,7 @@ body {
 .role-tab-btn.active {
     background: #ffffff;
     color: #1874d2;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .demo-credentials-box {
@@ -2538,5 +2643,4 @@ body {
 .demo-credentials-box button.quick-fill:hover {
     background: #1874d2;
     color: #ffffff;
-}
 }
